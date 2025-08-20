@@ -37,6 +37,11 @@ void handle_signal(int sig) {
 int main(int argc, char* argv[]) {
     // config_init();
     // LOG_INFO("Gagal membaca daftar station dari file %s", STATION_LIST_FILE);
+    if (!set_sharedmem()) {
+        LOG_ERROR("Gagal setting shared memory");
+        return 1;
+    }
+    
     if (!config_load_from_file("config.ini")) {
         LOG_ERROR("Gagal membaca config.ini, gunakan default.");
     }
