@@ -44,7 +44,8 @@ typedef struct {
     char data[SHM_SIZE - sizeof(int)];
 } shared_data;
 
+int set_sharedmem(sem_t **sem, shared_data **ptr);
+
 void config_init();
 int config_load_from_file(const char* filename);
 void config_cleanup(); 
-void set_sharedmem(sem_t *sem, shared_data *ptr);

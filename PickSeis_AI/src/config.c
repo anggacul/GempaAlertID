@@ -38,28 +38,33 @@ static void set_string(char **dest, const char *src) {
     }
 }
 
-void set_sharedmem(sem_t *sem, shared_data *ptr) {
-    sem = sem_open(SEM_NAME, O_CREAT, 0666, 0);
-    if (sem == SEM_FAILED) {
+int set_sharedmem(sem_t **sem, shared_data **ptr) {
+    // 1. Buat semafor
+    *sem = sem_open(SEM_NAME, O_CREAT, 0666, 0);
+    if (*sem == SEM_FAILED) {
         perror("sem_open failed");
-        return 0;
+        return -1;
     }
 
     // 2. Buat shared memory
+    // Gunakan shm_fd global secara langsung
     shm_fd = shm_open(SHM_NAME, O_CREAT | O_RDWR, 0666);
     if (shm_fd == -1) {
         perror("shm_open failed");
-        return 0;
+        return -1;
     }
     ftruncate(shm_fd, SHM_SIZE);
-    
+
     // 3. Map shared memory ke pointer shared_data
-    ptr = mmap(NULL, SHM_SIZE, PROT_WRITE, MAP_SHARED, shm_fd, 0);
-    if (ptr == MAP_FAILED) {
+    *ptr = mmap(NULL, SHM_SIZE, PROT_WRITE, MAP_SHARED, shm_fd, 0);
+    if (*ptr == MAP_FAILED) {
         perror("mmap failed");
-        return 0;
+        return -1;
     }
+
+    return 0;
 }
+
 void config_init() {
     STATION_LIST_FILE =  strdup("station_list.txt");
     WW = 10.0;

@@ -9,6 +9,8 @@
 #include <signal.h>
 #include <omp.h>
 #include <time.h>
+#include <sys/mman.h>
+#include <semaphore.h>
 #include "core/config.h"
 #include "core/station_manager.h"
 #include "core/picking_engine.h"
@@ -20,6 +22,8 @@
 #include "seedlink_client.h"
 
 volatile int keepRunning = 1;
+sem_t *sem;
+shared_data *ptr;
 
 void handle_signal(int sig) {
     (void)sig;
@@ -39,10 +43,9 @@ void handle_signal(int sig) {
 int main(int argc, char* argv[]) {
     // config_init();
     // LOG_INFO("Gagal membaca daftar station dari file %s", STATION_LIST_FILE);
-    sem_t *sem;
-    shared_data *ptr;
 
-    if (!set_sharedmem(sem, ptr)) {
+
+    if (set_sharedmem(&sem, &ptr) != 0) {
         LOG_ERROR("Gagal setting shared memory");
         return 1;
     }
