@@ -1,3 +1,4 @@
+#include "core/config.h"
 #include "core/station_manager.h"
 #include "core/data_window.h"
 #include "core/picking_engine.h"
@@ -57,6 +58,21 @@ void removeMean(float* data, int n) {
     for (int i = 0; i < n; ++i) data[i] -= mean;
 }
 
+void write_to_shared_memory(Station* station, PickState* pickState, float amp) {
+    // Memperbarui counter
+    current_counter++;
+
+    // Menulis data ke shared memory
+    ptr->counter = current_counter;
+    sprintf(ptr->data, "[PICK] station %s pada %.2f (RMS=%.3f, amp@Tt=%.3f", station->stationId, pickState->pickTime, pickState->pickRms, amp);
+
+    // Menaikkan semafor untuk memberi sinyal ke proses lain
+    if (sem_post(sem) == -1) {
+        perror("sem_post failed");
+        // Pertimbangkan penanganan error lebih lanjut jika diperlukan
+    }
+}
+
 /**
  * @brief Proses utama untuk satu station (loop real-time)
  */
@@ -84,6 +100,7 @@ void processStation(Station* station, PickState* pickState) {
         if (window.minLastTime >= pickState->pickTime + PICK_TT) {
             float amp = extractMaxAmplitudeAt(station, &window, pickState->pickTime + PICK_TT);
             LOG_INFO("[PICK] station %s pada %.2f (RMS=%.3f, amp@Tt=%.3f, timestamp=%.3f, minLastTime=%.3f)", station->stationId, pickState->pickTime, pickState->pickRms, amp, window.timestamp, window.minLastTime);
+            write_to_shared_memory(station, pickState, amp);
             sqlite_insert_pick(station->stationId, pickState->pickTime, amp, pickState->lastConfidence);
             // if (window.minLastTime >= pickState->pickTime + 9) {
             pickState->pickInfoSent = 1;

@@ -27,6 +27,8 @@ double PHASENET_TC;// Threshold probability N
 
 int shm_fd;
 int current_counter = 0;
+sem_t *sem;
+shared_data *ptr;
 
 static void set_string(char **dest, const char *src) {
     if (*dest) {
@@ -38,10 +40,10 @@ static void set_string(char **dest, const char *src) {
     }
 }
 
-int set_sharedmem(sem_t **sem, shared_data **ptr) {
+int set_sharedmem() {
     // 1. Buat semafor
-    *sem = sem_open(SEM_NAME, O_CREAT, 0666, 0);
-    if (*sem == SEM_FAILED) {
+    sem = sem_open(SEM_NAME, O_CREAT, 0666, 0);
+    if (sem == SEM_FAILED) {
         perror("sem_open failed");
         return -1;
     }
@@ -56,8 +58,8 @@ int set_sharedmem(sem_t **sem, shared_data **ptr) {
     ftruncate(shm_fd, SHM_SIZE);
 
     // 3. Map shared memory ke pointer shared_data
-    *ptr = mmap(NULL, SHM_SIZE, PROT_WRITE, MAP_SHARED, shm_fd, 0);
-    if (*ptr == MAP_FAILED) {
+    ptr = mmap(NULL, SHM_SIZE, PROT_WRITE, MAP_SHARED, shm_fd, 0);
+    if (ptr == MAP_FAILED) {
         perror("mmap failed");
         return -1;
     }

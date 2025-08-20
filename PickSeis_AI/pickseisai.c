@@ -22,8 +22,7 @@
 #include "seedlink_client.h"
 
 volatile int keepRunning = 1;
-sem_t *sem;
-shared_data *ptr;
+
 
 void handle_signal(int sig) {
     (void)sig;
@@ -45,7 +44,7 @@ int main(int argc, char* argv[]) {
     // LOG_INFO("Gagal membaca daftar station dari file %s", STATION_LIST_FILE);
 
 
-    if (set_sharedmem(&sem, &ptr) != 0) {
+    if (set_sharedmem() != 0) {
         LOG_ERROR("Gagal setting shared memory");
         return 1;
     }

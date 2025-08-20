@@ -54,3 +54,4 @@ void processStation(Station* station, PickState* pickState);
  * @return Jumlah station yang berhasil dibaca
  */
 int loadStationListFromFile(const char* filename, Station* stationList, int maxStation); 
+void write_to_shared_memory(Station* station, PickState* pickState, float amp);
