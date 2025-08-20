@@ -2,6 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include "core/config.h"
+#include <unistd.h>
+#include <sys/mman.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <semaphore.h>
 
 char* STATION_LIST_FILE;
 
