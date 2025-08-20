@@ -1,7 +1,7 @@
 CC = gcc
 CONDA_PREFIX ?= /usr/local
 CFLAGS = -std=c11 -g -O2 -fopenmp -Iinclude -I$(CONDA_PREFIX)/include  -L$(CONDA_PREFIX)/lib -D_POSIX_C_SOURCE=200809L
-LDFLAGS = -fopenmp -L$(CONDA_PREFIX)/lib -Wl,-rpath,$(CONDA_PREFIX)/lib -lslink -lonnxruntime -lsqlite3 -lm
+LDFLAGS = -fopenmp -L$(CONDA_PREFIX)/lib -Wl,-rpath,$(CONDA_PREFIX)/lib -lslink -lonnxruntime -lsqlite3 -lm -lrt
 
 SRC = $(wildcard src/*.c)
 OBJ = $(SRC:.c=.o)
