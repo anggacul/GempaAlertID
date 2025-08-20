@@ -33,6 +33,11 @@ extern char* SEEDLINK_HOST;
 // State file
 extern char* STATEFILE;
 
+typedef struct {
+    int counter;
+    char data[SHM_SIZE - sizeof(int)];
+} shared_data;
+
 void config_init();
 int config_load_from_file(const char* filename);
 void config_cleanup(); 
