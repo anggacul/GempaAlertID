@@ -21,6 +21,11 @@ char* SEEDLINK_HOST;
 char* STATEFILE;
 double PHASENET_TC;// Threshold probability N
 
+int shm_fd;
+sem_t *sem;
+shared_data *ptr;
+int current_counter = 0;
+
 static void set_string(char **dest, const char *src) {
     if (*dest) {
         free(*dest);
@@ -31,6 +36,28 @@ static void set_string(char **dest, const char *src) {
     }
 }
 
+void set_sharedmem() {
+    sem = sem_open(SEM_NAME, O_CREAT, 0666, 0);
+    if (sem == SEM_FAILED) {
+        perror("sem_open failed");
+        return 0;
+    }
+
+    // 2. Buat shared memory
+    shm_fd = shm_open(SHM_NAME, O_CREAT | O_RDWR, 0666);
+    if (shm_fd == -1) {
+        perror("shm_open failed");
+        return 0;
+    }
+    ftruncate(shm_fd, SHM_SIZE);
+    
+    // 3. Map shared memory ke pointer shared_data
+    ptr = mmap(NULL, SHM_SIZE, PROT_WRITE, MAP_SHARED, shm_fd, 0);
+    if (ptr == MAP_FAILED) {
+        perror("mmap failed");
+        return 0;
+    }
+}
 void config_init() {
     STATION_LIST_FILE =  strdup("station_list.txt");
     WW = 10.0;
