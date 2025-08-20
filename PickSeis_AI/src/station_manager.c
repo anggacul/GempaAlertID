@@ -64,10 +64,13 @@ void write_to_shared_memory(Station* station, PickState* pickState, float amp) {
 
     // Menulis data ke shared memory
     ptr->counter = current_counter;
-    sprintf(ptr->data, "[PICK] station %s pada %.2f (RMS=%.3f, amp@Tt=%.3f", station->stationId, pickState->pickTime, pickState->pickRms, amp);
+    sprintf(ptr->data, "[PICK] station %s pada %.2f RMS=%.3f, amp@Tt=%.3f", station->stationId, pickState->pickTime, pickState->pickRms, amp);
+
+    LOG_INFO("%s", ptr->data);
 
     // Menaikkan semafor untuk memberi sinyal ke proses lain
     if (sem_post(sem) == -1) {
+        LOG_ERROR("sem_post failed");
         perror("sem_post failed");
         // Pertimbangkan penanganan error lebih lanjut jika diperlukan
     }
@@ -99,7 +102,7 @@ void processStation(Station* station, PickState* pickState) {
     if (pickState->isWaitingAfterPick && !pickState->pickInfoSent) {
         if (window.minLastTime >= pickState->pickTime + PICK_TT) {
             float amp = extractMaxAmplitudeAt(station, &window, pickState->pickTime + PICK_TT);
-            LOG_INFO("[PICK] station %s pada %.2f (RMS=%.3f, amp@Tt=%.3f, timestamp=%.3f, minLastTime=%.3f)", station->stationId, pickState->pickTime, pickState->pickRms, amp, window.timestamp, window.minLastTime);
+            // LOG_INFO("[PICK] station %s pada %.2f (RMS=%.3f, amp@Tt=%.3f, timestamp=%.3f, minLastTime=%.3f)", station->stationId, pickState->pickTime, pickState->pickRms, amp, window.timestamp, window.minLastTime);
             write_to_shared_memory(station, pickState, amp);
             sqlite_insert_pick(station->stationId, pickState->pickTime, amp, pickState->lastConfidence);
             // if (window.minLastTime >= pickState->pickTime + 9) {
@@ -118,21 +121,21 @@ void processStation(Station* station, PickState* pickState) {
                 if (pickState->Trms < 1e-7) {
                     pickState->Trms = 0.0;
                     pickState->isWaitingAfterPick = 0;
-                    LOG_INFO("Station %s reset picking", station->stationId);
+                    // LOG_INFO("Station %s reset picking", station->stationId);
                 }
             }
             if ( rms < 0.2f * pickState->pickRms) {
                 pickState->windowCountSincePick++;pickState->isWaitingAfterPick = 0; // aktifkan picking lagi
-                LOG_INFO("Station %s reset picking", station->stationId);
+                // LOG_INFO("Station %s reset picking", station->stationId);
             }
         }
         if (pickState->windowCountSincePick >= PICK_NT) {
             pickState->isWaitingAfterPick = 0;
-            LOG_INFO("Station %s reset picking", station->stationId);
+            // LOG_INFO("Station %s reset picking", station->stationId);
         }
         if (window.minLastTime > pickState->pickTime + 360){
             pickState->isWaitingAfterPick = 0;
-            LOG_INFO("Station %s reset picking", station->stationId);            
+            // LOG_INFO("Station %s reset picking", station->stationId);            
         }
     }
     // 5. Picking baru

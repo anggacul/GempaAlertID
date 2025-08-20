@@ -1,4 +1,4 @@
-import websocket, os, time, pickle, telegram, asyncio
+import websocket, os, time, pickle
 from datetime import datetime
 import threading
 from collections import deque
@@ -7,16 +7,74 @@ from EQdetect.utils.config import Config
 from EQdetect.utils.report import report
 from EQdetect.core.sourcecal import Phase, EQsrc, pending_eq
 import numpy as np
-asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+import posix_ipc as ipc
+import sys
+import mmap
 
-async def send_msg(pesan):
-    bot = telegram.Bot(token='5298253276:AAEThCM6SPGQvNS4uM4NjCDNh44oh_07QBU')
+# Definisikan nama shared memory, semafor, dan ukuran yang sama dengan program C
+SHM_NAME = "/my_shm"
+SEM_NAME = "/my_sem"
+SHM_SIZE = 4096
+
+def reader_task():
+    """
+    Fungsi ini membaca data dari shared memory menggunakan semafor sebagai sinyal.
+    """
+    sem = None
+    shm_block = None
+    global received_data
     try:
-        await bot.send_message(chat_id=-1001775156336, text=pesan)
-        print("Message sent successfully")
-    except Exception as e:
-        print(f"An error occurred: {e}")
+        # Buka semafor dan shared memory yang sudah dibuat oleh program C
+        # Buka dengan O_CREAT dan nilai awal 1
+        sem = ipc.Semaphore(SEM_NAME, ipc.O_CREAT, initial_value=1)
+        # Gunakan posix_ipc untuk shared memory
+        shm_block = ipc.SharedMemory(name=SHM_NAME)
+        last_counter = -1
         
+        # Mmap shared memory untuk mendapatkan objek buffer yang dapat diakses
+        shm_map = mmap.mmap(shm_block.fd, SHM_SIZE)
+
+        print("Reader Task: Started and ready to read from shared memory (semaphore mode).")
+
+        while True:
+            try:
+                # Tunggu semaphore dari C (blocking, jadi sinkron)
+                sem.acquire()
+
+                # Setelah semaphore diberikan oleh C -> baca data
+                current_counter = int.from_bytes(shm_map[:4], byteorder='little')
+
+                if current_counter > last_counter:
+                    message_bytes = shm_map[4:]
+                    data = message_bytes.decode('utf-8').split('\x00', 1)[0]
+
+                    print(f"Reader Task: Found new data (Counter: {current_counter}). Data: '{data}'")
+                    received_data.append(data)
+                    last_counter = current_counter
+
+                # ⚠️ Jangan sem.release() di reader!
+                # Karena sem_post hanya dilakukan di writer (program C)
+
+                time.sleep(0.1)
+
+            except Exception as e:
+                print(f"Reader Task: error {e}")
+                break
+            
+    except (FileNotFoundError, ipc.ExistentialError):
+        print("Reader Task: Shared memory or semaphore not found. Exiting.")
+    except Exception as e:
+        print(f"Reader Task error: {e}")
+    finally:
+        if shm_block:
+            # Tutup memory map
+            shm_map.close()
+            # Tutup file descriptor shared memory
+            os.close(shm_block.fd)
+        if sem:
+            sem.close()
+        print("Reader Task: Exiting.")
+
 def EwMsgEval(d):
     tl = bytearray(d)[0:1]
     t = ''.join([chr(i) for i in bytearray(d)[1:tl[0]+1]])
@@ -26,7 +84,7 @@ def EwMsgEval(d):
     return data
 
 def on_message(ws, message):
-    global received_data
+    
     pick = EwMsgEval(message)
     if pick != 0:
         pick = pick.split()
