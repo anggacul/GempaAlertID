@@ -27,6 +27,11 @@ volatile int keepRunning = 1;
 void handle_signal(int sig) {
     (void)sig;
     keepRunning = 0;
+    munmap(ptr, SHM_SIZE);
+    close(shm_fd);
+    sem_close(sem);
+    sem_unlink(SEM_NAME);
+    shm_unlink(SHM_NAME);
     cleanupONNXRuntime();
     cleanupSeedLink();
     config_cleanup();
@@ -117,6 +122,11 @@ int main(int argc, char* argv[]) {
 
     cleanupONNXRuntime();
     cleanupSeedLink();
+    munmap(ptr, SHM_SIZE);
+    close(shm_fd);
+    sem_close(sem);
+    sem_unlink(SEM_NAME);
+    shm_unlink(SHM_NAME);
     config_cleanup();
     sqlite_close();
     // TODO: Cleanup resource lain jika ada
