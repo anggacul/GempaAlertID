@@ -1,10 +1,13 @@
 #pragma once
-
+#include <semaphore.h>
 // Ukuran buffer dan metadata
 #define MAX_CHANNELS 3
 #define MAX_STATION_ID_LEN 6
 #define MAX_CHANNEL_NAME_LEN 4
 #define MAX_STATIONS 500
+#define SHM_NAME "/my_shm"
+#define SEM_NAME "/my_sem"
+#define SHM_SIZE 4096
 
 // File konfigurasi
 extern char* STATION_LIST_FILE;
@@ -34,8 +37,6 @@ extern char* SEEDLINK_HOST;
 extern char* STATEFILE;
 
 extern int shm_fd;
-extern sem_t *sem;
-extern shared_data *ptr;
 extern int current_counter;
 
 typedef struct {
@@ -46,4 +47,4 @@ typedef struct {
 void config_init();
 int config_load_from_file(const char* filename);
 void config_cleanup(); 
-void set_sharedmem();
+void set_sharedmem(sem_t *sem, shared_data *ptr);

@@ -20,9 +20,6 @@
 #include "seedlink_client.h"
 
 volatile int keepRunning = 1;
-#define SHM_NAME "/my_shm"
-#define SEM_NAME "/my_sem"
-#define SHM_SIZE 4096
 
 void handle_signal(int sig) {
     (void)sig;
@@ -42,7 +39,10 @@ void handle_signal(int sig) {
 int main(int argc, char* argv[]) {
     // config_init();
     // LOG_INFO("Gagal membaca daftar station dari file %s", STATION_LIST_FILE);
-    if (!set_sharedmem()) {
+    sem_t *sem;
+    shared_data *ptr;
+
+    if (!set_sharedmem(sem, ptr)) {
         LOG_ERROR("Gagal setting shared memory");
         return 1;
     }

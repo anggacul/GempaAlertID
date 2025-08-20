@@ -6,7 +6,6 @@
 #include <sys/mman.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include <semaphore.h>
 
 char* STATION_LIST_FILE;
 
@@ -27,8 +26,6 @@ char* STATEFILE;
 double PHASENET_TC;// Threshold probability N
 
 int shm_fd;
-sem_t *sem;
-shared_data *ptr;
 int current_counter = 0;
 
 static void set_string(char **dest, const char *src) {
@@ -41,7 +38,7 @@ static void set_string(char **dest, const char *src) {
     }
 }
 
-void set_sharedmem() {
+void set_sharedmem(sem_t *sem, shared_data *ptr) {
     sem = sem_open(SEM_NAME, O_CREAT, 0666, 0);
     if (sem == SEM_FAILED) {
         perror("sem_open failed");
