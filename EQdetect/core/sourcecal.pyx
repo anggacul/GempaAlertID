@@ -91,8 +91,8 @@ cdef double[:] x_view = x_arr
 cdef double[:] y_view = y_arr
 cdef double[:, :] z_view = z_arr
 
-@cython.boundscheck(False)
-@cython.wraparound(False)
+@boundscheck(False)
+@wraparound(False)
 cpdef double arrp_interp(double x, double y) nogil:
     cdef Py_ssize_t x1, x2, y1, y2
     cdef double x1_val, x2_val, y1_val, y2_val
