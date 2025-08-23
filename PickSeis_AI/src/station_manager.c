@@ -11,6 +11,7 @@
 #include <math.h>
 #include <sys/time.h>
 #include <stddef.h>
+#include <time.h>
 
 /**
  * @brief State untuk kontrol picking per station
@@ -98,15 +99,13 @@ void removeMean(float* data, int n) {
     for (int i = 0; i < n; ++i) data[i] -= mean;
 }
 
-void write_to_shared_memory(Station* station, PickState* pickState, float amp[3]) {
+void write_to_shared_memory(Station* station, PickState* pickState, DataWindow* window, float amp[3], float upd_sec) {
     // Memperbarui counter
     current_counter++;
 
     // Menulis data ke shared memory
     //         self.sta = pick[0]
     //     self.comp = pick[1]
-    //     self.longitude = float(pick[4])
-    //     self.latitude = float(pick[5])
     //     self.pa = float(pick[6])
     //     self.pv = float(pick[7])
     //     self.pd = float(pick[8])
@@ -115,7 +114,10 @@ void write_to_shared_memory(Station* station, PickState* pickState, float amp[3]
     //     self.telflag = float(pick[12])
     //     self.upd_sec = float(pick[13])
     // ptr->counter = current_counter;
-    sprintf(ptr->data, "%s %s %.2f %.5f %.5f %.5f", station->stationId, station->channels[0], pickState->pickTime, amp[0], amp[1], amp[2]);
+    struct timeval tv;
+    gettimeofday(&tv, NULL);
+    double time_now = tv.tv_sec + tv.tv_usec / 1e6;
+    sprintf(ptr->data, "%.2f %s %s %.5f %.5f %.5f %.3f %.3f 1 0 %.1f", time_now, station->stationId, station->channels[0], amp[0], amp[1], amp[2], pickState->pickTime, window->minLastTime, upd_sec);
 
     LOG_INFO("%s", ptr->data);
 
@@ -130,12 +132,11 @@ void write_to_shared_memory(Station* station, PickState* pickState, float amp[3]
 /**
  * @brief Proses utama untuk satu station (loop real-time)
  */
-void processStation(Station* station, PickState* pickState) {
-    static float last_confidence[MAX_STATIONS] = {0};
-    static double lastProcessedTimestamp[MAX_STATIONS] = {0};
+
+void processStation(Station* station, PickState* pickState, double *lastProcessedTimestamp) {
     DataWindow window = {0};
     int idx = station->index;
-    status_window = updateDataWindow(station, &window, lastProcessedTimestamp[idx]);
+    status_window = updateDataWindow(station, &window, *lastProcessedTimestamp);
     if (!status_window) {
         return;
     }
@@ -153,13 +154,20 @@ void processStation(Station* station, PickState* pickState) {
     if (pickState->isWaitingAfterPick && !pickState->pickInfoSent) {
         if (window.minLastTime >= pickState->pickTime + PICK_TT) {
             float amp[3];
-            extractMaxAmplitudeAt(station, &window, pickState->pickTime + PICK_TT, amp);
+            float upd_sec;
+            upd_sec = extractMaxAmplitudeAt(station, &window, pickState->pickTime, amp, 9.0);
+            pickState->upd_sec = upd_sec;
             // LOG_INFO("[PICK] station %s pada %.2f (RMS=%.3f, amp@Tt=%.3f, timestamp=%.3f, minLastTime=%.3f)", station->stationId, pickState->pickTime, pickState->pickRms, amp, window.timestamp, window.minLastTime);
-            write_to_shared_memory(station, pickState, amp);
-            sqlite_insert_pick(station->stationId, pickState->pickTime, amp[0], pickState->lastConfidence);
-            // if (window.minLastTime >= pickState->pickTime + 9) {
-            pickState->pickInfoSent = 1;
-            // }
+            write_to_shared_memory(station, pickState, &window, amp, pickState->upd_sec);
+            if (!pickState->pickSendSQL && !pickState->pickSendLOG) {
+                // LOG_INFO(ptr->data, "%s %s %.5f %.5f %.5f %.3f 1 0 %.1f", station->stationId, station->channels[0], amp[0], amp[1], amp[2], pickState->pickTime,upd_sec);
+                sqlite_insert_pick(station->stationId, pickState->pickTime, amp[0], pickState->lastConfidence);
+                pickState->pickSendSQL = 0;
+                pickState->pickSendLOG = 0;
+            }
+            if (pickState->upd_sec >= 9.0) {
+                pickState->pickInfoSent = 1;
+            }
         }
     }
     // 4. Jika sedang menunggu setelah pick
@@ -199,10 +207,13 @@ void processStation(Station* station, PickState* pickState) {
             pickState->windowCountSincePick = 0;
             pickState->isWaitingAfterPick = 1;
             pickState->pickInfoSent = 0;
+            pickState->pickSendSQL = 0;
+            pickState->pickSendLOG = 0;
             pickState->lastConfidence = pick.confidence;
             pickState->Trms = 0.0;
+            pickState->upd_sec = 0.0;
             // (jangan langsung kirim, tunggu Tt detik)
         }
     }
-    lastProcessedTimestamp[idx] = window.timestamp;
+    *lastProcessedTimestamp = window.minLastTime;
 } 

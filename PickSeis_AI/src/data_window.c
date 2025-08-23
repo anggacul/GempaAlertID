@@ -9,7 +9,7 @@
 /**
  * @brief Ambil snapshot window data terbaru dari SeedLink listener
  */
-bool updateDataWindow(Station* station, DataWindow* window, uint64_t lastProcessedTimestamp) {
+bool updateDataWindow(Station* station, DataWindow* window, double lastProcessedTimestamp) {
     // LOG_INFO("Update data window untuk station %s", station->stationId);
     return getLatestWindow(station, window, lastProcessedTimestamp);
 }

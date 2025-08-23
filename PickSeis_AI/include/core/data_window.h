@@ -37,4 +37,4 @@ typedef struct {
  * @param lastProcessedTimestamp Timestamp terakhir yang sudah diproses
  * @return true jika ada data baru (timestamp lebih besar dari lastProcessedTimestamp)
  */
-bool updateDataWindow(Station* station, DataWindow* window, uint64_t lastProcessedTimestamp); 
+bool updateDataWindow(Station* station, DataWindow* window, double lastProcessedTimestamp); 

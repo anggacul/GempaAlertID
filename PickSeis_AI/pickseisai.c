@@ -43,7 +43,6 @@ int main(int argc, char* argv[]) {
     // config_init();
     // LOG_INFO("Gagal membaca daftar station dari file %s", STATION_LIST_FILE);
 
-
     if (set_sharedmem() != 0) {
         LOG_ERROR("Gagal setting shared memory");
         return 1;
@@ -88,6 +87,7 @@ int main(int argc, char* argv[]) {
     // TODO: Implementasi inisialisasi
     LOG_INFO("Station count: %d", stationCount);
     PickState pickStates[MAX_STATIONS] = {0};
+    double lastProcessedTimestamp[MAX_STATIONS] = {0};
     // int num_threads = omp_get_max_threads();
     int num_threads = 4;
     if (stationCount >= 400) {
@@ -96,7 +96,7 @@ int main(int argc, char* argv[]) {
             int tid = omp_get_thread_num();
             while (keepRunning) {
                 for (int i = tid; i < stationCount; i += num_threads) {
-                    processStation(&stationList[i], &pickStates[i]);
+                    processStation(&stationList[i], &pickStates[i], &lastProcessedTimestamp[i]);
                 }
                 usleep(100000); // 100 ms sleep untuk menghindari busy-wait
             }
@@ -107,7 +107,7 @@ int main(int argc, char* argv[]) {
             // clock_gettime(CLOCK_MONOTONIC, &start);  // Waktu mulai
             for (int i = 0; i < stationCount; ++i) {
                 // processStation(&stationList[i], &pickStates[i]);
-                processStation(&stationList[i], &pickStates[i]);  // Proses stasiun
+                processStation(&stationList[i], &pickStates[i], &lastProcessedTimestamp[i]);  // Proses stasiun
 
             }
             // clock_gettime(CLOCK_MONOTONIC, &end);  // Waktu selesai

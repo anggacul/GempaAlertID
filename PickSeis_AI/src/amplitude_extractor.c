@@ -2,7 +2,7 @@
 #include "utils/logger.h"
 #include <math.h>
 #include "core/config.h"
-#include "core/station_manager.h"
+
 /**
  * @brief Ekstrak amplitudo maksimum 3 detik setelah pickTime
  */
@@ -26,13 +26,19 @@ float extractMaxAmplitude(const DataWindow* window, int ch, double pickTime) {
     return maxAmp;
 }
 
-float extractMaxAmplitudeAt(const Station* station, const DataWindow* window, double time, float maxAmp[3]) {
+float extractMaxAmplitudeAt(const Station* station, const DataWindow* window, double time, float maxAmp[3], float maxtime) {
     maxAmp[0] = maxAmp[1] = maxAmp[2] = 0.0f;
+    float difftime;
     for (int ch = 0; ch < MAX_CHANNELS; ++ch) {
         int windowSamples = window->windowSamples[ch];
         double sampleRate = station->sampleRate;
         int idx = (int)((time - window->startTime[ch]) * sampleRate);
         int endIdx = windowSamples;
+        difftime = (float)((endIdx - idx) / sampleRate);
+        if (difftime > maxtime) {
+            endIdx = idx + (int)(maxtime * sampleRate - 1);
+            difftime = maxtime;
+        }
         if (idx < 0) idx = 0;
         if (idx >= windowSamples) idx = windowSamples - 1;
         for (int i = idx; i < endIdx; ++i) {
@@ -44,6 +50,7 @@ float extractMaxAmplitudeAt(const Station* station, const DataWindow* window, do
             if (ampdisp > maxAmp[2]) maxAmp[2] = ampdisp;
         }
     }
+    return difftime;
 }
 
 float calculateRmsAmplitude(const DataWindow* window) {

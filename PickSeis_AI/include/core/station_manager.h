@@ -49,6 +49,9 @@ typedef struct {
     int windowCountSincePick;
     int isWaitingAfterPick;
     int pickInfoSent;
+    int pickSendSQL;
+    int pickSendLOG;
+    float upd_sec;
     float lastConfidence;
     float Trms;
 } PickState;
@@ -58,7 +61,7 @@ typedef struct {
  * @param station Pointer ke struct Station
  */
 void pad_copy(char *dest, const char *src, size_t width);
-void processStation(Station* station, PickState* pickState);
+void processStation(Station* station, PickState* pickState, double *lastProcessedTimestamp);
 
 /**
  * @brief Load daftar station dari file txt (format: station ch1 ch2 ch3 samplingrate conv1 conv2 conv3)
@@ -68,6 +71,6 @@ void processStation(Station* station, PickState* pickState);
  * @return Jumlah station yang berhasil dibaca
  */
 int loadStationListFromFile(const char* filename, Station* stationList, int maxStation); 
-void write_to_shared_memory(Station* station, PickState* pickState, float amp[3]);
+void write_to_shared_memory(Station* station, PickState* pickState, DataWindow* window, float amp[3], float upd_sec);
 double biquad_hpf_step(BiquadHPF *f, double x);
 void biquad_hpf_design(BiquadHPF *f, double fs, double fc);

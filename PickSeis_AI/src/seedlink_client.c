@@ -381,7 +381,7 @@ bool getLatestWindow(Station* station, DataWindow* window, double lastProcessedT
     int idx = find_station_index(station->stationId);
     if (idx < 0) return false;
     pthread_mutex_lock(&g_window_mutex[idx]);
-    if (g_windows[idx].timestamp <= lastProcessedTimestamp) {
+    if (g_windows[idx].minLastTime <= lastProcessedTimestamp + 1.0) {
         pthread_mutex_unlock(&g_window_mutex[idx]);
         return false;
     }

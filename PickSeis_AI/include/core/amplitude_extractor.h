@@ -1,5 +1,6 @@
 #pragma once
 #include "data_window.h"
+#include "core/station_manager.h"
 
 /**
  * @brief Ekstrak amplitudo maksimum 3 detik setelah pick
@@ -17,4 +18,4 @@ float calculateRmsAmplitudeAt(const Station* station, const DataWindow* window);
 /**
  * @brief Ekstrak amplitude pada waktu tertentu
  */
-float extractMaxAmplitudeAt(const Station* station, const DataWindow* window, double time, float maxAmp[3]);
+float extractMaxAmplitudeAt(const Station* station, const DataWindow* window, double time, float maxAmp[3], float maxtime);
