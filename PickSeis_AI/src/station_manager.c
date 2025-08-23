@@ -162,8 +162,8 @@ void processStation(Station* station, PickState* pickState, double *lastProcesse
             if (!pickState->pickSendSQL && !pickState->pickSendLOG) {
                 LOG_INFO("%s %s %.5f %.5f %.5f %.3f 1 0 %.1f", station->stationId, station->channels[0], amp[0], amp[1], amp[2], pickState->pickTime,upd_sec);
                 sqlite_insert_pick(station->stationId, pickState->pickTime, amp[0], pickState->lastConfidence);
-                pickState->pickSendSQL = 0;
-                pickState->pickSendLOG = 0;
+                pickState->pickSendSQL = 1;
+                pickState->pickSendLOG = 1;
             }
             if (pickState->upd_sec >= 9.0) {
                 pickState->pickInfoSent = 1;
