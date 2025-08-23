@@ -5,6 +5,10 @@
 #include <stddef.h>
 #include "data_window.h"
 
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
 #define SM_MAX_CHANNELS 3
 #define SM_MAX_STATION_ID_LEN 6
 #define SM_MAX_CHANNEL_NAME_LEN 4
@@ -19,6 +23,13 @@
  * @var lastPickTime Waktu picking terakhir
  * @var index Indeks station di array
  */
+
+typedef struct BiquadHPF {
+    double x1, x2;   // x[n-1], x[n-2]
+    double y1, y2;   // y[n-1], y[n-2]
+    double b0, b1, b2, a1, a2;
+} BiquadHPF;
+
 typedef struct Station {
     char stationId[SM_MAX_STATION_ID_LEN];
     char channels[SM_MAX_CHANNELS][SM_MAX_CHANNEL_NAME_LEN];
@@ -26,6 +37,9 @@ typedef struct Station {
     double sampleRate; // sample rate (Hz)
     double lastPickTime;
     int index; // indeks station di array
+    BiquadHPF hpf_acc[SM_MAX_CHANNELS];
+    BiquadHPF hpf_vel[SM_MAX_CHANNELS];
+    BiquadHPF hpf_disp[SM_MAX_CHANNELS];
     // Tambahkan metadata lain jika perlu
 } Station;
 
@@ -54,4 +68,6 @@ void processStation(Station* station, PickState* pickState);
  * @return Jumlah station yang berhasil dibaca
  */
 int loadStationListFromFile(const char* filename, Station* stationList, int maxStation); 
-void write_to_shared_memory(Station* station, PickState* pickState, float amp);
+void write_to_shared_memory(Station* station, PickState* pickState, float amp[3]);
+double biquad_hpf_step(BiquadHPF *f, double x);
+void biquad_hpf_design(BiquadHPF *f, double fs, double fc);

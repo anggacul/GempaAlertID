@@ -8,6 +8,7 @@
 #include "utils/sqlite_writer.h"
 #include <string.h>
 #include <stdio.h>
+#include <math.h>
 #include <sys/time.h>
 #include <stddef.h>
 
@@ -20,6 +21,35 @@ void pad_copy(char *dest, const char *src, size_t width) {
     memcpy(dest, src, len);
     for (size_t i = len; i < width; ++i) dest[i] = ' ';
     dest[width] = '\0'; // null-terminate
+}
+// hitung koefisien Butterworth 2nd-order HP (bilinear pre-warp)
+void biquad_hpf_design(BiquadHPF *f, double fs, double fc) {
+    double K = tan(M_PI * fc / fs);
+    double norm = 1.0 / (1.0 + sqrt(2.0)*K + K*K);
+
+    f->b0 = 1.0 * norm;
+    f->b1 = -2.0 * norm;
+    f->b2 = 1.0 * norm;
+    f->a1 = 2.0 * (K*K - 1.0) * norm;
+    f->a2 = (1.0 - sqrt(2.0)*K + K*K) * norm;
+
+    f->x1 = f->x2 = 0.0;
+    f->y1 = f->y2 = 0.0;
+}
+
+// proses satu sampel
+double biquad_hpf_step(BiquadHPF *f, double x) {
+    // direct form I
+    double y = f->b0 * x + f->b1 * f->x1 + f->b2 * f->x2
+               - f->a1 * f->y1 - f->a2 * f->y2;
+
+    // shift buffers
+    f->x2 = f->x1;
+    f->x1 = x;
+    f->y2 = f->y1;
+    f->y1 = y;
+
+    return y;
 }
 static bool status_window = false;
 int loadStationListFromFile(const char* filename, Station* stationList, int maxStation) {
@@ -42,6 +72,16 @@ int loadStationListFromFile(const char* filename, Station* stationList, int maxS
             stationList[count].conversionFactor[2] = 1.0/conv3;
             stationList[count].lastPickTime = 0.0;
             stationList[count].index = count;
+            biquad_hpf_design(&stationList[count].hpf_acc[0], sr, 0.075);
+            biquad_hpf_design(&stationList[count].hpf_acc[1], sr, 0.075);
+            biquad_hpf_design(&stationList[count].hpf_acc[2], sr, 0.075);
+            biquad_hpf_design(&stationList[count].hpf_vel[0], sr, 0.075);
+            biquad_hpf_design(&stationList[count].hpf_vel[1], sr, 0.075);
+            biquad_hpf_design(&stationList[count].hpf_vel[2], sr, 0.075);
+            biquad_hpf_design(&stationList[count].hpf_disp[0], sr, 0.075);
+            biquad_hpf_design(&stationList[count].hpf_disp[1], sr, 0.075);
+            biquad_hpf_design(&stationList[count].hpf_disp[2], sr, 0.075);
+
             // LOG_INFO("station %s %d %zu %zu", stationList[count].stationId, MAX_STATION_ID_LEN, strlen(stationList[count].stationId), strlen(stid));
             count++;
         }
@@ -58,13 +98,24 @@ void removeMean(float* data, int n) {
     for (int i = 0; i < n; ++i) data[i] -= mean;
 }
 
-void write_to_shared_memory(Station* station, PickState* pickState, float amp) {
+void write_to_shared_memory(Station* station, PickState* pickState, float amp[3]) {
     // Memperbarui counter
     current_counter++;
 
     // Menulis data ke shared memory
-    ptr->counter = current_counter;
-    sprintf(ptr->data, "[PICK] station %s pada %.2f RMS=%.3f, amp@Tt=%.3f", station->stationId, pickState->pickTime, pickState->pickRms, amp);
+    //         self.sta = pick[0]
+    //     self.comp = pick[1]
+    //     self.longitude = float(pick[4])
+    //     self.latitude = float(pick[5])
+    //     self.pa = float(pick[6])
+    //     self.pv = float(pick[7])
+    //     self.pd = float(pick[8])
+    //     self.picktime = float(pick[10])
+    //     self.weight = float(pick[11])
+    //     self.telflag = float(pick[12])
+    //     self.upd_sec = float(pick[13])
+    // ptr->counter = current_counter;
+    sprintf(ptr->data, "%s %s %.2f %.5f %.5f %.5f", station->stationId, station->channels[0], pickState->pickTime, amp[0], amp[1], amp[2]);
 
     LOG_INFO("%s", ptr->data);
 
@@ -101,10 +152,11 @@ void processStation(Station* station, PickState* pickState) {
     // 3. Cek apakah ada pick yang harus diinfokan (Tt detik setelah pick)
     if (pickState->isWaitingAfterPick && !pickState->pickInfoSent) {
         if (window.minLastTime >= pickState->pickTime + PICK_TT) {
-            float amp = extractMaxAmplitudeAt(station, &window, pickState->pickTime + PICK_TT);
+            float amp[3];
+            extractMaxAmplitudeAt(station, &window, pickState->pickTime + PICK_TT, amp);
             // LOG_INFO("[PICK] station %s pada %.2f (RMS=%.3f, amp@Tt=%.3f, timestamp=%.3f, minLastTime=%.3f)", station->stationId, pickState->pickTime, pickState->pickRms, amp, window.timestamp, window.minLastTime);
             write_to_shared_memory(station, pickState, amp);
-            sqlite_insert_pick(station->stationId, pickState->pickTime, amp, pickState->lastConfidence);
+            sqlite_insert_pick(station->stationId, pickState->pickTime, amp[0], pickState->lastConfidence);
             // if (window.minLastTime >= pickState->pickTime + 9) {
             pickState->pickInfoSent = 1;
             // }

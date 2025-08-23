@@ -28,7 +28,11 @@ static int ptype;
 static int retval;
 static int packetcnt = 0;
 static int stateint = 100;
-
+static double B0 = 0.9966734;
+static double B1 = -1.993347;
+static double B2 = 0.9966734;
+static double A1 = -1.993336;
+static double A2 = 0.9933579;
 void trim_spaces(char *str) {
     // Trim leading spaces
     char *start = str;
@@ -104,6 +108,7 @@ static void* seedlink_listener_thread(void* arg) {
                     if (chidx >= 0 && msr->datasamples && msr->numsamples > 0) {
                         // LOG_INFO("station %s channel %s", station, channel);
                         double sampleRate = g_stationList[idx].sampleRate;
+                        double conv = g_stationList[idx].conversionFactor[chidx];
                         int windowSamples = SAMPLES_PER_WINDOW;
                         int shiftSamples = windowSamples;
                         double sampleInterval = 1.0 / sampleRate;
@@ -138,25 +143,44 @@ static void* seedlink_listener_thread(void* arg) {
                                 // LOG_INFO("Gap kecil pada station %s channel %s: %.2f detik", g_stationList[idx].stationId, channel, gap);
                                 int gapSamples = (int)round(gap / sampleInterval);
                                 float* chdata = g_windows[idx].data[chidx];
+                                float* chdatavel = g_windows[idx].datavel[chidx];
+                                float* chdatadisp = g_windows[idx].datadisp[chidx];
                                 int currentSamples = g_windows[idx].windowSamples[chidx];
-                                double conv = g_stationList[idx].conversionFactor[chidx];
+                                
                                 if (gapSamples > 0 && newSamples > 0) {
-                                    float endVal = (float)intdata[dataOffset] * conv - g_windows[idx].lastMean[chidx];
+                                    float endVal = (float)intdata[dataOffset] * conv;// - g_windows[idx].lastMean[chidx];
+                                    g_windows[idx].lastMean[chidx] = (1-sampleInterval/10.0)*g_windows[idx].lastMean[chidx]+sampleInterval/10.0*endVal;
+                                    endVal = endVal - g_windows[idx].lastMean[chidx];
+                                    int check_gap = 0;
                                     if (currentSamples >= SAMPLES_PER_WINDOW) {
                                         // Geser buffer ke kiri sebanyak gapSamples
                                         memmove(&chdata[0], &chdata[gapSamples], sizeof(float) * (SAMPLES_PER_WINDOW - gapSamples));
+                                        memmove(&chdatavel[0], &chdatavel[gapSamples], sizeof(float) * (SAMPLES_PER_WINDOW - gapSamples));
+                                        memmove(&chdatadisp[0], &chdatadisp[gapSamples], sizeof(float) * (SAMPLES_PER_WINDOW - gapSamples));
+                                        check_gap = 1;
+                                    } else if (currentSamples > 0 && currentSamples + gapSamples < SAMPLES_PER_WINDOW) {
+                                        check_gap = 1;
+                                    }
+                                    if (check_gap != 0) {
                                         currentSamples = SAMPLES_PER_WINDOW - gapSamples;
                                         // Interpolasi antara nilai terakhir buffer lama dan data baru pertama
                                         float startVal = chdata[currentSamples - 1];
                                         for (int g = 1; g <= gapSamples; ++g) {
                                             chdata[currentSamples - 1 + g] = startVal + (endVal - startVal) * g / (gapSamples + 1);
-                                        }
-                                        currentSamples += gapSamples;
-                                        g_windows[idx].windowSamples[chidx] = currentSamples;
-                                    } else if (currentSamples > 0 && currentSamples + gapSamples < SAMPLES_PER_WINDOW) {
-                                        float startVal = chdata[currentSamples - 1];
-                                        for (int g = 1; g <= gapSamples; ++g) {
-                                            chdata[currentSamples - 1 + g] = startVal + (endVal - startVal) * g / (gapSamples + 1);
+                                            double acc_hp = biquad_hpf_step(&g_stationList[idx].hpf_acc[chidx], chdata[currentSamples - 1 + g]);
+                                            chdata[currentSamples - 1 + g] = acc_hp;
+                                            //integrate to vel
+                                            chdatavel[currentSamples - 1 + g] = chdatavel[currentSamples - 2 + g] + 0.5 * (chdata[currentSamples - 1 + g] + chdata[currentSamples - 2 + g]) * sampleInterval;
+                                            g_windows[idx].lastMeanvel[chidx] = (1-sampleInterval/10.0)*g_windows[idx].lastMeanvel[chidx]+sampleInterval/10.0*chdatavel[currentSamples - 1 + g];
+                                            chdatavel[currentSamples - 1 + g] = chdatavel[currentSamples - 1 + g] - g_windows[idx].lastMeanvel[chidx];
+                                            double vel_hp = biquad_hpf_step(&g_stationList[idx].hpf_vel[chidx], chdatavel[currentSamples - 1 + g]);
+                                            chdatavel[currentSamples - 1 + g] = vel_hp;
+                                            //integrate to displacement
+                                            chdatadisp[currentSamples - 1 + g] = chdatadisp[currentSamples - 2 + g] + 0.5 * (chdatavel[currentSamples - 1 + g] + chdatavel[currentSamples - 2 + g]) * sampleInterval;
+                                            g_windows[idx].lastMeandisp[chidx] = (1-sampleInterval/10.0)*g_windows[idx].lastMeandisp[chidx]+sampleInterval/10.0*chdatadisp[currentSamples - 1 + g];
+                                            chdatadisp[currentSamples - 1 + g] = chdatadisp[currentSamples - 1 + g] - g_windows[idx].lastMeandisp[chidx];
+                                            double disp_hp = biquad_hpf_step(&g_stationList[idx].hpf_disp[chidx], chdatadisp[currentSamples - 1 + g]);
+                                            chdatadisp[currentSamples - 1 + g] = disp_hp;                                                                            
                                         }
                                         currentSamples += gapSamples;
                                         g_windows[idx].windowSamples[chidx] = currentSamples;
@@ -164,33 +188,87 @@ static void* seedlink_listener_thread(void* arg) {
                                 }
                             } else if (fabs(gap) >= MAX_GAP) {
                                 memset(g_windows[idx].data[chidx], 0, sizeof(float) * windowSamples);
+                                memset(g_windows[idx].datavel[chidx], 0, sizeof(float) * windowSamples);
+                                memset(g_windows[idx].datadisp[chidx], 0, sizeof(float) * windowSamples);
                                 g_windows[idx].windowSamples[chidx] = 0;
                                 g_windows[idx].startTime[chidx] = 0;
                                 g_windows[idx].endTime[chidx] = 0;
                                 g_windows[idx].full[chidx] = 0;
                                 g_windows[idx].lastMean[chidx] = 0;
+                                g_windows[idx].lastMeanvel[chidx] = 0;
+                                g_windows[idx].lastMeandisp[chidx] = 0;
+                                biquad_hpf_design(&g_stationList[idx].hpf_acc[chidx], sampleRate, 0.075);
+                                biquad_hpf_design(&g_stationList[idx].hpf_vel[chidx], sampleRate, 0.075);
+                                biquad_hpf_design(&g_stationList[idx].hpf_disp[chidx], sampleRate, 0.075);
+                                
                                 // LOG_INFO("Gap besar pada station %s channel %s: %.2f detik, buffer direset", g_stationList[idx].stationId, channel, gap);
                             }
                         }
                         
                         if (intdata) {
                             float* chdata = g_windows[idx].data[chidx];
+                            float* chdatavel = g_windows[idx].datavel[chidx];
+                            float* chdatadisp = g_windows[idx].datadisp[chidx];
                             int currentSamples = g_windows[idx].windowSamples[chidx];
-                            double conv = g_stationList[idx].conversionFactor[chidx];
-                            g_windows[idx].lastMean[chidx] = calculateMean(chdata, currentSamples);
+                            // g_windows[idx].lastMean[chidx] = calculateMean(chdata, currentSamples);
                             if (currentSamples < SAMPLES_PER_WINDOW) {
                                 int space = SAMPLES_PER_WINDOW - currentSamples;
                                 int toCopy = (newSamples < space) ? newSamples : space;
                                 for (int i = 0; i < toCopy; ++i) {
                                     // chdata[currentSamples + i] = (float)intdata[dataOffset + i] * conv;
-                                    chdata[currentSamples + i] = (float)intdata[dataOffset + i] * conv - g_windows[idx].lastMean[chidx];
+                                    chdata[currentSamples + i] = (float)intdata[dataOffset + i] * conv; //- g_windows[idx].lastMean[chidx];
+                                    g_windows[idx].lastMean[chidx] = (1-sampleInterval/10.0)*g_windows[idx].lastMean[chidx]+sampleInterval/10.0*chdata[currentSamples + i];
+                                    chdata[currentSamples + i] = chdata[currentSamples + i] - g_windows[idx].lastMean[chidx];
+                                    double acc_hp = biquad_hpf_step(&g_stationList[idx].hpf_acc[chidx], chdata[currentSamples + i]);
+                                    chdata[currentSamples + i] = acc_hp;
+
+                                    if (currentSamples == 0 && i == 0) {
+                                        chdatavel[currentSamples + i] = 0;
+                                        chdatadisp[currentSamples + i] = 0;
+                                    }
+                                    else {
+                                        //integrate to vel
+                                        chdatavel[currentSamples + i] = chdatavel[currentSamples + i - 1] + 0.5 * (chdata[currentSamples + i] + chdata[currentSamples + i - 1]) * sampleInterval;
+                                        g_windows[idx].lastMeanvel[chidx] = (1-sampleInterval/10.0)*g_windows[idx].lastMeanvel[chidx]+sampleInterval/10.0*chdatavel[currentSamples + i];
+                                        chdatavel[currentSamples + i] = chdatavel[currentSamples + i] - g_windows[idx].lastMeanvel[chidx];
+                                        double vel_hp = biquad_hpf_step(&g_stationList[idx].hpf_vel[chidx], chdatavel[currentSamples + i]);
+                                        chdatavel[currentSamples + i] = vel_hp;
+                                        
+                                        //integrate to displacement
+                                        chdatadisp[currentSamples + i] = chdatadisp[currentSamples + i - 1] + 0.5 * (chdatavel[currentSamples + i] + chdatavel[currentSamples + i - 1]) * sampleInterval;
+                                        g_windows[idx].lastMeandisp[chidx] = (1-sampleInterval/10.0)*g_windows[idx].lastMeandisp[chidx]+sampleInterval/10.0*chdatadisp[currentSamples + i];
+                                        chdatadisp[currentSamples + i] = chdatadisp[currentSamples + i] - g_windows[idx].lastMeandisp[chidx];
+                                        double disp_hp = biquad_hpf_step(&g_stationList[idx].hpf_disp[chidx], chdatadisp[currentSamples + i]);
+                                        chdatadisp[currentSamples + i] = disp_hp;  
+                                    }
                                 }
                                 currentSamples += toCopy;
                                 if (newSamples > space) {
                                     int roll = newSamples - space;
                                     memmove(&chdata[0], &chdata[roll], sizeof(float) * (SAMPLES_PER_WINDOW - roll));
+                                    memmove(&chdatavel[0], &chdatavel[roll], sizeof(float) * (SAMPLES_PER_WINDOW - roll));
+                                    memmove(&chdatadisp[0], &chdatadisp[roll], sizeof(float) * (SAMPLES_PER_WINDOW - roll));
+                                    
                                     for (int i = 0; i < roll; ++i) {
-                                        chdata[SAMPLES_PER_WINDOW - roll + i] = (float)intdata[dataOffset + space + i] * conv - g_windows[idx].lastMean[chidx];
+                                        chdata[SAMPLES_PER_WINDOW - roll + i] = (float)intdata[dataOffset + space + i] * conv;// - g_windows[idx].lastMean[chidx];
+                                        g_windows[idx].lastMean[chidx] = (1-sampleInterval/10.0)*g_windows[idx].lastMean[chidx]+sampleInterval/10.0*chdata[SAMPLES_PER_WINDOW - roll + i];
+                                        chdata[SAMPLES_PER_WINDOW - roll + i] = chdata[SAMPLES_PER_WINDOW - roll + i] - g_windows[idx].lastMean[chidx];
+                                        double acc_hp = biquad_hpf_step(&g_stationList[idx].hpf_acc[chidx], chdata[SAMPLES_PER_WINDOW - roll + i]);
+                                        chdata[SAMPLES_PER_WINDOW - roll + i] = acc_hp;
+                                        
+                                        //integrate to vel
+                                        chdatavel[SAMPLES_PER_WINDOW - roll + i] = chdatavel[SAMPLES_PER_WINDOW - roll + i - 1] + 0.5 * (chdata[SAMPLES_PER_WINDOW - roll + i] + chdata[SAMPLES_PER_WINDOW - roll + i - 1]) * sampleInterval;
+                                        g_windows[idx].lastMeanvel[chidx] = (1-sampleInterval/10.0)*g_windows[idx].lastMeanvel[chidx]+sampleInterval/10.0*chdatavel[SAMPLES_PER_WINDOW - roll + i];
+                                        chdatavel[SAMPLES_PER_WINDOW - roll + i] = chdatavel[SAMPLES_PER_WINDOW - roll + i] - g_windows[idx].lastMeanvel[chidx];
+                                        double vel_hp = biquad_hpf_step(&g_stationList[idx].hpf_vel[chidx], chdatavel[SAMPLES_PER_WINDOW - roll + i]);
+                                        chdatavel[SAMPLES_PER_WINDOW - roll + i] = vel_hp;
+                                        
+                                        //integrate to displacement
+                                        chdatadisp[SAMPLES_PER_WINDOW - roll + i] = chdatadisp[SAMPLES_PER_WINDOW - roll + i - 1] + 0.5 * (chdatavel[SAMPLES_PER_WINDOW - roll + i] + chdatavel[SAMPLES_PER_WINDOW - roll + i - 1]) * sampleInterval;
+                                        g_windows[idx].lastMeandisp[chidx] = (1-sampleInterval/10.0)*g_windows[idx].lastMeandisp[chidx]+sampleInterval/10.0*chdatadisp[SAMPLES_PER_WINDOW - roll + i];
+                                        chdatadisp[SAMPLES_PER_WINDOW - roll + i] = chdatadisp[SAMPLES_PER_WINDOW - roll + i] - g_windows[idx].lastMeandisp[chidx];
+                                        double disp_hp = biquad_hpf_step(&g_stationList[idx].hpf_disp[chidx], chdatadisp[SAMPLES_PER_WINDOW - roll + i]);
+                                        chdatadisp[SAMPLES_PER_WINDOW - roll + i] = disp_hp; 
                                     }
                                     currentSamples = SAMPLES_PER_WINDOW;
                                 }
@@ -198,7 +276,27 @@ static void* seedlink_listener_thread(void* arg) {
                             } else {                               
                                 memmove(&chdata[0], &chdata[newSamples], sizeof(float) * (SAMPLES_PER_WINDOW - newSamples));
                                 for (int i = 0; i < newSamples; ++i) {
-                                    chdata[SAMPLES_PER_WINDOW - newSamples + i] = (float)intdata[dataOffset + i] * conv - g_windows[idx].lastMean[chidx];
+                                    chdata[SAMPLES_PER_WINDOW - newSamples + i] = (float)intdata[dataOffset + i] * conv;// - g_windows[idx].lastMean[chidx];
+                                    g_windows[idx].lastMean[chidx] = (1-sampleInterval/10.0)*g_windows[idx].lastMean[chidx]+sampleInterval/10.0*chdata[SAMPLES_PER_WINDOW - newSamples + i];
+                                    chdata[SAMPLES_PER_WINDOW - newSamples + i] = chdata[SAMPLES_PER_WINDOW - newSamples + i] - g_windows[idx].lastMean[chidx];
+                                    double acc_hp = biquad_hpf_step(&g_stationList[idx].hpf_acc[chidx], chdata[SAMPLES_PER_WINDOW - newSamples + i]);
+                                    chdata[SAMPLES_PER_WINDOW - newSamples + i] = acc_hp;
+                                        
+                                    //integrate to vel
+                                    chdatavel[SAMPLES_PER_WINDOW - newSamples + i] = chdatavel[SAMPLES_PER_WINDOW - newSamples + i - 1] + 0.5 * (chdata[SAMPLES_PER_WINDOW - newSamples + i] + chdata[SAMPLES_PER_WINDOW - newSamples + i - 1]) * sampleInterval;
+                                    g_windows[idx].lastMeanvel[chidx] = (1-sampleInterval/10.0)*g_windows[idx].lastMeanvel[chidx]+sampleInterval/10.0*chdatavel[SAMPLES_PER_WINDOW - newSamples + i];
+                                    chdatavel[SAMPLES_PER_WINDOW - newSamples + i] = chdatavel[SAMPLES_PER_WINDOW - newSamples + i] - g_windows[idx].lastMeanvel[chidx];
+                                    double vel_hp = biquad_hpf_step(&g_stationList[idx].hpf_vel[chidx], chdatavel[SAMPLES_PER_WINDOW - newSamples + i]);
+                                    chdatavel[SAMPLES_PER_WINDOW - newSamples + i] = vel_hp;
+                                        
+                                    //integrate to displacement
+                                    chdatadisp[SAMPLES_PER_WINDOW - newSamples + i] = chdatadisp[SAMPLES_PER_WINDOW - newSamples + i - 1] + 0.5 * (chdatavel[SAMPLES_PER_WINDOW - newSamples + i] + chdatavel[SAMPLES_PER_WINDOW - newSamples + i - 1]) * sampleInterval;
+                                    g_windows[idx].lastMeandisp[chidx] = (1-sampleInterval/10.0)*g_windows[idx].lastMeandisp[chidx]+sampleInterval/10.0*chdatadisp[SAMPLES_PER_WINDOW - newSamples + i];
+                                    chdatadisp[SAMPLES_PER_WINDOW - newSamples + i] = chdatadisp[SAMPLES_PER_WINDOW - newSamples + i] - g_windows[idx].lastMeandisp[chidx];
+                                    double disp_hp = biquad_hpf_step(&g_stationList[idx].hpf_disp[chidx], chdatadisp[SAMPLES_PER_WINDOW - newSamples + i]);
+                                    chdatadisp[SAMPLES_PER_WINDOW - newSamples + i] = disp_hp; 
+                                    
+                                    
                                 }
                                 g_windows[idx].windowSamples[chidx] = SAMPLES_PER_WINDOW;
                             }
@@ -206,7 +304,8 @@ static void* seedlink_listener_thread(void* arg) {
                         }
                         if (g_windows[idx].windowSamples[chidx] >= WW * sampleRate){
                             g_windows[idx].full[chidx] = 1;// LOG_INFO("station %s window full, newSamples=%d gap=%f", g_stationList[idx].stationId, newSamples, gap);
-                        }
+                        } 
+                        
                         double endTime = actualStart + (msr->numsamples - 1) * sampleInterval;
                         g_windows[idx].endTime[chidx] = endTime;
                         g_windows[idx].startTime[chidx] = endTime - g_windows[idx].windowSamples[chidx] * sampleInterval;

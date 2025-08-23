@@ -17,4 +17,4 @@ float calculateRmsAmplitudeAt(const Station* station, const DataWindow* window);
 /**
  * @brief Ekstrak amplitude pada waktu tertentu
  */
-float extractMaxAmplitudeAt(const Station* station, const DataWindow* window, double time);
+float extractMaxAmplitudeAt(const Station* station, const DataWindow* window, double time, float maxAmp[3]);

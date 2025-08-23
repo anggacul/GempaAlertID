@@ -12,7 +12,7 @@ bool initONNXRuntime();
 /**
  * @brief Hasil picking PhaseNet
  */
-typedef struct {
+typedef struct PickResult {
     double pickTime;
     float confidence;
 } PickResult;

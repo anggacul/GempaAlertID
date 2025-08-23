@@ -1,0 +1,1296 @@
+In file included from pickseisai.c:16:
+include/core/picking_engine.h: In function ‘biquad_hpf_design’:
+include/core/picking_engine.h:18:3: error: storage class specified for parameter ‘PickResult’
+   18 | } PickResult;
+      |   ^~~~~~~~~~
+include/core/picking_engine.h:26:1: error: expected declaration specifiers before ‘PickResult’
+   26 | PickResult runPhaseNetPicking(const Station* station, const DataWindow* window);
+      | ^~~~~~~~~~
+In file included from include/utils/sqlite_writer.h:2,
+                 from pickseisai.c:21:
+/usr/include/sqlite3.h:185:37: error: storage class specified for parameter ‘sqlite3_version’
+  185 | SQLITE_API SQLITE_EXTERN const char sqlite3_version[];
+      |                                     ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:272:24: error: storage class specified for parameter ‘sqlite3’
+  272 | typedef struct sqlite3 sqlite3;
+      |                        ^~~~~~~
+/usr/include/sqlite3.h:301:25: error: storage class specified for parameter ‘sqlite_int64’
+  301 |   typedef long long int sqlite_int64;
+      |                         ^~~~~~~~~~~~
+/usr/include/sqlite3.h:302:34: error: storage class specified for parameter ‘sqlite_uint64’
+  302 |   typedef unsigned long long int sqlite_uint64;
+      |                                  ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:304:22: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘sqlite3_int64’
+  304 | typedef sqlite_int64 sqlite3_int64;
+      |                      ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:305:23: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘sqlite3_uint64’
+  305 | typedef sqlite_uint64 sqlite3_uint64;
+      |                       ^~~~~~~~~~~~~~
+/usr/include/sqlite3.h:353:30: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+  353 | SQLITE_API int sqlite3_close(sqlite3*);
+      |                              ^~~~~~~
+/usr/include/sqlite3.h:354:33: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+  354 | SQLITE_API int sqlite3_close_v2(sqlite3*);
+      |                                 ^~~~~~~
+/usr/include/sqlite3.h:361:15: error: storage class specified for parameter ‘sqlite3_callback’
+  361 | typedef int (*sqlite3_callback)(void*,int,char**, char**);
+      |               ^~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:426:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+  426 |   sqlite3*,                                  /* An open database */
+      |   ^~~~~~~
+/usr/include/sqlite3.h:722:29: error: storage class specified for parameter ‘sqlite3_file’
+  722 | typedef struct sqlite3_file sqlite3_file;
+      |                             ^~~~~~~~~~~~
+/usr/include/sqlite3.h:821:35: error: storage class specified for parameter ‘sqlite3_io_methods’
+  821 | typedef struct sqlite3_io_methods sqlite3_io_methods;
+      |                                   ^~~~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:824:17: error: expected declaration specifiers or ‘...’ before ‘sqlite3_file’
+  824 |   int (*xClose)(sqlite3_file*);
+      |                 ^~~~~~~~~~~~
+/usr/include/sqlite3.h:825:16: error: expected declaration specifiers or ‘...’ before ‘sqlite3_file’
+  825 |   int (*xRead)(sqlite3_file*, void*, int iAmt, sqlite3_int64 iOfst);
+      |                ^~~~~~~~~~~~
+/usr/include/sqlite3.h:825:48: error: unknown type name ‘sqlite3_int64’
+  825 |   int (*xRead)(sqlite3_file*, void*, int iAmt, sqlite3_int64 iOfst);
+      |                                                ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:826:17: error: expected declaration specifiers or ‘...’ before ‘sqlite3_file’
+  826 |   int (*xWrite)(sqlite3_file*, const void*, int iAmt, sqlite3_int64 iOfst);
+      |                 ^~~~~~~~~~~~
+/usr/include/sqlite3.h:826:55: error: unknown type name ‘sqlite3_int64’
+  826 |   int (*xWrite)(sqlite3_file*, const void*, int iAmt, sqlite3_int64 iOfst);
+      |                                                       ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:827:20: error: expected declaration specifiers or ‘...’ before ‘sqlite3_file’
+  827 |   int (*xTruncate)(sqlite3_file*, sqlite3_int64 size);
+      |                    ^~~~~~~~~~~~
+/usr/include/sqlite3.h:827:35: error: unknown type name ‘sqlite3_int64’
+  827 |   int (*xTruncate)(sqlite3_file*, sqlite3_int64 size);
+      |                                   ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:828:16: error: expected declaration specifiers or ‘...’ before ‘sqlite3_file’
+  828 |   int (*xSync)(sqlite3_file*, int flags);
+      |                ^~~~~~~~~~~~
+/usr/include/sqlite3.h:829:20: error: expected declaration specifiers or ‘...’ before ‘sqlite3_file’
+  829 |   int (*xFileSize)(sqlite3_file*, sqlite3_int64 *pSize);
+      |                    ^~~~~~~~~~~~
+/usr/include/sqlite3.h:829:35: error: unknown type name ‘sqlite3_int64’
+  829 |   int (*xFileSize)(sqlite3_file*, sqlite3_int64 *pSize);
+      |                                   ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:830:16: error: expected declaration specifiers or ‘...’ before ‘sqlite3_file’
+  830 |   int (*xLock)(sqlite3_file*, int);
+      |                ^~~~~~~~~~~~
+/usr/include/sqlite3.h:831:18: error: expected declaration specifiers or ‘...’ before ‘sqlite3_file’
+  831 |   int (*xUnlock)(sqlite3_file*, int);
+      |                  ^~~~~~~~~~~~
+/usr/include/sqlite3.h:832:29: error: expected declaration specifiers or ‘...’ before ‘sqlite3_file’
+  832 |   int (*xCheckReservedLock)(sqlite3_file*, int *pResOut);
+      |                             ^~~~~~~~~~~~
+/usr/include/sqlite3.h:833:23: error: expected declaration specifiers or ‘...’ before ‘sqlite3_file’
+  833 |   int (*xFileControl)(sqlite3_file*, int op, void *pArg);
+      |                       ^~~~~~~~~~~~
+/usr/include/sqlite3.h:834:22: error: expected declaration specifiers or ‘...’ before ‘sqlite3_file’
+  834 |   int (*xSectorSize)(sqlite3_file*);
+      |                      ^~~~~~~~~~~~
+/usr/include/sqlite3.h:835:33: error: expected declaration specifiers or ‘...’ before ‘sqlite3_file’
+  835 |   int (*xDeviceCharacteristics)(sqlite3_file*);
+      |                                 ^~~~~~~~~~~~
+/usr/include/sqlite3.h:837:18: error: expected declaration specifiers or ‘...’ before ‘sqlite3_file’
+  837 |   int (*xShmMap)(sqlite3_file*, int iPg, int pgsz, int, void volatile**);
+      |                  ^~~~~~~~~~~~
+/usr/include/sqlite3.h:838:19: error: expected declaration specifiers or ‘...’ before ‘sqlite3_file’
+  838 |   int (*xShmLock)(sqlite3_file*, int offset, int n, int flags);
+      |                   ^~~~~~~~~~~~
+/usr/include/sqlite3.h:839:23: error: expected declaration specifiers or ‘...’ before ‘sqlite3_file’
+  839 |   void (*xShmBarrier)(sqlite3_file*);
+      |                       ^~~~~~~~~~~~
+/usr/include/sqlite3.h:840:20: error: expected declaration specifiers or ‘...’ before ‘sqlite3_file’
+  840 |   int (*xShmUnmap)(sqlite3_file*, int deleteFlag);
+      |                    ^~~~~~~~~~~~
+/usr/include/sqlite3.h:842:17: error: expected declaration specifiers or ‘...’ before ‘sqlite3_file’
+  842 |   int (*xFetch)(sqlite3_file*, sqlite3_int64 iOfst, int iAmt, void **pp);
+      |                 ^~~~~~~~~~~~
+/usr/include/sqlite3.h:842:32: error: unknown type name ‘sqlite3_int64’
+  842 |   int (*xFetch)(sqlite3_file*, sqlite3_int64 iOfst, int iAmt, void **pp);
+      |                                ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:843:19: error: expected declaration specifiers or ‘...’ before ‘sqlite3_file’
+  843 |   int (*xUnfetch)(sqlite3_file*, sqlite3_int64 iOfst, void *p);
+      |                   ^~~~~~~~~~~~
+/usr/include/sqlite3.h:843:34: error: unknown type name ‘sqlite3_int64’
+  843 |   int (*xUnfetch)(sqlite3_file*, sqlite3_int64 iOfst, void *p);
+      |                                  ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:1244:30: error: storage class specified for parameter ‘sqlite3_mutex’
+ 1244 | typedef struct sqlite3_mutex sqlite3_mutex;
+      |                              ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:1254:37: error: storage class specified for parameter ‘sqlite3_api_routines’
+ 1254 | typedef struct sqlite3_api_routines sqlite3_api_routines;
+      |                                     ^~~~~~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:1425:28: error: storage class specified for parameter ‘sqlite3_vfs’
+ 1425 | typedef struct sqlite3_vfs sqlite3_vfs;
+      |                            ^~~~~~~~~~~
+/usr/include/sqlite3.h:1426:16: error: storage class specified for parameter ‘sqlite3_syscall_ptr’
+ 1426 | typedef void (*sqlite3_syscall_ptr)(void);
+      |                ^~~~~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:1431:3: error: expected specifier-qualifier-list before ‘sqlite3_vfs’
+ 1431 |   sqlite3_vfs *pNext;      /* Next registered VFS */
+      |   ^~~~~~~~~~~
+/usr/include/sqlite3.h:1658:34: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 1658 | SQLITE_API int sqlite3_db_config(sqlite3*, int op, ...);
+      |                                  ^~~~~~~
+/usr/include/sqlite3.h:1723:36: error: storage class specified for parameter ‘sqlite3_mem_methods’
+ 1723 | typedef struct sqlite3_mem_methods sqlite3_mem_methods;
+      |                                    ^~~~~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:2449:46: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 2449 | SQLITE_API int sqlite3_extended_result_codes(sqlite3*, int onoff);
+      |                                              ^~~~~~~
+/usr/include/sqlite3.h:2511:12: error: unknown type name ‘sqlite3_int64’
+ 2511 | SQLITE_API sqlite3_int64 sqlite3_last_insert_rowid(sqlite3*);
+      |            ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:2511:52: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 2511 | SQLITE_API sqlite3_int64 sqlite3_last_insert_rowid(sqlite3*);
+      |                                                    ^~~~~~~
+/usr/include/sqlite3.h:2521:47: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 2521 | SQLITE_API void sqlite3_set_last_insert_rowid(sqlite3*,sqlite3_int64);
+      |                                               ^~~~~~~
+/usr/include/sqlite3.h:2521:56: error: unknown type name ‘sqlite3_int64’
+ 2521 | SQLITE_API void sqlite3_set_last_insert_rowid(sqlite3*,sqlite3_int64);
+      |                                                        ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:2582:32: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 2582 | SQLITE_API int sqlite3_changes(sqlite3*);
+      |                                ^~~~~~~
+/usr/include/sqlite3.h:2583:12: error: unknown type name ‘sqlite3_int64’
+ 2583 | SQLITE_API sqlite3_int64 sqlite3_changes64(sqlite3*);
+      |            ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:2583:44: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 2583 | SQLITE_API sqlite3_int64 sqlite3_changes64(sqlite3*);
+      |                                            ^~~~~~~
+/usr/include/sqlite3.h:2624:38: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 2624 | SQLITE_API int sqlite3_total_changes(sqlite3*);
+      |                                      ^~~~~~~
+/usr/include/sqlite3.h:2625:12: error: unknown type name ‘sqlite3_int64’
+ 2625 | SQLITE_API sqlite3_int64 sqlite3_total_changes64(sqlite3*);
+      |            ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:2625:50: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 2625 | SQLITE_API sqlite3_int64 sqlite3_total_changes64(sqlite3*);
+      |                                                  ^~~~~~~
+/usr/include/sqlite3.h:2662:35: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 2662 | SQLITE_API void sqlite3_interrupt(sqlite3*);
+      |                                   ^~~~~~~
+/usr/include/sqlite3.h:2759:37: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 2759 | SQLITE_API int sqlite3_busy_handler(sqlite3*,int(*)(void*,int),void*);
+      |                                     ^~~~~~~
+/usr/include/sqlite3.h:2782:37: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 2782 | SQLITE_API int sqlite3_busy_timeout(sqlite3*, int ms);
+      |                                     ^~~~~~~
+/usr/include/sqlite3.h:2858:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 2858 |   sqlite3 *db,          /* An open database */
+      |   ^~~~~~~
+/usr/include/sqlite3.h:2990:43: error: unknown type name ‘sqlite3_uint64’
+ 2990 | SQLITE_API void *sqlite3_realloc64(void*, sqlite3_uint64);
+      |                                           ^~~~~~~~~~~~~~
+/usr/include/sqlite3.h:2992:12: error: unknown type name ‘sqlite3_uint64’
+ 2992 | SQLITE_API sqlite3_uint64 sqlite3_msize(void*);
+      |            ^~~~~~~~~~~~~~
+/usr/include/sqlite3.h:3017:12: error: unknown type name ‘sqlite3_int64’
+ 3017 | SQLITE_API sqlite3_int64 sqlite3_memory_used(void);
+      |            ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:3018:12: error: unknown type name ‘sqlite3_int64’
+ 3018 | SQLITE_API sqlite3_int64 sqlite3_memory_highwater(int resetFlag);
+      |            ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:3133:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 3133 |   sqlite3*,
+      |   ^~~~~~~
+/usr/include/sqlite3.h:3240:50: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 3240 | SQLITE_API SQLITE_DEPRECATED void *sqlite3_trace(sqlite3*,
+      |                                                  ^~~~~~~
+/usr/include/sqlite3.h:3242:52: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 3242 | SQLITE_API SQLITE_DEPRECATED void *sqlite3_profile(sqlite3*,
+      |                                                    ^~~~~~~
+/usr/include/sqlite3.h:3243:38: error: unknown type name ‘sqlite3_uint64’
+ 3243 |    void(*xProfile)(void*,const char*,sqlite3_uint64), void*);
+      |                                      ^~~~~~~~~~~~~~
+/usr/include/sqlite3.h:3243:55: error: expected ‘;’, ‘,’ or ‘)’ before ‘void’
+ 3243 |    void(*xProfile)(void*,const char*,sqlite3_uint64), void*);
+      |                                                       ^~~~
+/usr/include/sqlite3.h:3332:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 3332 |   sqlite3*,
+      |   ^~~~~~~
+/usr/include/sqlite3.h:3370:42: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 3370 | SQLITE_API void sqlite3_progress_handler(sqlite3*, int, int(*)(void*), void*);
+      |                                          ^~~~~~~
+/usr/include/sqlite3.h:3644:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 3644 |   sqlite3 **ppDb          /* OUT: SQLite db handle */
+      |   ^~~~~~~
+/usr/include/sqlite3.h:3648:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 3648 |   sqlite3 **ppDb          /* OUT: SQLite db handle */
+      |   ^~~~~~~
+/usr/include/sqlite3.h:3652:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 3652 |   sqlite3 **ppDb,         /* OUT: SQLite db handle */
+      |   ^~~~~~~
+/usr/include/sqlite3.h:3725:12: error: unknown type name ‘sqlite3_int64’
+ 3725 | SQLITE_API sqlite3_int64 sqlite3_uri_int64(const char*, const char*, sqlite3_int64);
+      |            ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:3725:70: error: unknown type name ‘sqlite3_int64’
+ 3725 | SQLITE_API sqlite3_int64 sqlite3_uri_int64(const char*, const char*, sqlite3_int64);
+      |                                                                      ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:3776:12: error: expected declaration specifiers before ‘sqlite3_file’
+ 3776 | SQLITE_API sqlite3_file *sqlite3_database_file_object(const char*);
+      |            ^~~~~~~~~~~~
+/usr/include/sqlite3.h:3884:32: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 3884 | SQLITE_API int sqlite3_errcode(sqlite3 *db);
+      |                                ^~~~~~~
+/usr/include/sqlite3.h:3885:41: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 3885 | SQLITE_API int sqlite3_extended_errcode(sqlite3 *db);
+      |                                         ^~~~~~~
+/usr/include/sqlite3.h:3886:39: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 3886 | SQLITE_API const char *sqlite3_errmsg(sqlite3*);
+      |                                       ^~~~~~~
+/usr/include/sqlite3.h:3887:41: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 3887 | SQLITE_API const void *sqlite3_errmsg16(sqlite3*);
+      |                                         ^~~~~~~
+/usr/include/sqlite3.h:3914:29: error: storage class specified for parameter ‘sqlite3_stmt’
+ 3914 | typedef struct sqlite3_stmt sqlite3_stmt;
+      |                             ^~~~~~~~~~~~
+/usr/include/sqlite3.h:3956:30: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 3956 | SQLITE_API int sqlite3_limit(sqlite3*, int id, int newVal);
+      |                              ^~~~~~~
+/usr/include/sqlite3.h:4167:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 4167 |   sqlite3 *db,            /* Database handle */
+      |   ^~~~~~~
+/usr/include/sqlite3.h:4170:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4170 |   sqlite3_stmt **ppStmt,  /* OUT: Statement handle */
+      |   ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4174:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 4174 |   sqlite3 *db,            /* Database handle */
+      |   ^~~~~~~
+/usr/include/sqlite3.h:4177:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4177 |   sqlite3_stmt **ppStmt,  /* OUT: Statement handle */
+      |   ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4181:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 4181 |   sqlite3 *db,            /* Database handle */
+      |   ^~~~~~~
+/usr/include/sqlite3.h:4185:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4185 |   sqlite3_stmt **ppStmt,  /* OUT: Statement handle */
+      |   ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4189:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 4189 |   sqlite3 *db,            /* Database handle */
+      |   ^~~~~~~
+/usr/include/sqlite3.h:4192:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4192 |   sqlite3_stmt **ppStmt,  /* OUT: Statement handle */
+      |   ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4196:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 4196 |   sqlite3 *db,            /* Database handle */
+      |   ^~~~~~~
+/usr/include/sqlite3.h:4199:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4199 |   sqlite3_stmt **ppStmt,  /* OUT: Statement handle */
+      |   ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4203:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 4203 |   sqlite3 *db,            /* Database handle */
+      |   ^~~~~~~
+/usr/include/sqlite3.h:4207:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4207 |   sqlite3_stmt **ppStmt,  /* OUT: Statement handle */
+      |   ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4252:36: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4252 | SQLITE_API const char *sqlite3_sql(sqlite3_stmt *pStmt);
+      |                                    ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4253:39: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4253 | SQLITE_API char *sqlite3_expanded_sql(sqlite3_stmt *pStmt);
+      |                                       ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4301:38: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4301 | SQLITE_API int sqlite3_stmt_readonly(sqlite3_stmt *pStmt);
+      |                                      ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4313:39: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4313 | SQLITE_API int sqlite3_stmt_isexplain(sqlite3_stmt *pStmt);
+      |                                       ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4334:34: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4334 | SQLITE_API int sqlite3_stmt_busy(sqlite3_stmt*);
+      |                                  ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4376:30: error: storage class specified for parameter ‘sqlite3_value’
+ 4376 | typedef struct sqlite3_value sqlite3_value;
+      |                              ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:4390:32: error: storage class specified for parameter ‘sqlite3_context’
+ 4390 | typedef struct sqlite3_context sqlite3_context;
+      |                                ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:4532:34: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4532 | SQLITE_API int sqlite3_bind_blob(sqlite3_stmt*, int, const void*, int n, void(*)(void*));
+      |                                  ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4533:36: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4533 | SQLITE_API int sqlite3_bind_blob64(sqlite3_stmt*, int, const void*, sqlite3_uint64,
+      |                                    ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4533:69: error: unknown type name ‘sqlite3_uint64’
+ 4533 | SQLITE_API int sqlite3_bind_blob64(sqlite3_stmt*, int, const void*, sqlite3_uint64,
+      |                                                                     ^~~~~~~~~~~~~~
+/usr/include/sqlite3.h:4535:36: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4535 | SQLITE_API int sqlite3_bind_double(sqlite3_stmt*, int, double);
+      |                                    ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4536:33: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4536 | SQLITE_API int sqlite3_bind_int(sqlite3_stmt*, int, int);
+      |                                 ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4537:35: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4537 | SQLITE_API int sqlite3_bind_int64(sqlite3_stmt*, int, sqlite3_int64);
+      |                                   ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4537:55: error: unknown type name ‘sqlite3_int64’
+ 4537 | SQLITE_API int sqlite3_bind_int64(sqlite3_stmt*, int, sqlite3_int64);
+      |                                                       ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:4538:34: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4538 | SQLITE_API int sqlite3_bind_null(sqlite3_stmt*, int);
+      |                                  ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4539:34: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4539 | SQLITE_API int sqlite3_bind_text(sqlite3_stmt*,int,const char*,int,void(*)(void*));
+      |                                  ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4540:36: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4540 | SQLITE_API int sqlite3_bind_text16(sqlite3_stmt*, int, const void*, int, void(*)(void*));
+      |                                    ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4541:36: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4541 | SQLITE_API int sqlite3_bind_text64(sqlite3_stmt*, int, const char*, sqlite3_uint64,
+      |                                    ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4541:69: error: unknown type name ‘sqlite3_uint64’
+ 4541 | SQLITE_API int sqlite3_bind_text64(sqlite3_stmt*, int, const char*, sqlite3_uint64,
+      |                                                                     ^~~~~~~~~~~~~~
+/usr/include/sqlite3.h:4543:35: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4543 | SQLITE_API int sqlite3_bind_value(sqlite3_stmt*, int, const sqlite3_value*);
+      |                                   ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4543:74: error: expected ‘;’, ‘,’ or ‘)’ before ‘*’ token
+ 4543 | SQLITE_API int sqlite3_bind_value(sqlite3_stmt*, int, const sqlite3_value*);
+      |                                                                          ^
+/usr/include/sqlite3.h:4544:37: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4544 | SQLITE_API int sqlite3_bind_pointer(sqlite3_stmt*, int, void*, const char*,void(*)(void*));
+      |                                     ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4545:38: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4545 | SQLITE_API int sqlite3_bind_zeroblob(sqlite3_stmt*, int, int n);
+      |                                      ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4546:40: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4546 | SQLITE_API int sqlite3_bind_zeroblob64(sqlite3_stmt*, int, sqlite3_uint64);
+      |                                        ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4546:60: error: unknown type name ‘sqlite3_uint64’
+ 4546 | SQLITE_API int sqlite3_bind_zeroblob64(sqlite3_stmt*, int, sqlite3_uint64);
+      |                                                            ^~~~~~~~~~~~~~
+/usr/include/sqlite3.h:4567:45: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4567 | SQLITE_API int sqlite3_bind_parameter_count(sqlite3_stmt*);
+      |                                             ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4595:52: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4595 | SQLITE_API const char *sqlite3_bind_parameter_name(sqlite3_stmt*, int);
+      |                                                    ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4613:45: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4613 | SQLITE_API int sqlite3_bind_parameter_index(sqlite3_stmt*, const char *zName);
+      |                                             ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4623:39: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4623 | SQLITE_API int sqlite3_clear_bindings(sqlite3_stmt*);
+      |                                       ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4639:37: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4639 | SQLITE_API int sqlite3_column_count(sqlite3_stmt *pStmt);
+      |                                     ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4668:44: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4668 | SQLITE_API const char *sqlite3_column_name(sqlite3_stmt*, int N);
+      |                                            ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4669:46: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4669 | SQLITE_API const void *sqlite3_column_name16(sqlite3_stmt*, int N);
+      |                                              ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4713:53: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4713 | SQLITE_API const char *sqlite3_column_database_name(sqlite3_stmt*,int);
+      |                                                     ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4714:55: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4714 | SQLITE_API const void *sqlite3_column_database_name16(sqlite3_stmt*,int);
+      |                                                       ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4715:50: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4715 | SQLITE_API const char *sqlite3_column_table_name(sqlite3_stmt*,int);
+      |                                                  ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4716:52: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4716 | SQLITE_API const void *sqlite3_column_table_name16(sqlite3_stmt*,int);
+      |                                                    ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4717:51: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4717 | SQLITE_API const char *sqlite3_column_origin_name(sqlite3_stmt*,int);
+      |                                                   ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4718:53: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4718 | SQLITE_API const void *sqlite3_column_origin_name16(sqlite3_stmt*,int);
+      |                                                     ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4750:48: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4750 | SQLITE_API const char *sqlite3_column_decltype(sqlite3_stmt*,int);
+      |                                                ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4751:50: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4751 | SQLITE_API const void *sqlite3_column_decltype16(sqlite3_stmt*,int);
+      |                                                  ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4835:29: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4835 | SQLITE_API int sqlite3_step(sqlite3_stmt*);
+      |                             ^~~~~~~~~~~~
+/usr/include/sqlite3.h:4856:35: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 4856 | SQLITE_API int sqlite3_data_count(sqlite3_stmt *pStmt);
+      |                                   ^~~~~~~~~~~~
+/usr/include/sqlite3.h:5099:44: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 5099 | SQLITE_API const void *sqlite3_column_blob(sqlite3_stmt*, int iCol);
+      |                                            ^~~~~~~~~~~~
+/usr/include/sqlite3.h:5100:41: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 5100 | SQLITE_API double sqlite3_column_double(sqlite3_stmt*, int iCol);
+      |                                         ^~~~~~~~~~~~
+/usr/include/sqlite3.h:5101:35: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 5101 | SQLITE_API int sqlite3_column_int(sqlite3_stmt*, int iCol);
+      |                                   ^~~~~~~~~~~~
+/usr/include/sqlite3.h:5102:12: error: unknown type name ‘sqlite3_int64’
+ 5102 | SQLITE_API sqlite3_int64 sqlite3_column_int64(sqlite3_stmt*, int iCol);
+      |            ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:5102:47: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 5102 | SQLITE_API sqlite3_int64 sqlite3_column_int64(sqlite3_stmt*, int iCol);
+      |                                               ^~~~~~~~~~~~
+/usr/include/sqlite3.h:5103:53: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 5103 | SQLITE_API const unsigned char *sqlite3_column_text(sqlite3_stmt*, int iCol);
+      |                                                     ^~~~~~~~~~~~
+/usr/include/sqlite3.h:5104:46: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 5104 | SQLITE_API const void *sqlite3_column_text16(sqlite3_stmt*, int iCol);
+      |                                              ^~~~~~~~~~~~
+/usr/include/sqlite3.h:5105:12: error: expected declaration specifiers before ‘sqlite3_value’
+ 5105 | SQLITE_API sqlite3_value *sqlite3_column_value(sqlite3_stmt*, int iCol);
+      |            ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:5106:37: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 5106 | SQLITE_API int sqlite3_column_bytes(sqlite3_stmt*, int iCol);
+      |                                     ^~~~~~~~~~~~
+/usr/include/sqlite3.h:5107:39: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 5107 | SQLITE_API int sqlite3_column_bytes16(sqlite3_stmt*, int iCol);
+      |                                       ^~~~~~~~~~~~
+/usr/include/sqlite3.h:5108:36: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 5108 | SQLITE_API int sqlite3_column_type(sqlite3_stmt*, int iCol);
+      |                                    ^~~~~~~~~~~~
+/usr/include/sqlite3.h:5136:33: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 5136 | SQLITE_API int sqlite3_finalize(sqlite3_stmt *pStmt);
+      |                                 ^~~~~~~~~~~~
+/usr/include/sqlite3.h:5163:30: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 5163 | SQLITE_API int sqlite3_reset(sqlite3_stmt *pStmt);
+      |                              ^~~~~~~~~~~~
+/usr/include/sqlite3.h:5289:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 5289 |   sqlite3 *db,
+      |   ^~~~~~~
+/usr/include/sqlite3.h:5294:17: error: expected declaration specifiers or ‘...’ before ‘sqlite3_context’
+ 5294 |   void (*xFunc)(sqlite3_context*,int,sqlite3_value**),
+      |                 ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:5294:38: error: expected declaration specifiers or ‘...’ before ‘sqlite3_value’
+ 5294 |   void (*xFunc)(sqlite3_context*,int,sqlite3_value**),
+      |                                      ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:5295:3: error: expected ‘;’, ‘,’ or ‘)’ before ‘void’
+ 5295 |   void (*xStep)(sqlite3_context*,int,sqlite3_value**),
+      |   ^~~~
+/usr/include/sqlite3.h:5299:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 5299 |   sqlite3 *db,
+      |   ^~~~~~~
+/usr/include/sqlite3.h:5304:17: error: expected declaration specifiers or ‘...’ before ‘sqlite3_context’
+ 5304 |   void (*xFunc)(sqlite3_context*,int,sqlite3_value**),
+      |                 ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:5304:38: error: expected declaration specifiers or ‘...’ before ‘sqlite3_value’
+ 5304 |   void (*xFunc)(sqlite3_context*,int,sqlite3_value**),
+      |                                      ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:5305:3: error: expected ‘;’, ‘,’ or ‘)’ before ‘void’
+ 5305 |   void (*xStep)(sqlite3_context*,int,sqlite3_value**),
+      |   ^~~~
+/usr/include/sqlite3.h:5309:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 5309 |   sqlite3 *db,
+      |   ^~~~~~~
+/usr/include/sqlite3.h:5314:17: error: expected declaration specifiers or ‘...’ before ‘sqlite3_context’
+ 5314 |   void (*xFunc)(sqlite3_context*,int,sqlite3_value**),
+      |                 ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:5314:38: error: expected declaration specifiers or ‘...’ before ‘sqlite3_value’
+ 5314 |   void (*xFunc)(sqlite3_context*,int,sqlite3_value**),
+      |                                      ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:5315:3: error: expected ‘;’, ‘,’ or ‘)’ before ‘void’
+ 5315 |   void (*xStep)(sqlite3_context*,int,sqlite3_value**),
+      |   ^~~~
+/usr/include/sqlite3.h:5320:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 5320 |   sqlite3 *db,
+      |   ^~~~~~~
+/usr/include/sqlite3.h:5325:17: error: expected declaration specifiers or ‘...’ before ‘sqlite3_context’
+ 5325 |   void (*xStep)(sqlite3_context*,int,sqlite3_value**),
+      |                 ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:5325:38: error: expected declaration specifiers or ‘...’ before ‘sqlite3_value’
+ 5325 |   void (*xStep)(sqlite3_context*,int,sqlite3_value**),
+      |                                      ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:5326:3: error: expected ‘;’, ‘,’ or ‘)’ before ‘void’
+ 5326 |   void (*xFinal)(sqlite3_context*),
+      |   ^~~~
+/usr/include/sqlite3.h:5426:58: error: expected declaration specifiers or ‘...’ before ‘sqlite3_context’
+ 5426 | SQLITE_API SQLITE_DEPRECATED int sqlite3_aggregate_count(sqlite3_context*);
+      |                                                          ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:5427:50: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 5427 | SQLITE_API SQLITE_DEPRECATED int sqlite3_expired(sqlite3_stmt*);
+      |                                                  ^~~~~~~~~~~~
+/usr/include/sqlite3.h:5428:60: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 5428 | SQLITE_API SQLITE_DEPRECATED int sqlite3_transfer_bindings(sqlite3_stmt*, sqlite3_stmt*);
+      |                                                            ^~~~~~~~~~~~
+/usr/include/sqlite3.h:5428:75: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 5428 | SQLITE_API SQLITE_DEPRECATED int sqlite3_transfer_bindings(sqlite3_stmt*, sqlite3_stmt*);
+      |                                                                           ^~~~~~~~~~~~
+/usr/include/sqlite3.h:5431:69: error: unknown type name ‘sqlite3_int64’
+ 5431 | SQLITE_API SQLITE_DEPRECATED int sqlite3_memory_alarm(void(*)(void*,sqlite3_int64,int),
+      |                                                                     ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:5432:23: error: expected ‘;’, ‘,’ or ‘)’ before ‘void’
+ 5432 |                       void*,sqlite3_int64);
+      |                       ^~~~
+/usr/include/sqlite3.h:5563:43: error: expected declaration specifiers or ‘...’ before ‘sqlite3_value’
+ 5563 | SQLITE_API const void *sqlite3_value_blob(sqlite3_value*);
+      |                                           ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:5564:40: error: expected declaration specifiers or ‘...’ before ‘sqlite3_value’
+ 5564 | SQLITE_API double sqlite3_value_double(sqlite3_value*);
+      |                                        ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:5565:34: error: expected declaration specifiers or ‘...’ before ‘sqlite3_value’
+ 5565 | SQLITE_API int sqlite3_value_int(sqlite3_value*);
+      |                                  ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:5566:12: error: unknown type name ‘sqlite3_int64’
+ 5566 | SQLITE_API sqlite3_int64 sqlite3_value_int64(sqlite3_value*);
+      |            ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:5566:46: error: expected declaration specifiers or ‘...’ before ‘sqlite3_value’
+ 5566 | SQLITE_API sqlite3_int64 sqlite3_value_int64(sqlite3_value*);
+      |                                              ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:5567:40: error: expected declaration specifiers or ‘...’ before ‘sqlite3_value’
+ 5567 | SQLITE_API void *sqlite3_value_pointer(sqlite3_value*, const char*);
+      |                                        ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:5568:52: error: expected declaration specifiers or ‘...’ before ‘sqlite3_value’
+ 5568 | SQLITE_API const unsigned char *sqlite3_value_text(sqlite3_value*);
+      |                                                    ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:5569:45: error: expected declaration specifiers or ‘...’ before ‘sqlite3_value’
+ 5569 | SQLITE_API const void *sqlite3_value_text16(sqlite3_value*);
+      |                                             ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:5570:47: error: expected declaration specifiers or ‘...’ before ‘sqlite3_value’
+ 5570 | SQLITE_API const void *sqlite3_value_text16le(sqlite3_value*);
+      |                                               ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:5571:47: error: expected declaration specifiers or ‘...’ before ‘sqlite3_value’
+ 5571 | SQLITE_API const void *sqlite3_value_text16be(sqlite3_value*);
+      |                                               ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:5572:36: error: expected declaration specifiers or ‘...’ before ‘sqlite3_value’
+ 5572 | SQLITE_API int sqlite3_value_bytes(sqlite3_value*);
+      |                                    ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:5573:38: error: expected declaration specifiers or ‘...’ before ‘sqlite3_value’
+ 5573 | SQLITE_API int sqlite3_value_bytes16(sqlite3_value*);
+      |                                      ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:5574:35: error: expected declaration specifiers or ‘...’ before ‘sqlite3_value’
+ 5574 | SQLITE_API int sqlite3_value_type(sqlite3_value*);
+      |                                   ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:5575:43: error: expected declaration specifiers or ‘...’ before ‘sqlite3_value’
+ 5575 | SQLITE_API int sqlite3_value_numeric_type(sqlite3_value*);
+      |                                           ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:5576:39: error: expected declaration specifiers or ‘...’ before ‘sqlite3_value’
+ 5576 | SQLITE_API int sqlite3_value_nochange(sqlite3_value*);
+      |                                       ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:5577:39: error: expected declaration specifiers or ‘...’ before ‘sqlite3_value’
+ 5577 | SQLITE_API int sqlite3_value_frombind(sqlite3_value*);
+      |                                       ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:5589:47: error: expected declaration specifiers or ‘...’ before ‘sqlite3_value’
+ 5589 | SQLITE_API unsigned int sqlite3_value_subtype(sqlite3_value*);
+      |                                               ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:5605:12: error: expected declaration specifiers before ‘sqlite3_value’
+ 5605 | SQLITE_API sqlite3_value *sqlite3_value_dup(const sqlite3_value*);
+      |            ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:5606:36: error: expected declaration specifiers or ‘...’ before ‘sqlite3_value’
+ 5606 | SQLITE_API void sqlite3_value_free(sqlite3_value*);
+      |                                    ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:5651:44: error: expected declaration specifiers or ‘...’ before ‘sqlite3_context’
+ 5651 | SQLITE_API void *sqlite3_aggregate_context(sqlite3_context*, int nBytes);
+      |                                            ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:5666:36: error: expected declaration specifiers or ‘...’ before ‘sqlite3_context’
+ 5666 | SQLITE_API void *sqlite3_user_data(sqlite3_context*);
+      |                                    ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:5678:12: error: expected declaration specifiers before ‘sqlite3’
+ 5678 | SQLITE_API sqlite3 *sqlite3_context_db_handle(sqlite3_context*);
+      |            ^~~~~~~
+/usr/include/sqlite3.h:5737:38: error: expected declaration specifiers or ‘...’ before ‘sqlite3_context’
+ 5737 | SQLITE_API void *sqlite3_get_auxdata(sqlite3_context*, int N);
+      |                                      ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:5738:37: error: expected declaration specifiers or ‘...’ before ‘sqlite3_context’
+ 5738 | SQLITE_API void sqlite3_set_auxdata(sqlite3_context*, int N, void*, void (*)(void*));
+      |                                     ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:5755:16: error: storage class specified for parameter ‘sqlite3_destructor_type’
+ 5755 | typedef void (*sqlite3_destructor_type)(void*);
+      |                ^~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:5905:37: error: expected declaration specifiers or ‘...’ before ‘sqlite3_context’
+ 5905 | SQLITE_API void sqlite3_result_blob(sqlite3_context*, const void*, int, void(*)(void*));
+      |                                     ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:5906:39: error: expected declaration specifiers or ‘...’ before ‘sqlite3_context’
+ 5906 | SQLITE_API void sqlite3_result_blob64(sqlite3_context*,const void*,
+      |                                       ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:5907:28: error: unknown type name ‘sqlite3_uint64’
+ 5907 |                            sqlite3_uint64,void(*)(void*));
+      |                            ^~~~~~~~~~~~~~
+/usr/include/sqlite3.h:5908:39: error: expected declaration specifiers or ‘...’ before ‘sqlite3_context’
+ 5908 | SQLITE_API void sqlite3_result_double(sqlite3_context*, double);
+      |                                       ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:5909:38: error: expected declaration specifiers or ‘...’ before ‘sqlite3_context’
+ 5909 | SQLITE_API void sqlite3_result_error(sqlite3_context*, const char*, int);
+      |                                      ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:5910:40: error: expected declaration specifiers or ‘...’ before ‘sqlite3_context’
+ 5910 | SQLITE_API void sqlite3_result_error16(sqlite3_context*, const void*, int);
+      |                                        ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:5911:45: error: expected declaration specifiers or ‘...’ before ‘sqlite3_context’
+ 5911 | SQLITE_API void sqlite3_result_error_toobig(sqlite3_context*);
+      |                                             ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:5912:44: error: expected declaration specifiers or ‘...’ before ‘sqlite3_context’
+ 5912 | SQLITE_API void sqlite3_result_error_nomem(sqlite3_context*);
+      |                                            ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:5913:43: error: expected declaration specifiers or ‘...’ before ‘sqlite3_context’
+ 5913 | SQLITE_API void sqlite3_result_error_code(sqlite3_context*, int);
+      |                                           ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:5914:36: error: expected declaration specifiers or ‘...’ before ‘sqlite3_context’
+ 5914 | SQLITE_API void sqlite3_result_int(sqlite3_context*, int);
+      |                                    ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:5915:38: error: expected declaration specifiers or ‘...’ before ‘sqlite3_context’
+ 5915 | SQLITE_API void sqlite3_result_int64(sqlite3_context*, sqlite3_int64);
+      |                                      ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:5915:56: error: unknown type name ‘sqlite3_int64’
+ 5915 | SQLITE_API void sqlite3_result_int64(sqlite3_context*, sqlite3_int64);
+      |                                                        ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:5916:37: error: expected declaration specifiers or ‘...’ before ‘sqlite3_context’
+ 5916 | SQLITE_API void sqlite3_result_null(sqlite3_context*);
+      |                                     ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:5917:37: error: expected declaration specifiers or ‘...’ before ‘sqlite3_context’
+ 5917 | SQLITE_API void sqlite3_result_text(sqlite3_context*, const char*, int, void(*)(void*));
+      |                                     ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:5918:39: error: expected declaration specifiers or ‘...’ before ‘sqlite3_context’
+ 5918 | SQLITE_API void sqlite3_result_text64(sqlite3_context*, const char*,sqlite3_uint64,
+      |                                       ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:5918:69: error: unknown type name ‘sqlite3_uint64’
+ 5918 | SQLITE_API void sqlite3_result_text64(sqlite3_context*, const char*,sqlite3_uint64,
+      |                                                                     ^~~~~~~~~~~~~~
+/usr/include/sqlite3.h:5920:39: error: expected declaration specifiers or ‘...’ before ‘sqlite3_context’
+ 5920 | SQLITE_API void sqlite3_result_text16(sqlite3_context*, const void*, int, void(*)(void*));
+      |                                       ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:5921:41: error: expected declaration specifiers or ‘...’ before ‘sqlite3_context’
+ 5921 | SQLITE_API void sqlite3_result_text16le(sqlite3_context*, const void*, int,void(*)(void*));
+      |                                         ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:5922:41: error: expected declaration specifiers or ‘...’ before ‘sqlite3_context’
+ 5922 | SQLITE_API void sqlite3_result_text16be(sqlite3_context*, const void*, int,void(*)(void*));
+      |                                         ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:5923:38: error: expected declaration specifiers or ‘...’ before ‘sqlite3_context’
+ 5923 | SQLITE_API void sqlite3_result_value(sqlite3_context*, sqlite3_value*);
+      |                                      ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:5923:56: error: expected declaration specifiers or ‘...’ before ‘sqlite3_value’
+ 5923 | SQLITE_API void sqlite3_result_value(sqlite3_context*, sqlite3_value*);
+      |                                                        ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:5924:40: error: expected declaration specifiers or ‘...’ before ‘sqlite3_context’
+ 5924 | SQLITE_API void sqlite3_result_pointer(sqlite3_context*, void*,const char*,void(*)(void*));
+      |                                        ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:5925:41: error: expected declaration specifiers or ‘...’ before ‘sqlite3_context’
+ 5925 | SQLITE_API void sqlite3_result_zeroblob(sqlite3_context*, int n);
+      |                                         ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:5926:42: error: expected declaration specifiers or ‘...’ before ‘sqlite3_context’
+ 5926 | SQLITE_API int sqlite3_result_zeroblob64(sqlite3_context*, sqlite3_uint64 n);
+      |                                          ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:5926:60: error: unknown type name ‘sqlite3_uint64’
+ 5926 | SQLITE_API int sqlite3_result_zeroblob64(sqlite3_context*, sqlite3_uint64 n);
+      |                                                            ^~~~~~~~~~~~~~
+/usr/include/sqlite3.h:5941:40: error: expected declaration specifiers or ‘...’ before ‘sqlite3_context’
+ 5941 | SQLITE_API void sqlite3_result_subtype(sqlite3_context*,unsigned int);
+      |                                        ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:6025:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 6025 |   sqlite3*,
+      |   ^~~~~~~
+/usr/include/sqlite3.h:6032:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 6032 |   sqlite3*,
+      |   ^~~~~~~
+/usr/include/sqlite3.h:6040:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 6040 |   sqlite3*,
+      |   ^~~~~~~
+/usr/include/sqlite3.h:6075:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 6075 |   sqlite3*,
+      |   ^~~~~~~
+/usr/include/sqlite3.h:6077:17: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 6077 |   void(*)(void*,sqlite3*,int eTextRep,const char*)
+      |                 ^~~~~~~
+/usr/include/sqlite3.h:6080:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 6080 |   sqlite3*,
+      |   ^~~~~~~
+/usr/include/sqlite3.h:6082:17: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 6082 |   void(*)(void*,sqlite3*,int eTextRep,const void*)
+      |                 ^~~~~~~
+/usr/include/sqlite3.h:6170:32: error: storage class specified for parameter ‘sqlite3_temp_directory’
+ 6170 | SQLITE_API SQLITE_EXTERN char *sqlite3_temp_directory;
+      |                                ^~~~~~~~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:6207:32: error: storage class specified for parameter ‘sqlite3_data_directory’
+ 6207 | SQLITE_API SQLITE_EXTERN char *sqlite3_data_directory;
+      |                                ^~~~~~~~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:6266:39: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 6266 | SQLITE_API int sqlite3_get_autocommit(sqlite3*);
+      |                                       ^~~~~~~
+/usr/include/sqlite3.h:6279:12: error: expected declaration specifiers before ‘sqlite3’
+ 6279 | SQLITE_API sqlite3 *sqlite3_db_handle(sqlite3_stmt*);
+      |            ^~~~~~~
+/usr/include/sqlite3.h:6311:44: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 6311 | SQLITE_API const char *sqlite3_db_filename(sqlite3 *db, const char *zDbName);
+      |                                            ^~~~~~~
+/usr/include/sqlite3.h:6321:36: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 6321 | SQLITE_API int sqlite3_db_readonly(sqlite3 *db, const char *zDbName);
+      |                                    ^~~~~~~
+/usr/include/sqlite3.h:6339:34: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 6339 | SQLITE_API int sqlite3_txn_state(sqlite3*,const char *zSchema);
+      |                                  ^~~~~~~
+/usr/include/sqlite3.h:6388:12: error: expected declaration specifiers before ‘sqlite3_stmt’
+ 6388 | SQLITE_API sqlite3_stmt *sqlite3_next_stmt(sqlite3 *pDb, sqlite3_stmt *pStmt);
+      |            ^~~~~~~~~~~~
+/usr/include/sqlite3.h:6437:38: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 6437 | SQLITE_API void *sqlite3_commit_hook(sqlite3*, int(*)(void*), void*);
+      |                                      ^~~~~~~
+/usr/include/sqlite3.h:6438:40: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 6438 | SQLITE_API void *sqlite3_rollback_hook(sqlite3*, void(*)(void *), void*);
+      |                                        ^~~~~~~
+/usr/include/sqlite3.h:6499:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 6499 |   sqlite3 *db,
+      |   ^~~~~~~
+/usr/include/sqlite3.h:6556:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 6556 |   sqlite3*,
+      |   ^~~~~~~
+/usr/include/sqlite3.h:6557:49: error: unknown type name ‘sqlite3_int64’
+ 6557 |   void(*)(void *,int ,char const *,char const *,sqlite3_int64),
+      |                                                 ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:6558:3: error: expected ‘;’, ‘,’ or ‘)’ before ‘void’
+ 6558 |   void*
+      |   ^~~~
+/usr/include/sqlite3.h:6630:42: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 6630 | SQLITE_API int sqlite3_db_release_memory(sqlite3*);
+      |                                          ^~~~~~~
+/usr/include/sqlite3.h:6696:12: error: unknown type name ‘sqlite3_int64’
+ 6696 | SQLITE_API sqlite3_int64 sqlite3_soft_heap_limit64(sqlite3_int64 N);
+      |            ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:6696:52: error: unknown type name ‘sqlite3_int64’
+ 6696 | SQLITE_API sqlite3_int64 sqlite3_soft_heap_limit64(sqlite3_int64 N);
+      |                                                    ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:6697:12: error: unknown type name ‘sqlite3_int64’
+ 6697 | SQLITE_API sqlite3_int64 sqlite3_hard_heap_limit64(sqlite3_int64 N);
+      |            ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:6697:52: error: unknown type name ‘sqlite3_int64’
+ 6697 | SQLITE_API sqlite3_int64 sqlite3_hard_heap_limit64(sqlite3_int64 N);
+      |                                                    ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:6781:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 6781 |   sqlite3 *db,                /* Connection handle */
+      |   ^~~~~~~
+/usr/include/sqlite3.h:6837:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 6837 |   sqlite3 *db,          /* Load the extension into this database connection */
+      |   ^~~~~~~
+/usr/include/sqlite3.h:6868:46: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 6868 | SQLITE_API int sqlite3_enable_load_extension(sqlite3 *db, int onoff);
+      |                                              ^~~~~~~
+/usr/include/sqlite3.h:6940:29: error: storage class specified for parameter ‘sqlite3_vtab’
+ 6940 | typedef struct sqlite3_vtab sqlite3_vtab;
+      |                             ^~~~~~~~~~~~
+/usr/include/sqlite3.h:6941:35: error: storage class specified for parameter ‘sqlite3_index_info’
+ 6941 | typedef struct sqlite3_index_info sqlite3_index_info;
+      |                                   ^~~~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:6942:36: error: storage class specified for parameter ‘sqlite3_vtab_cursor’
+ 6942 | typedef struct sqlite3_vtab_cursor sqlite3_vtab_cursor;
+      |                                    ^~~~~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:6943:31: error: storage class specified for parameter ‘sqlite3_module’
+ 6943 | typedef struct sqlite3_module sqlite3_module;
+      |                               ^~~~~~~~~~~~~~
+/usr/include/sqlite3.h:6963:18: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 6963 |   int (*xCreate)(sqlite3*, void *pAux,
+      |                  ^~~~~~~
+/usr/include/sqlite3.h:6965:16: error: expected declaration specifiers or ‘...’ before ‘sqlite3_vtab’
+ 6965 |                sqlite3_vtab **ppVTab, char**);
+      |                ^~~~~~~~~~~~
+/usr/include/sqlite3.h:6966:19: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 6966 |   int (*xConnect)(sqlite3*, void *pAux,
+      |                   ^~~~~~~
+/usr/include/sqlite3.h:6968:16: error: expected declaration specifiers or ‘...’ before ‘sqlite3_vtab’
+ 6968 |                sqlite3_vtab **ppVTab, char**);
+      |                ^~~~~~~~~~~~
+/usr/include/sqlite3.h:6969:21: error: expected declaration specifiers or ‘...’ before ‘sqlite3_vtab’
+ 6969 |   int (*xBestIndex)(sqlite3_vtab *pVTab, sqlite3_index_info*);
+      |                     ^~~~~~~~~~~~
+/usr/include/sqlite3.h:6969:42: error: expected declaration specifiers or ‘...’ before ‘sqlite3_index_info’
+ 6969 |   int (*xBestIndex)(sqlite3_vtab *pVTab, sqlite3_index_info*);
+      |                                          ^~~~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:6970:22: error: expected declaration specifiers or ‘...’ before ‘sqlite3_vtab’
+ 6970 |   int (*xDisconnect)(sqlite3_vtab *pVTab);
+      |                      ^~~~~~~~~~~~
+/usr/include/sqlite3.h:6971:19: error: expected declaration specifiers or ‘...’ before ‘sqlite3_vtab’
+ 6971 |   int (*xDestroy)(sqlite3_vtab *pVTab);
+      |                   ^~~~~~~~~~~~
+/usr/include/sqlite3.h:6972:16: error: expected declaration specifiers or ‘...’ before ‘sqlite3_vtab’
+ 6972 |   int (*xOpen)(sqlite3_vtab *pVTab, sqlite3_vtab_cursor **ppCursor);
+      |                ^~~~~~~~~~~~
+/usr/include/sqlite3.h:6972:37: error: expected declaration specifiers or ‘...’ before ‘sqlite3_vtab_cursor’
+ 6972 |   int (*xOpen)(sqlite3_vtab *pVTab, sqlite3_vtab_cursor **ppCursor);
+      |                                     ^~~~~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:6973:17: error: expected declaration specifiers or ‘...’ before ‘sqlite3_vtab_cursor’
+ 6973 |   int (*xClose)(sqlite3_vtab_cursor*);
+      |                 ^~~~~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:6974:18: error: expected declaration specifiers or ‘...’ before ‘sqlite3_vtab_cursor’
+ 6974 |   int (*xFilter)(sqlite3_vtab_cursor*, int idxNum, const char *idxStr,
+      |                  ^~~~~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:6975:27: error: expected declaration specifiers or ‘...’ before ‘sqlite3_value’
+ 6975 |                 int argc, sqlite3_value **argv);
+      |                           ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:6976:16: error: expected declaration specifiers or ‘...’ before ‘sqlite3_vtab_cursor’
+ 6976 |   int (*xNext)(sqlite3_vtab_cursor*);
+      |                ^~~~~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:6977:15: error: expected declaration specifiers or ‘...’ before ‘sqlite3_vtab_cursor’
+ 6977 |   int (*xEof)(sqlite3_vtab_cursor*);
+      |               ^~~~~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:6978:18: error: expected declaration specifiers or ‘...’ before ‘sqlite3_vtab_cursor’
+ 6978 |   int (*xColumn)(sqlite3_vtab_cursor*, sqlite3_context*, int);
+      |                  ^~~~~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:6978:40: error: expected declaration specifiers or ‘...’ before ‘sqlite3_context’
+ 6978 |   int (*xColumn)(sqlite3_vtab_cursor*, sqlite3_context*, int);
+      |                                        ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:6979:17: error: expected declaration specifiers or ‘...’ before ‘sqlite3_vtab_cursor’
+ 6979 |   int (*xRowid)(sqlite3_vtab_cursor*, sqlite3_int64 *pRowid);
+      |                 ^~~~~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:6979:39: error: unknown type name ‘sqlite3_int64’
+ 6979 |   int (*xRowid)(sqlite3_vtab_cursor*, sqlite3_int64 *pRowid);
+      |                                       ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:6980:18: error: expected declaration specifiers or ‘...’ before ‘sqlite3_vtab’
+ 6980 |   int (*xUpdate)(sqlite3_vtab *, int, sqlite3_value **, sqlite3_int64 *);
+      |                  ^~~~~~~~~~~~
+/usr/include/sqlite3.h:6980:39: error: expected declaration specifiers or ‘...’ before ‘sqlite3_value’
+ 6980 |   int (*xUpdate)(sqlite3_vtab *, int, sqlite3_value **, sqlite3_int64 *);
+      |                                       ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:6980:57: error: unknown type name ‘sqlite3_int64’
+ 6980 |   int (*xUpdate)(sqlite3_vtab *, int, sqlite3_value **, sqlite3_int64 *);
+      |                                                         ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:6981:17: error: expected declaration specifiers or ‘...’ before ‘sqlite3_vtab’
+ 6981 |   int (*xBegin)(sqlite3_vtab *pVTab);
+      |                 ^~~~~~~~~~~~
+/usr/include/sqlite3.h:6982:16: error: expected declaration specifiers or ‘...’ before ‘sqlite3_vtab’
+ 6982 |   int (*xSync)(sqlite3_vtab *pVTab);
+      |                ^~~~~~~~~~~~
+/usr/include/sqlite3.h:6983:18: error: expected declaration specifiers or ‘...’ before ‘sqlite3_vtab’
+ 6983 |   int (*xCommit)(sqlite3_vtab *pVTab);
+      |                  ^~~~~~~~~~~~
+/usr/include/sqlite3.h:6984:20: error: expected declaration specifiers or ‘...’ before ‘sqlite3_vtab’
+ 6984 |   int (*xRollback)(sqlite3_vtab *pVTab);
+      |                    ^~~~~~~~~~~~
+/usr/include/sqlite3.h:6985:24: error: expected declaration specifiers or ‘...’ before ‘sqlite3_vtab’
+ 6985 |   int (*xFindFunction)(sqlite3_vtab *pVtab, int nArg, const char *zName,
+      |                        ^~~~~~~~~~~~
+/usr/include/sqlite3.h:6986:40: error: expected declaration specifiers or ‘...’ before ‘sqlite3_context’
+ 6986 |                        void (**pxFunc)(sqlite3_context*,int,sqlite3_value**),
+      |                                        ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:6986:61: error: expected declaration specifiers or ‘...’ before ‘sqlite3_value’
+ 6986 |                        void (**pxFunc)(sqlite3_context*,int,sqlite3_value**),
+      |                                                             ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:6987:24: error: expected ‘;’, ‘,’ or ‘)’ before ‘void’
+ 6987 |                        void **ppArg);
+      |                        ^~~~
+/usr/include/sqlite3.h:6988:18: error: expected declaration specifiers or ‘...’ before ‘sqlite3_vtab’
+ 6988 |   int (*xRename)(sqlite3_vtab *pVtab, const char *zNew);
+      |                  ^~~~~~~~~~~~
+/usr/include/sqlite3.h:6991:21: error: expected declaration specifiers or ‘...’ before ‘sqlite3_vtab’
+ 6991 |   int (*xSavepoint)(sqlite3_vtab *pVTab, int);
+      |                     ^~~~~~~~~~~~
+/usr/include/sqlite3.h:6992:19: error: expected declaration specifiers or ‘...’ before ‘sqlite3_vtab’
+ 6992 |   int (*xRelease)(sqlite3_vtab *pVTab, int);
+      |                   ^~~~~~~~~~~~
+/usr/include/sqlite3.h:6993:22: error: expected declaration specifiers or ‘...’ before ‘sqlite3_vtab’
+ 6993 |   int (*xRollbackTo)(sqlite3_vtab *pVTab, int);
+      |                      ^~~~~~~~~~~~
+/usr/include/sqlite3.h:7126:3: error: unknown type name ‘sqlite3_int64’
+ 7126 |   sqlite3_int64 estimatedRows;    /* Estimated number of rows returned */
+      |   ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:7130:3: error: unknown type name ‘sqlite3_uint64’
+ 7130 |   sqlite3_uint64 colUsed;    /* Input: Mask of columns used by statement */
+      |   ^~~~~~~~~~~~~~
+/usr/include/sqlite3.h:7199:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 7199 |   sqlite3 *db,               /* SQLite connection to register module with */
+      |   ^~~~~~~
+/usr/include/sqlite3.h:7201:24: error: expected ‘;’, ‘,’ or ‘)’ before ‘*’ token
+ 7201 |   const sqlite3_module *p,   /* Methods for the module */
+      |                        ^
+/usr/include/sqlite3.h:7205:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 7205 |   sqlite3 *db,               /* SQLite connection to register module with */
+      |   ^~~~~~~
+/usr/include/sqlite3.h:7207:24: error: expected ‘;’, ‘,’ or ‘)’ before ‘*’ token
+ 7207 |   const sqlite3_module *p,   /* Methods for the module */
+      |                        ^
+/usr/include/sqlite3.h:7225:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 7225 |   sqlite3 *db,                /* Remove modules from this connection */
+      |   ^~~~~~~
+/usr/include/sqlite3.h:7248:24: error: expected ‘:’, ‘,’, ‘;’, ‘}’ or ‘__attribute__’ before ‘*’ token
+ 7248 |   const sqlite3_module *pModule;  /* The module for this virtual table */
+      |                        ^
+/usr/include/sqlite3.h:7272:3: error: expected specifier-qualifier-list before ‘sqlite3_vtab’
+ 7272 |   sqlite3_vtab *pVtab;      /* Virtual table of this cursor */
+      |   ^~~~~~~~~~~~
+/usr/include/sqlite3.h:7284:37: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 7284 | SQLITE_API int sqlite3_declare_vtab(sqlite3*, const char *zSQL);
+      |                                     ^~~~~~~
+/usr/include/sqlite3.h:7303:42: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 7303 | SQLITE_API int sqlite3_overload_function(sqlite3*, const char *zFuncName, int nArg);
+      |                                          ^~~~~~~
+/usr/include/sqlite3.h:7327:29: error: storage class specified for parameter ‘sqlite3_blob’
+ 7327 | typedef struct sqlite3_blob sqlite3_blob;
+      |                             ^~~~~~~~~~~~
+/usr/include/sqlite3.h:7413:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 7413 |   sqlite3*,
+      |   ^~~~~~~
+/usr/include/sqlite3.h:7417:3: error: unknown type name ‘sqlite3_int64’
+ 7417 |   sqlite3_int64 iRow,
+      |   ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:7419:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3_blob’
+ 7419 |   sqlite3_blob **ppBlob
+      |   ^~~~~~~~~~~~
+/usr/include/sqlite3.h:7445:36: error: expected declaration specifiers or ‘...’ before ‘sqlite3_blob’
+ 7445 | SQLITE_API int sqlite3_blob_reopen(sqlite3_blob *, sqlite3_int64);
+      |                                    ^~~~~~~~~~~~
+/usr/include/sqlite3.h:7445:52: error: unknown type name ‘sqlite3_int64’
+ 7445 | SQLITE_API int sqlite3_blob_reopen(sqlite3_blob *, sqlite3_int64);
+      |                                                    ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:7468:35: error: expected declaration specifiers or ‘...’ before ‘sqlite3_blob’
+ 7468 | SQLITE_API int sqlite3_blob_close(sqlite3_blob *);
+      |                                   ^~~~~~~~~~~~
+/usr/include/sqlite3.h:7484:35: error: expected declaration specifiers or ‘...’ before ‘sqlite3_blob’
+ 7484 | SQLITE_API int sqlite3_blob_bytes(sqlite3_blob *);
+      |                                   ^~~~~~~~~~~~
+/usr/include/sqlite3.h:7513:34: error: expected declaration specifiers or ‘...’ before ‘sqlite3_blob’
+ 7513 | SQLITE_API int sqlite3_blob_read(sqlite3_blob *, void *Z, int N, int iOffset);
+      |                                  ^~~~~~~~~~~~
+/usr/include/sqlite3.h:7555:35: error: expected declaration specifiers or ‘...’ before ‘sqlite3_blob’
+ 7555 | SQLITE_API int sqlite3_blob_write(sqlite3_blob *, const void *z, int n, int iOffset);
+      |                                   ^~~~~~~~~~~~
+/usr/include/sqlite3.h:7586:12: error: expected declaration specifiers before ‘sqlite3_vfs’
+ 7586 | SQLITE_API sqlite3_vfs *sqlite3_vfs_find(const char *zVfsName);
+      |            ^~~~~~~~~~~
+/usr/include/sqlite3.h:7587:37: error: expected declaration specifiers or ‘...’ before ‘sqlite3_vfs’
+ 7587 | SQLITE_API int sqlite3_vfs_register(sqlite3_vfs*, int makeDflt);
+      |                                     ^~~~~~~~~~~
+/usr/include/sqlite3.h:7588:39: error: expected declaration specifiers or ‘...’ before ‘sqlite3_vfs’
+ 7588 | SQLITE_API int sqlite3_vfs_unregister(sqlite3_vfs*);
+      |                                       ^~~~~~~~~~~
+/usr/include/sqlite3.h:7704:12: error: expected declaration specifiers before ‘sqlite3_mutex’
+ 7704 | SQLITE_API sqlite3_mutex *sqlite3_mutex_alloc(int);
+      |            ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:7705:36: error: expected declaration specifiers or ‘...’ before ‘sqlite3_mutex’
+ 7705 | SQLITE_API void sqlite3_mutex_free(sqlite3_mutex*);
+      |                                    ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:7706:37: error: expected declaration specifiers or ‘...’ before ‘sqlite3_mutex’
+ 7706 | SQLITE_API void sqlite3_mutex_enter(sqlite3_mutex*);
+      |                                     ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:7707:34: error: expected declaration specifiers or ‘...’ before ‘sqlite3_mutex’
+ 7707 | SQLITE_API int sqlite3_mutex_try(sqlite3_mutex*);
+      |                                  ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:7708:37: error: expected declaration specifiers or ‘...’ before ‘sqlite3_mutex’
+ 7708 | SQLITE_API void sqlite3_mutex_leave(sqlite3_mutex*);
+      |                                     ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:7775:38: error: storage class specified for parameter ‘sqlite3_mutex_methods’
+ 7775 | typedef struct sqlite3_mutex_methods sqlite3_mutex_methods;
+      |                                      ^~~~~~~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:7779:3: error: expected specifier-qualifier-list before ‘sqlite3_mutex’
+ 7779 |   sqlite3_mutex *(*xMutexAlloc)(int);
+      |   ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:7818:35: error: expected declaration specifiers or ‘...’ before ‘sqlite3_mutex’
+ 7818 | SQLITE_API int sqlite3_mutex_held(sqlite3_mutex*);
+      |                                   ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:7819:38: error: expected declaration specifiers or ‘...’ before ‘sqlite3_mutex’
+ 7819 | SQLITE_API int sqlite3_mutex_notheld(sqlite3_mutex*);
+      |                                      ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:7863:12: error: expected declaration specifiers before ‘sqlite3_mutex’
+ 7863 | SQLITE_API sqlite3_mutex *sqlite3_db_mutex(sqlite3*);
+      |            ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:7906:37: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 7906 | SQLITE_API int sqlite3_file_control(sqlite3*, const char *zDbName, int op, void*);
+      |                                     ^~~~~~~
+/usr/include/sqlite3.h:8038:28: error: storage class specified for parameter ‘sqlite3_str’
+ 8038 | typedef struct sqlite3_str sqlite3_str;
+      |                            ^~~~~~~~~~~
+/usr/include/sqlite3.h:8065:12: error: expected declaration specifiers before ‘sqlite3_str’
+ 8065 | SQLITE_API sqlite3_str *sqlite3_str_new(sqlite3*);
+      |            ^~~~~~~~~~~
+/usr/include/sqlite3.h:8080:37: error: expected declaration specifiers or ‘...’ before ‘sqlite3_str’
+ 8080 | SQLITE_API char *sqlite3_str_finish(sqlite3_str*);
+      |                                     ^~~~~~~~~~~
+/usr/include/sqlite3.h:8114:37: error: expected declaration specifiers or ‘...’ before ‘sqlite3_str’
+ 8114 | SQLITE_API void sqlite3_str_appendf(sqlite3_str*, const char *zFormat, ...);
+      |                                     ^~~~~~~~~~~
+/usr/include/sqlite3.h:8115:38: error: expected declaration specifiers or ‘...’ before ‘sqlite3_str’
+ 8115 | SQLITE_API void sqlite3_str_vappendf(sqlite3_str*, const char *zFormat, va_list);
+      |                                      ^~~~~~~~~~~
+/usr/include/sqlite3.h:8116:36: error: expected declaration specifiers or ‘...’ before ‘sqlite3_str’
+ 8116 | SQLITE_API void sqlite3_str_append(sqlite3_str*, const char *zIn, int N);
+      |                                    ^~~~~~~~~~~
+/usr/include/sqlite3.h:8117:39: error: expected declaration specifiers or ‘...’ before ‘sqlite3_str’
+ 8117 | SQLITE_API void sqlite3_str_appendall(sqlite3_str*, const char *zIn);
+      |                                       ^~~~~~~~~~~
+/usr/include/sqlite3.h:8118:40: error: expected declaration specifiers or ‘...’ before ‘sqlite3_str’
+ 8118 | SQLITE_API void sqlite3_str_appendchar(sqlite3_str*, int N, char C);
+      |                                        ^~~~~~~~~~~
+/usr/include/sqlite3.h:8119:35: error: expected declaration specifiers or ‘...’ before ‘sqlite3_str’
+ 8119 | SQLITE_API void sqlite3_str_reset(sqlite3_str*);
+      |                                   ^~~~~~~~~~~
+/usr/include/sqlite3.h:8150:36: error: expected declaration specifiers or ‘...’ before ‘sqlite3_str’
+ 8150 | SQLITE_API int sqlite3_str_errcode(sqlite3_str*);
+      |                                    ^~~~~~~~~~~
+/usr/include/sqlite3.h:8151:35: error: expected declaration specifiers or ‘...’ before ‘sqlite3_str’
+ 8151 | SQLITE_API int sqlite3_str_length(sqlite3_str*);
+      |                                   ^~~~~~~~~~~
+/usr/include/sqlite3.h:8152:36: error: expected declaration specifiers or ‘...’ before ‘sqlite3_str’
+ 8152 | SQLITE_API char *sqlite3_str_value(sqlite3_str*);
+      |                                    ^~~~~~~~~~~
+/usr/include/sqlite3.h:8183:3: error: unknown type name ‘sqlite3_int64’
+ 8183 |   sqlite3_int64 *pCurrent,
+      |   ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:8184:3: error: unknown type name ‘sqlite3_int64’
+ 8184 |   sqlite3_int64 *pHighwater,
+      |   ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:8290:34: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 8290 | SQLITE_API int sqlite3_db_status(sqlite3*, int op, int *pCur, int *pHiwtr, int resetFlg);
+      |                                  ^~~~~~~
+/usr/include/sqlite3.h:8443:36: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 8443 | SQLITE_API int sqlite3_stmt_status(sqlite3_stmt*, int op,int resetFlg);
+      |                                    ^~~~~~~~~~~~
+/usr/include/sqlite3.h:8519:31: error: storage class specified for parameter ‘sqlite3_pcache’
+ 8519 | typedef struct sqlite3_pcache sqlite3_pcache;
+      |                               ^~~~~~~~~~~~~~
+/usr/include/sqlite3.h:8531:36: error: storage class specified for parameter ‘sqlite3_pcache_page’
+ 8531 | typedef struct sqlite3_pcache_page sqlite3_pcache_page;
+      |                                    ^~~~~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:8696:40: error: storage class specified for parameter ‘sqlite3_pcache_methods2’
+ 8696 | typedef struct sqlite3_pcache_methods2 sqlite3_pcache_methods2;
+      |                                        ^~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:8702:3: error: expected specifier-qualifier-list before ‘sqlite3_pcache’
+ 8702 |   sqlite3_pcache *(*xCreate)(int szPage, int szExtra, int bPurgeable);
+      |   ^~~~~~~~~~~~~~
+/usr/include/sqlite3.h:8719:39: error: storage class specified for parameter ‘sqlite3_pcache_methods’
+ 8719 | typedef struct sqlite3_pcache_methods sqlite3_pcache_methods;
+      |                                       ^~~~~~~~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:8724:3: error: expected specifier-qualifier-list before ‘sqlite3_pcache’
+ 8724 |   sqlite3_pcache *(*xCreate)(int szPage, int bPurgeable);
+      |   ^~~~~~~~~~~~~~
+/usr/include/sqlite3.h:8745:31: error: storage class specified for parameter ‘sqlite3_backup’
+ 8745 | typedef struct sqlite3_backup sqlite3_backup;
+      |                               ^~~~~~~~~~~~~~
+/usr/include/sqlite3.h:8933:12: error: expected declaration specifiers before ‘sqlite3_backup’
+ 8933 | SQLITE_API sqlite3_backup *sqlite3_backup_init(
+      |            ^~~~~~~~~~~~~~
+/usr/include/sqlite3.h:8939:36: error: expected declaration specifiers or ‘...’ before ‘sqlite3_backup’
+ 8939 | SQLITE_API int sqlite3_backup_step(sqlite3_backup *p, int nPage);
+      |                                    ^~~~~~~~~~~~~~
+/usr/include/sqlite3.h:8940:38: error: expected declaration specifiers or ‘...’ before ‘sqlite3_backup’
+ 8940 | SQLITE_API int sqlite3_backup_finish(sqlite3_backup *p);
+      |                                      ^~~~~~~~~~~~~~
+/usr/include/sqlite3.h:8941:41: error: expected declaration specifiers or ‘...’ before ‘sqlite3_backup’
+ 8941 | SQLITE_API int sqlite3_backup_remaining(sqlite3_backup *p);
+      |                                         ^~~~~~~~~~~~~~
+/usr/include/sqlite3.h:8942:41: error: expected declaration specifiers or ‘...’ before ‘sqlite3_backup’
+ 8942 | SQLITE_API int sqlite3_backup_pagecount(sqlite3_backup *p);
+      |                                         ^~~~~~~~~~~~~~
+/usr/include/sqlite3.h:9060:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 9060 |   sqlite3 *pBlocked,                          /* Waiting connection */
+      |   ^~~~~~~
+/usr/include/sqlite3.h:9176:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 9176 |   sqlite3*,
+      |   ^~~~~~~
+/usr/include/sqlite3.h:9177:17: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 9177 |   int(*)(void *,sqlite3*,const char*,int),
+      |                 ^~~~~~~
+/usr/include/sqlite3.h:9178:3: error: expected ‘;’, ‘,’ or ‘)’ before ‘void’
+ 9178 |   void*
+      |   ^~~~
+/usr/include/sqlite3.h:9210:43: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 9210 | SQLITE_API int sqlite3_wal_autocheckpoint(sqlite3 *db, int N);
+      |                                           ^~~~~~~
+/usr/include/sqlite3.h:9232:39: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 9232 | SQLITE_API int sqlite3_wal_checkpoint(sqlite3 *db, const char *zDb);
+      |                                       ^~~~~~~
+/usr/include/sqlite3.h:9327:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 9327 |   sqlite3 *db,                    /* Database handle */
+      |   ^~~~~~~
+/usr/include/sqlite3.h:9366:36: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 9366 | SQLITE_API int sqlite3_vtab_config(sqlite3*, int op, ...);
+      |                                    ^~~~~~~
+/usr/include/sqlite3.h:9444:41: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 9444 | SQLITE_API int sqlite3_vtab_on_conflict(sqlite3 *);
+      |                                         ^~~~~~~
+/usr/include/sqlite3.h:9470:38: error: expected declaration specifiers or ‘...’ before ‘sqlite3_context’
+ 9470 | SQLITE_API int sqlite3_vtab_nochange(sqlite3_context*);
+      |                                      ^~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:9485:67: error: expected declaration specifiers or ‘...’ before ‘sqlite3_index_info’
+ 9485 | SQLITE_API SQLITE_EXPERIMENTAL const char *sqlite3_vtab_collation(sqlite3_index_info*,int);
+      |                                                                   ^~~~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:9591:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 9591 |   sqlite3_stmt *pStmt,      /* Prepared statement for which info desired */
+      |   ^~~~~~~~~~~~
+/usr/include/sqlite3.h:9606:47: error: expected declaration specifiers or ‘...’ before ‘sqlite3_stmt’
+ 9606 | SQLITE_API void sqlite3_stmt_scanstatus_reset(sqlite3_stmt*);
+      |                                               ^~~~~~~~~~~~
+/usr/include/sqlite3.h:9639:38: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 9639 | SQLITE_API int sqlite3_db_cacheflush(sqlite3*);
+      |                                      ^~~~~~~
+/usr/include/sqlite3.h:9765:37: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 9765 | SQLITE_API int sqlite3_system_errno(sqlite3*);
+      |                                     ^~~~~~~
+/usr/include/sqlite3.h:9789:3: error: storage class specified for parameter ‘sqlite3_snapshot’
+ 9789 | } sqlite3_snapshot;
+      |   ^~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:9835:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 9835 |   sqlite3 *db,
+      |   ^~~~~~~
+/usr/include/sqlite3.h:9837:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3_snapshot’
+ 9837 |   sqlite3_snapshot **ppSnapshot
+      |   ^~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:9884:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 9884 |   sqlite3 *db,
+      |   ^~~~~~~
+/usr/include/sqlite3.h:9886:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3_snapshot’
+ 9886 |   sqlite3_snapshot *pSnapshot
+      |   ^~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:9900:59: error: expected declaration specifiers or ‘...’ before ‘sqlite3_snapshot’
+ 9900 | SQLITE_API SQLITE_EXPERIMENTAL void sqlite3_snapshot_free(sqlite3_snapshot*);
+      |                                                           ^~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:9928:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3_snapshot’
+ 9928 |   sqlite3_snapshot *p1,
+      |   ^~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:9929:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3_snapshot’
+ 9929 |   sqlite3_snapshot *p2
+      |   ^~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:9955:61: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 9955 | SQLITE_API SQLITE_EXPERIMENTAL int sqlite3_snapshot_recover(sqlite3 *db, const char *zDb);
+      |                                                             ^~~~~~~
+/usr/include/sqlite3.h:9994:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+ 9994 |   sqlite3 *db,           /* The database connection */
+      |   ^~~~~~~
+/usr/include/sqlite3.h:9996:3: error: unknown type name ‘sqlite3_int64’
+ 9996 |   sqlite3_int64 *piSize, /* Write size of the DB here, if not NULL */
+      |   ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:10050:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+10050 |   sqlite3 *db,            /* The database connection */
+      |   ^~~~~~~
+/usr/include/sqlite3.h:10053:3: error: unknown type name ‘sqlite3_int64’
+10053 |   sqlite3_int64 szDb,     /* Number bytes in the deserialization */
+      |   ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:10054:3: error: unknown type name ‘sqlite3_int64’
+10054 |   sqlite3_int64 szBuf,    /* Total size of buffer pData[] */
+      |   ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:10118:39: error: storage class specified for parameter ‘sqlite3_rtree_geometry’
+10118 | typedef struct sqlite3_rtree_geometry sqlite3_rtree_geometry;
+      |                                       ^~~~~~~~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:10119:41: error: storage class specified for parameter ‘sqlite3_rtree_query_info’
+10119 | typedef struct sqlite3_rtree_query_info sqlite3_rtree_query_info;
+      |                                         ^~~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:10127:18: error: storage class specified for parameter ‘sqlite3_rtree_dbl’
+10127 |   typedef double sqlite3_rtree_dbl;
+      |                  ^~~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:10137:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+10137 |   sqlite3 *db,
+      |   ^~~~~~~
+/usr/include/sqlite3.h:10139:16: error: expected declaration specifiers or ‘...’ before ‘sqlite3_rtree_geometry’
+10139 |   int (*xGeom)(sqlite3_rtree_geometry*, int, sqlite3_rtree_dbl*,int*),
+      |                ^~~~~~~~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:10139:46: error: expected declaration specifiers or ‘...’ before ‘sqlite3_rtree_dbl’
+10139 |   int (*xGeom)(sqlite3_rtree_geometry*, int, sqlite3_rtree_dbl*,int*),
+      |                                              ^~~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:10140:3: error: expected ‘;’, ‘,’ or ‘)’ before ‘void’
+10140 |   void *pContext
+      |   ^~~~
+/usr/include/sqlite3.h:10151:3: error: expected specifier-qualifier-list before ‘sqlite3_rtree_dbl’
+10151 |   sqlite3_rtree_dbl *aParam;      /* Parameters passed to SQL geom function */
+      |   ^~~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:10163:3: error: expected declaration specifiers or ‘...’ before ‘sqlite3’
+10163 |   sqlite3 *db,
+      |   ^~~~~~~
+/usr/include/sqlite3.h:10165:21: error: expected declaration specifiers or ‘...’ before ‘sqlite3_rtree_query_info’
+10165 |   int (*xQueryFunc)(sqlite3_rtree_query_info*),
+      |                     ^~~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:10166:3: error: expected ‘;’, ‘,’ or ‘)’ before ‘void’
+10166 |   void *pContext,
+      |   ^~~~
+/usr/include/sqlite3.h:10183:3: error: expected specifier-qualifier-list before ‘sqlite3_rtree_dbl’
+10183 |   sqlite3_rtree_dbl *aParam;        /* value of function parameters */
+      |   ^~~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:11974:33: error: storage class specified for parameter ‘Fts5ExtensionApi’
+11974 | typedef struct Fts5ExtensionApi Fts5ExtensionApi;
+      |                                 ^~~~~~~~~~~~~~~~
+/usr/include/sqlite3.h:11975:28: error: storage class specified for parameter ‘Fts5Context’
+11975 | typedef struct Fts5Context Fts5Context;
+      |                            ^~~~~~~~~~~
+/usr/include/sqlite3.h:11976:31: error: storage class specified for parameter ‘Fts5PhraseIter’
+11976 | typedef struct Fts5PhraseIter Fts5PhraseIter;
+      |                               ^~~~~~~~~~~~~~
+/usr/include/sqlite3.h:11979:26: error: expected ‘;’, ‘,’ or ‘)’ before ‘*’ token
+11979 |   const Fts5ExtensionApi *pApi,   /* API offered by current FTS version */
+      |                          ^
+/usr/include/sqlite3.h:12205:22: error: expected declaration specifiers or ‘...’ before ‘Fts5Context’
+12205 |   void *(*xUserData)(Fts5Context*);
+      |                      ^~~~~~~~~~~
+/usr/include/sqlite3.h:12207:23: error: expected declaration specifiers or ‘...’ before ‘Fts5Context’
+12207 |   int (*xColumnCount)(Fts5Context*);
+      |                       ^~~~~~~~~~~
+/usr/include/sqlite3.h:12208:20: error: expected declaration specifiers or ‘...’ before ‘Fts5Context’
+12208 |   int (*xRowCount)(Fts5Context*, sqlite3_int64 *pnRow);
+      |                    ^~~~~~~~~~~
+/usr/include/sqlite3.h:12208:34: error: unknown type name ‘sqlite3_int64’
+12208 |   int (*xRowCount)(Fts5Context*, sqlite3_int64 *pnRow);
+      |                                  ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:12209:27: error: expected declaration specifiers or ‘...’ before ‘Fts5Context’
+12209 |   int (*xColumnTotalSize)(Fts5Context*, int iCol, sqlite3_int64 *pnToken);
+      |                           ^~~~~~~~~~~
+/usr/include/sqlite3.h:12209:51: error: unknown type name ‘sqlite3_int64’
+12209 |   int (*xColumnTotalSize)(Fts5Context*, int iCol, sqlite3_int64 *pnToken);
+      |                                                   ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:12211:20: error: expected declaration specifiers or ‘...’ before ‘Fts5Context’
+12211 |   int (*xTokenize)(Fts5Context*,
+      |                    ^~~~~~~~~~~
+/usr/include/sqlite3.h:12217:23: error: expected declaration specifiers or ‘...’ before ‘Fts5Context’
+12217 |   int (*xPhraseCount)(Fts5Context*);
+      |                       ^~~~~~~~~~~
+/usr/include/sqlite3.h:12218:22: error: expected declaration specifiers or ‘...’ before ‘Fts5Context’
+12218 |   int (*xPhraseSize)(Fts5Context*, int iPhrase);
+      |                      ^~~~~~~~~~~
+/usr/include/sqlite3.h:12220:21: error: expected declaration specifiers or ‘...’ before ‘Fts5Context’
+12220 |   int (*xInstCount)(Fts5Context*, int *pnInst);
+      |                     ^~~~~~~~~~~
+/usr/include/sqlite3.h:12221:16: error: expected declaration specifiers or ‘...’ before ‘Fts5Context’
+12221 |   int (*xInst)(Fts5Context*, int iIdx, int *piPhrase, int *piCol, int *piOff);
+      |                ^~~~~~~~~~~
+/usr/include/sqlite3.h:12223:3: error: expected ‘;’ before ‘sqlite3_int64’
+12223 |   sqlite3_int64 (*xRowid)(Fts5Context*);
+      |   ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:12436:30: error: storage class specified for parameter ‘Fts5Tokenizer’
+12436 | typedef struct Fts5Tokenizer Fts5Tokenizer;
+      |                              ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:12437:31: error: storage class specified for parameter ‘fts5_tokenizer’
+12437 | typedef struct fts5_tokenizer fts5_tokenizer;
+      |                               ^~~~~~~~~~~~~~
+/usr/include/sqlite3.h:12439:55: error: expected declaration specifiers or ‘...’ before ‘Fts5Tokenizer’
+12439 |   int (*xCreate)(void*, const char **azArg, int nArg, Fts5Tokenizer **ppOut);
+      |                                                       ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:12440:19: error: expected declaration specifiers or ‘...’ before ‘Fts5Tokenizer’
+12440 |   void (*xDelete)(Fts5Tokenizer*);
+      |                   ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:12441:20: error: expected declaration specifiers or ‘...’ before ‘Fts5Tokenizer’
+12441 |   int (*xTokenize)(Fts5Tokenizer*,
+      |                    ^~~~~~~~~~~~~
+/usr/include/sqlite3.h:12473:25: error: storage class specified for parameter ‘fts5_api’
+12473 | typedef struct fts5_api fts5_api;
+      |                         ^~~~~~~~
+/usr/include/sqlite3.h:12479:5: error: expected declaration specifiers or ‘...’ before ‘fts5_api’
+12479 |     fts5_api *pApi,
+      |     ^~~~~~~~
+/usr/include/sqlite3.h:12482:5: error: expected declaration specifiers or ‘...’ before ‘fts5_tokenizer’
+12482 |     fts5_tokenizer *pTokenizer,
+      |     ^~~~~~~~~~~~~~
+/usr/include/sqlite3.h:12488:5: error: expected declaration specifiers or ‘...’ before ‘fts5_api’
+12488 |     fts5_api *pApi,
+      |     ^~~~~~~~
+/usr/include/sqlite3.h:12491:5: error: expected declaration specifiers or ‘...’ before ‘fts5_tokenizer’
+12491 |     fts5_tokenizer *pTokenizer
+      |     ^~~~~~~~~~~~~~
+/usr/include/sqlite3.h:12496:5: error: expected declaration specifiers or ‘...’ before ‘fts5_api’
+12496 |     fts5_api *pApi,
+      |     ^~~~~~~~
+/usr/include/sqlite3.h:12499:5: error: unknown type name ‘fts5_extension_function’
+12499 |     fts5_extension_function xFunction,
+      |     ^~~~~~~~~~~~~~~~~~~~~~~
+In file included from pickseisai.c:22:
+include/seedlink_client.h:12:21: error: storage class specified for parameter ‘keepRunning’
+   12 | extern volatile int keepRunning;
+      |                     ^~~~~~~~~~~
+pickseisai.c:24:1: error: parameter ‘keepRunning’ is initialized
+   24 | volatile int keepRunning = 1;
+      | ^~~~~~~~
+pickseisai.c:24:14: error: redefinition of parameter ‘keepRunning’
+   24 | volatile int keepRunning = 1;
+      |              ^~~~~~~~~~~
+In file included from pickseisai.c:22:
+include/seedlink_client.h:12:21: note: previous definition of ‘keepRunning’ with type ‘int’
+   12 | extern volatile int keepRunning;
+      |                     ^~~~~~~~~~~
+pickseisai.c:27:29: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+   27 | void handle_signal(int sig) {
+      |                             ^
+pickseisai.c:42:34: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+   42 | int main(int argc, char* argv[]) {
+      |                                  ^
+In file included from pickseisai.c:15:
+include/core/station_manager.h:69:6: error: old-style parameter declarations in prototyped function definition
+   69 | void biquad_hpf_design(BiquadHPF *f, double fs, double fc)
+      |      ^~~~~~~~~~~~~~~~~
+pickseisai.c:137: error: expected ‘{’ at end of input
+make: *** [Makefile:16: pickseisai.o] Error 1

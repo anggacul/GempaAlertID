@@ -16,8 +16,9 @@ float extractMaxAmplitude(const DataWindow* window, int ch, double pickTime) {
     int endIdx = windowSamples;
     if (pickIdx < 0) pickIdx = 0;
     if (endIdx > windowSamples) endIdx = windowSamples;
+    // float maxAmp[3];
 
-    float maxAmp = 0.0f;
+    float maxAmp;
     for (int i = pickIdx; i < endIdx; ++i) {
         float amp = fabsf(window->data[ch][i]);
         if (amp > maxAmp) maxAmp = amp;
@@ -25,8 +26,8 @@ float extractMaxAmplitude(const DataWindow* window, int ch, double pickTime) {
     return maxAmp;
 }
 
-float extractMaxAmplitudeAt(const Station* station, const DataWindow* window, double time) {
-    float maxAmp = 0.0f;
+float extractMaxAmplitudeAt(const Station* station, const DataWindow* window, double time, float maxAmp[3]) {
+    maxAmp[0] = maxAmp[1] = maxAmp[2] = 0.0f;
     for (int ch = 0; ch < MAX_CHANNELS; ++ch) {
         int windowSamples = window->windowSamples[ch];
         double sampleRate = station->sampleRate;
@@ -36,10 +37,13 @@ float extractMaxAmplitudeAt(const Station* station, const DataWindow* window, do
         if (idx >= windowSamples) idx = windowSamples - 1;
         for (int i = idx; i < endIdx; ++i) {
             float amp = fabsf(window->data[ch][i]);
-            if (amp > maxAmp) maxAmp = amp;
+            float ampvel = fabsf(window->datavel[ch][i]);
+            float ampdisp = fabsf(window->datadisp[ch][i]);
+            if (amp > maxAmp[0]) maxAmp[0] = amp;
+            if (ampvel > maxAmp[1]) maxAmp[1] = ampvel;
+            if (ampdisp > maxAmp[2]) maxAmp[2] = ampdisp;
         }
     }
-    return maxAmp;
 }
 
 float calculateRmsAmplitude(const DataWindow* window) {

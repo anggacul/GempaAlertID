@@ -9,16 +9,23 @@
 struct Station;
 typedef struct Station Station;
 
+struct BiquadHPF;
+typedef struct BiquadHPF BiquadHPF;
+
 /**
  * @brief Buffer data rolling window WW detik
  */
 typedef struct {
     float data[SM_MAX_CHANNELS][SM_SAMPLES_PER_WINDOW];
+    float datavel[SM_MAX_CHANNELS][SM_SAMPLES_PER_WINDOW];
+    float datadisp[SM_MAX_CHANNELS][SM_SAMPLES_PER_WINDOW];
     double startTime[SM_MAX_CHANNELS];   // waktu sample pertama per channel
     double endTime[SM_MAX_CHANNELS];     // waktu sample terakhir per channel
     int windowSamples[SM_MAX_CHANNELS];  // jumlah sample per channel
     double minLastTime;                  // waktu paling akhir yang tersedia di semua channel (sinkronisasi)
     float lastMean[SM_MAX_CHANNELS];     // mean window per channel
+    float lastMeanvel[SM_MAX_CHANNELS];     // mean window per channel
+    float lastMeandisp[SM_MAX_CHANNELS];     // mean window per channel
     double timestamp;   // waktu update terakhir (epoch detik, bisa pecahan)
     int full[SM_MAX_CHANNELS];
 } DataWindow;
