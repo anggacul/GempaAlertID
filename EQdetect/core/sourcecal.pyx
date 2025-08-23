@@ -352,14 +352,12 @@ def pending_eq(eqdata, vorcel):
     return True, eqdata
 
 class Phase:
-    def __init__(self, pick):
+    def __init__(self, pick, vorcel):
         #pick = pick.split(" ")
         if len(pick) < 13:
             raise ValueError("Length of pick message is not appropiate")
         self.sta = pick[0]
         self.comp = pick[1]
-        self.longitude = float(pick[4])
-        self.latitude = float(pick[5])
         self.pa = float(pick[6])
         self.pv = float(pick[7])
         self.pd = float(pick[8])
@@ -369,6 +367,9 @@ class Phase:
         self.upd_sec = float(pick[13])
         self.reserr = 999
         self.status = 0
+        df = vorcel.list_station[vorcel.list_station["Kode"] == self.sta]
+        self.longitude = float(df["Long"].values[0])
+        self.latitude = float(df["Lat"].values[0])
 
     def set_first(self, voronoi):
         #if inspect.isclass(voronoi) is False:
