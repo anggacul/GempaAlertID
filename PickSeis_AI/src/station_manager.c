@@ -119,7 +119,7 @@ void write_to_shared_memory(Station* station, PickState* pickState, DataWindow* 
     double time_now = tv.tv_sec + tv.tv_usec / 1e6;
     sprintf(ptr->data, "%.2f %s %s %.5f %.5f %.5f %.3f %.3f 1 0 %.1f", time_now, station->stationId, station->channels[0], amp[0], amp[1], amp[2], pickState->pickTime, window->minLastTime, upd_sec);
 
-    LOG_INFO("%s", ptr->data);
+    // LOG_INFO("%s", ptr->data);
 
     // Menaikkan semafor untuk memberi sinyal ke proses lain
     if (sem_post(sem) == -1) {
@@ -160,7 +160,7 @@ void processStation(Station* station, PickState* pickState, double *lastProcesse
             // LOG_INFO("[PICK] station %s pada %.2f (RMS=%.3f, amp@Tt=%.3f, timestamp=%.3f, minLastTime=%.3f)", station->stationId, pickState->pickTime, pickState->pickRms, amp, window.timestamp, window.minLastTime);
             write_to_shared_memory(station, pickState, &window, amp, pickState->upd_sec);
             if (!pickState->pickSendSQL && !pickState->pickSendLOG) {
-                // LOG_INFO(ptr->data, "%s %s %.5f %.5f %.5f %.3f 1 0 %.1f", station->stationId, station->channels[0], amp[0], amp[1], amp[2], pickState->pickTime,upd_sec);
+                LOG_INFO("%s %s %.5f %.5f %.5f %.3f 1 0 %.1f", station->stationId, station->channels[0], amp[0], amp[1], amp[2], pickState->pickTime,upd_sec);
                 sqlite_insert_pick(station->stationId, pickState->pickTime, amp[0], pickState->lastConfidence);
                 pickState->pickSendSQL = 0;
                 pickState->pickSendLOG = 0;
