@@ -75,34 +75,6 @@ def reader_task():
             sem.close()
         print("Reader Task: Exiting.")
 
-def EwMsgEval(d):
-    tl = bytearray(d)[0:1]
-    t = ''.join([chr(i) for i in bytearray(d)[1:tl[0]+1]])
-    data = 0
-    if t == 'TYPE_EEW':
-        data = ''.join([chr(i) for i in bytearray(d)[1+tl[0]:]])
-    return data
-
-def on_message(ws, message):
-    
-    pick = EwMsgEval(message)
-    if pick != 0:
-        pick = pick.split()
-        if float(pick[13]) < 4:
-            received_data.append(pick)
-
-def on_error(ws, error):
-    print("Error:", error)
-    ws.close()
-
-
-def on_close(ws, close_status_code, close_msg):
-    print("Closed:", close_status_code, close_msg)
-    ws.close()
-
-def on_open(ws):
-    print("WebSocket opened")
-
 def check_eq(eq1, eq2):
     src1 = eq1.optsrc
     src2 = eq2.optsrc
@@ -120,20 +92,9 @@ def main():
     # global variable of receiving data from webscoket
     global received_data
     received_data = deque(maxlen=100)
-    # WebSocket URL
-    ws_url = "ws://localhost:8080/"
 
-    # Create a WebSocket instance
-    ws = websocket.WebSocketApp(ws_url,
-                                on_message=on_message,
-                                on_error=on_error,
-                                on_close=on_close)
-
-    def run_websocket():
-        ws.run_forever()
-
-    websocket_thread = threading.Thread(target=run_websocket)
-    websocket_thread.start()
+    getpick_thread = threading.Thread(target=reader_task)
+    getpick_thread.start()
 
     last_pick = []
     cfg = Config()
