@@ -352,24 +352,39 @@ def pending_eq(eqdata, vorcel):
     return True, eqdata
 
 class Phase:
-    def __init__(self, pick, vorcel):
+    def __init__(self, pick):
         #pick = pick.split(" ")
         if len(pick) < 13:
             raise ValueError("Length of pick message is not appropiate")
+        #self.sta = pick[0]
+        #self.comp = pick[1]
+        #self.pa = float(pick[6])
+        #self.pv = float(pick[7])
+        #self.pd = float(pick[8])
+        #self.picktime = float(pick[10])
+        #self.weight = float(pick[11])
+        #self.telflag = float(pick[12])
+        #self.upd_sec = float(pick[13])
+
         self.sta = pick[0]
         self.comp = pick[1]
-        self.pa = float(pick[6])
-        self.pv = float(pick[7])
-        self.pd = float(pick[8])
-        self.picktime = float(pick[10])
-        self.weight = float(pick[11])
-        self.telflag = float(pick[12])
-        self.upd_sec = float(pick[13])
+        self.pa = float(pick[2])
+        self.pv = float(pick[3])
+        self.pd = float(pick[4])
+        self.picktime = float(pick[5])
+        self.weight = float(pick[6])
+        self.telflag = float(pick[7])
+        self.upd_sec = float(pick[8])
+
         self.reserr = 999
         self.status = 0
+    def check_pick(self, vorcel):
         df = vorcel.list_station[vorcel.list_station["Kode"] == self.sta]
+        if df.empty():
+            return False
         self.longitude = float(df["Long"].values[0])
         self.latitude = float(df["Lat"].values[0])
+        return True
 
     def set_first(self, voronoi):
         #if inspect.isclass(voronoi) is False:

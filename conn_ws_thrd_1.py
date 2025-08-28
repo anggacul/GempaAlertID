@@ -242,7 +242,6 @@ def main():
                                                 f"Mag(Mpd) : {round(eqon.optsrc[3],2)}\n"
                                                 f"Hasil merupakan update ke {eqon.update}"
                                         )
-                                        asyncio.run(send_msg(pesan))
                                         last_report_time = time.time()  
                                 trp = datetime.utcnow().strftime("%Y%m%d%H%M%S")
                                 outf = f"./eew_report/{eqon.noeq}_{trp}_{eqon.update}.pkl"
@@ -265,7 +264,9 @@ def main():
             if pick in last_pick or float(pick[13]) > 4:
                 continue
             # print(pick)
-            picking.append(Phase(pick))
+            new_pick = Phase(pick)
+            if new_pick.check_pick(vorcel):
+                picking.append(new_pick)
         last_pick = data_pick
 
         #Picking Processing
