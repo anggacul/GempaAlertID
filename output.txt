@@ -210364,3 +210364,1497 @@ Mag : 3.85
 First Trigger : CIJM ['IBJN', 'LBJN', 'JCJI', 'TOJI']
 First Trigger prior : 0.041466474533081055 0.0020788188462570467
 
+Pending Earthquake No 47431 with paramater 2025-09-11 02:14:14.617459
+Longitude : 100.088+-0.288
+Latitude : -0.102+-0.288
+Depth : 10.0
+OT : 1757556845.83
+Mag : 1.68
+First Trigger : SMSM ['BPSR', 'BKASI', 'PAGA', 'PABI']
+First Trigger prior : 0.04420161247253418 0.001135305939413911
+
+Pending Earthquake No 47439 with paramater 2025-09-11 02:14:30.774884
+Longitude : 120.507+-0.288
+Latitude : -8.907+-0.288
+Depth : 10.0
+OT : 1757556860.16
+Mag : 2.97
+First Trigger : LMTI ['RMNN', 'KMBFM', 'LEMFI', 'BNTI']
+First Trigger prior : 0.04229879379272461 0.0011482545924277332
+
+Pending Earthquake No 47441 with paramater 2025-09-11 02:14:41.740369
+Longitude : 107.195+-0.288
+Latitude : -6.971+-0.288
+Depth : 10.0
+OT : 1757556872.93
+Mag : 1.93
+First Trigger : SCJM ['LCJR', 'KCJR', 'CBJM', 'CCJR']
+First Trigger prior : 0.07090997695922852 0.0016526756628563177
+
+Pending Earthquake No 47442 with paramater 2025-09-11 02:14:42.597849
+Longitude : 108.727+-1.243
+Latitude : 3.243+-1.649
+Depth : 10.0
+OT : 1757556830.28
+Mag : 4.57
+First Trigger : SKKN ['SSKI', 'PBKN', 'SAMKI', 'MAKKI']
+First Trigger prior : 0.042006731033325195 0.003721235056985961
+
+Pending Earthquake No 47443 with paramater 2025-09-11 02:14:44.846039
+Longitude : 129.545+-0.924
+Latitude : -5.495+-0.907
+Depth : 10.0
+OT : 1757556857.75
+Mag : 3.76
+First Trigger : BDMI ['SSMI', 'TMTMM', 'MSAI', 'BSMI']
+First Trigger prior : 0.04659676551818848 0.0041231817920426295
+
+Pending Earthquake No 47447 with paramater 2025-09-11 02:14:54.388947
+Longitude : 119.988+-0.288
+Latitude : -2.516+-0.288
+Depth : 10.0
+OT : 1757556882.45
+Mag : 2.41
+First Trigger : MSCM ['MSBA', 'WUPCM', 'OSSN', 'TLCM']
+First Trigger prior : 0.04225468635559082 0.0014260359426190305
+
+Pending Earthquake No 47448 with paramater 2025-09-11 02:15:01.478507
+Longitude : 116.039+-0.309
+Latitude : -10.683+-0.988
+Depth : 10.0
+OT : 1757556867.73
+Mag : 4.46
+First Trigger : CNLN ['PBLI', 'ZALN', 'LTNI', 'TNLN']
+First Trigger prior : 0.05019974708557129 0.004213872588724854
+
+Pending Earthquake No 47450 with paramater 2025-09-11 02:15:11.853532
+Longitude : 134.471+-0.5
+Latitude : -3.175+-0.662
+Depth : 10.0
+OT : 1757556900.86
+Mag : 2.21
+First Trigger : IWPI ['WANPI', 'BATPI', 'UWNPI', 'RKPI']
+First Trigger prior : 0.043348073959350586 0.0025944160007931316
+
+Pending Earthquake No 47451 with paramater 2025-09-11 02:15:12.169403
+Longitude : 128.485+-0.424
+Latitude : 1.169+-0.288
+Depth : 10.0
+OT : 1757556900.06
+Mag : 2.82
+First Trigger : WHMI ['WSHHI', 'MSHHI', 'JHMI', 'IHMI']
+First Trigger prior : 0.044559478759765625 0.004328634363284678
+
+Pending Earthquake No 47452 with paramater 2025-09-11 02:15:17.302113
+Longitude : 101.243+-0.288
+Latitude : -2.946+-0.293
+Depth : 10.0
+OT : 1757556904.47
+Mag : 2.82
+First Trigger : TMSM ['MKBI', 'JMSI', 'STSI', 'LMJSI']
+First Trigger prior : 0.04586338996887207 0.0013150529017078583
+
+Pending Earthquake No 47453 with paramater 2025-09-11 02:15:20.963289
+Longitude : 96.982+-0.288
+Latitude : 4.536+-0.288
+Depth : 10.0
+OT : 1757556902.89
+Mag : 2.24
+First Trigger : TKSN ['SISM', 'BESI', 'LISM', 'BMASI']
+First Trigger prior : 0.042487144470214844 0.0035550195067366452
+
+Pending Earthquake No 47454 with paramater 2025-09-11 02:15:25.769239
+Longitude : 110.447+-0.288
+Latitude : -7.761+-0.288
+Depth : 10.0
+OT : 1757556717.81
+Mag : 2.01
+First Trigger : MKJM ['JUII', 'SYJI', 'KCJN', 'UGMN']
+First Trigger prior : 0.04469871520996094 0.003723870622056591
+
+Pending Earthquake No 47455 with paramater 2025-09-11 02:15:29.309778
+Longitude : 111.313+-0.288
+Latitude : -7.964+-0.288
+Depth : 10.0
+OT : 1757556916.61
+Mag : 1.09
+First Trigger : BAPJI ['POJN', 'TTJN', 'PCJI', 'DTJN']
+First Trigger prior : 0.04282665252685547 0.0035580111308237683
+
+Pending Earthquake No 47461 with paramater 2025-09-11 02:15:48.915782
+Longitude : 100.196+-0.288
+Latitude : -0.706+-0.288
+Depth : 10.0
+OT : 1757556936.81
+Mag : 2.89
+First Trigger : PAPA ['PPI', 'PAGA', 'LBTSI', 'BKASI']
+First Trigger prior : 0.04864025115966797 0.0028826853490331317
+
+Pending Earthquake No 47462 with paramater 2025-09-11 02:15:51.913859
+Longitude : 109.212+-0.288
+Latitude : -7.119+-0.288
+Depth : 10.0
+OT : 1757556942.21
+Mag : 1.94
+First Trigger : CTJI ['TJTI', 'BTJI', 'PCJN', 'KSPJI']
+First Trigger prior : 0.03900265693664551 0.0018260438642512256
+
+Pending Earthquake No 47463 with paramater 2025-09-11 02:15:52.024087
+Longitude : 118.443+-0.288
+Latitude : -8.2+-0.288
+Depth : 10.0
+OT : 1757556937.61
+Mag : 2.95
+First Trigger : DBNFM ['BMNI', 'WBNI', 'PBNI', 'TSNI']
+First Trigger prior : 0.039095163345336914 0.0012881955042125526
+
+Pending Earthquake No 47470 with paramater 2025-09-11 02:16:09.069179
+Longitude : 111.494+-0.288
+Latitude : -7.823+-0.288
+Depth : 10.0
+OT : 1757556964.22
+Mag : 2.18
+First Trigger : POJN ['BAPJI', 'DTJN', 'TTJN', 'SNJI']
+First Trigger prior : 0.03874373435974121 0.0016141737963648595
+
+Pending Earthquake No 47472 with paramater 2025-09-11 02:16:15.803022
+Longitude : 121.888+-0.288
+Latitude : -5.549+-0.533
+Depth : 10.0
+OT : 1757556957.41
+Mag : 2.69
+First Trigger : BTSN ['POBSI', 'PKCI', 'MTSN', 'LOMSI']
+First Trigger prior : 0.05144476890563965 0.003773759163758328
+
+Pending Earthquake No 47473 with paramater 2025-09-11 02:16:18.440593
+Longitude : 118.254+-0.47
+Latitude : -3.169+-0.288
+Depth : 10.0
+OT : 1757556960.98
+Mag : 3.29
+First Trigger : ULMSI ['MMSI', 'MMSN', 'PMSI', 'TAPSI']
+First Trigger prior : 0.04973912239074707 0.0025755261604309965
+
+Pending Earthquake No 47474 with paramater 2025-09-11 02:16:19.882233
+Longitude : 128.59+-0.515
+Latitude : -2.483+-0.429
+Depth : 10.0
+OT : 1757556962.68
+Mag : 3.0
+First Trigger : TTSMI ['MSAI', 'KRAI', 'TMTMM', 'AAII']
+First Trigger prior : 0.07323956489562988 0.0014691518661944514
+
+Pending Earthquake No 47475 with paramater 2025-09-11 02:16:22.069447
+Longitude : 101.243+-0.288
+Latitude : -2.946+-0.293
+Depth : 10.0
+OT : 1757556968.17
+Mag : 2.61
+First Trigger : TMSM ['MKBI', 'JMSI', 'STSI', 'LMJSI']
+First Trigger prior : 0.10659623146057129 0.0023149804224598114
+
+Pending Earthquake No 47476 with paramater 2025-09-11 02:16:24.018227
+Longitude : 107.195+-0.288
+Latitude : -6.971+-0.288
+Depth : 10.0
+OT : 1757556975.61
+Mag : 1.99
+First Trigger : SCJM ['LCJR', 'KCJR', 'CBJM', 'CCJR']
+First Trigger prior : 0.1119985580444336 0.0016524372442772162
+
+Pending Earthquake No 47477 with paramater 2025-09-11 02:16:24.776323
+Longitude : 107.632+-1.066
+Latitude : 0.692+-0.622
+Depth : 10.0
+OT : 1757556953.74
+Mag : 2.87
+First Trigger : SSKI ['SKKN', 'PBKN', 'SAMKI', 'MAKKI']
+First Trigger prior : 0.0948190689086914 0.004147393766629648
+
+Pending Earthquake No 47478 with paramater 2025-09-11 02:16:27.348533
+Longitude : 117.597+-0.288
+Latitude : -9.746+-0.579
+Depth : 10.0
+OT : 1757556959.72
+Mag : 3.89
+First Trigger : RSNI ['PLAI', 'LSNI', 'ESNI', 'SUBE']
+First Trigger prior : 0.09056830406188965 0.0017654360000207703
+
+Pending Earthquake No 47479 with paramater 2025-09-11 02:16:27.726896
+Longitude : 105.351+-0.665
+Latitude : -9.483+-1.182
+Depth : 10.0
+OT : 1757556944.21
+Mag : 4.17
+First Trigger : RSJR ['CSJI', 'ESJR', 'JSJR', 'TSJR']
+First Trigger prior : 0.09141802787780762 0.0012195449490235433
+
+Pending Earthquake No 47480 with paramater 2025-09-11 02:16:31.092425
+Longitude : 102.6+-0.288
+Latitude : -3.875+-0.288
+Depth : 10.0
+OT : 1757556982.82
+Mag : 2.28
+First Trigger : ULSM ['KSI', 'BEKI', 'UMKSI', 'UTSM']
+First Trigger prior : 0.09467554092407227 0.0018900995751014449
+
+Pending Earthquake No 47481 with paramater 2025-09-11 02:16:35.156347
+Longitude : 137.73+-1.303
+Latitude : -6.871+-0.863
+Depth : 10.0
+OT : 1757556960.64
+Mag : 5.22
+First Trigger : OBMPI ['EDMPI', 'MIBPI', 'ELMPI', 'MMPI']
+First Trigger prior : 0.0946352481842041 0.0023319838344164623
+
+Pending Earthquake No 47482 with paramater 2025-09-11 02:16:44.176914
+Longitude : 109.212+-0.288
+Latitude : -7.119+-0.288
+Depth : 10.0
+OT : 1757556995.66
+Mag : 1.38
+First Trigger : CTJI ['TJTI', 'BTJI', 'PCJN', 'KSPJI']
+First Trigger prior : 0.1423506736755371 0.0018260438642512256
+
+Pending Earthquake No 47483 with paramater 2025-09-11 02:16:45.929749
+Longitude : 124.077+-1.031
+Latitude : -5.468+-0.86
+Depth : 10.0
+OT : 1757556991.71
+Mag : 2.62
+First Trigger : WWCI ['KUBSI', 'LOMSI', 'MTSN', 'PKCI']
+First Trigger prior : 0.1182401180267334 0.0026826817115477297
+
+Pending Earthquake No 47484 with paramater 2025-09-11 02:16:49.192812
+Longitude : 116.039+-0.309
+Latitude : -10.683+-0.988
+Depth : 10.0
+OT : 1757556975.55
+Mag : 4.87
+First Trigger : CNLN ['PBLI', 'ZALN', 'LTNI', 'TNLN']
+First Trigger prior : 0.05852508544921875 0.004213872588724854
+
+Pending Earthquake No 47485 with paramater 2025-09-11 02:16:53.657589
+Longitude : 106.581+-0.288
+Latitude : -7.367+-0.288
+Depth : 10.0
+OT : 1757557003.48
+Mag : 1.86
+First Trigger : CSJI ['RSJR', 'ESJR', 'JSJR', 'TSJR']
+First Trigger prior : 0.0691368579864502 0.0021225137462654864
+
+Pending Earthquake No 47486 with paramater 2025-09-11 02:16:56.852473
+Longitude : 101.243+-0.288
+Latitude : -2.946+-0.293
+Depth : 10.0
+OT : 1757557003.45
+Mag : 2.86
+First Trigger : TMSM ['MKBI', 'JMSI', 'STSI', 'LMJSI']
+First Trigger prior : 0.13749122619628906 0.0013150529017078583
+
+Pending Earthquake No 47488 with paramater 2025-09-11 02:16:58.504575
+Longitude : 116.253+-0.945
+Latitude : 2.288+-0.418
+Depth : 10.0
+OT : 1757556991.1
+Mag : 3.16
+First Trigger : TBKI ['KAKKI', 'KKTKI', 'BUKI', 'MABKI']
+First Trigger prior : 0.11239957809448242 0.0014495818054029996
+
+Pending Earthquake No 47492 with paramater 2025-09-11 02:17:11.575857
+Longitude : 100.833+-0.288
+Latitude : -0.843+-0.288
+Depth : 10.0
+OT : 1757557015.24
+Mag : 2.44
+First Trigger : PASSI ['SLSM', 'HSSR', 'BPSM', 'LBTSI']
+First Trigger prior : 0.10963559150695801 0.004382623264121754
+
+Pending Earthquake No 47494 with paramater 2025-09-11 02:17:16.055918
+Longitude : 117.823+-0.929
+Latitude : -5.253+-0.291
+Depth : 10.0
+OT : 1757557000.32
+Mag : 4.02
+First Trigger : SUBA ['SUUN', 'MKS', 'SUHA', 'KMRS']
+First Trigger prior : 0.09983420372009277 0.0011944675030441942
+
+Pending Earthquake No 47495 with paramater 2025-09-11 02:17:16.238350
+Longitude : 103.027+-0.487
+Latitude : -2.092+-0.405
+Depth : 10.0
+OT : 1757557015.71
+Mag : 2.93
+First Trigger : SLSI ['RMSM', 'BMSI', 'LMJSI', 'JMSI']
+First Trigger prior : 0.10560917854309082 0.0038857890333972023
+
+Pending Earthquake No 47496 with paramater 2025-09-11 02:17:17.867643
+Longitude : 118.443+-0.288
+Latitude : -8.2+-0.288
+Depth : 10.0
+OT : 1757557022.94
+Mag : 3.41
+First Trigger : DBNFM ['BMNI', 'WBNI', 'PBNI', 'TSNI']
+First Trigger prior : 0.08809900283813477 0.0012884339227916541
+
+Pending Earthquake No 47497 with paramater 2025-09-11 02:17:20.967702
+Longitude : 110.765+-0.68
+Latitude : -2.379+-0.853
+Depth : 10.0
+OT : 1757557018.02
+Mag : 3.03
+First Trigger : NKKI ['SAMKI', 'MAKKI', 'STKI', 'PBKN']
+First Trigger prior : 0.1780993938446045 0.00479583671831918
+
+Pending Earthquake No 47498 with paramater 2025-09-11 02:17:23.988585
+Longitude : 129.618+-0.288
+Latitude : -3.236+-0.502
+Depth : 10.0
+OT : 1757557026.71
+Mag : 1.45
+First Trigger : TMTMM ['MSAI', 'TTSMI', 'BSMI', 'KRAI']
+First Trigger prior : 0.12619686126708984 0.0010787116269841412
+
+Pending Earthquake No 47499 with paramater 2025-09-11 02:17:25.495834
+Longitude : 126.943+-1.03
+Latitude : -8.378+-1.553
+Depth : 10.0
+OT : 1757557014.25
+Mag : 2.36
+First Trigger : PWTMI ['ALTI', 'AAFM', 'ALKI', 'ANAN']
+First Trigger prior : 0.12115144729614258 0.0036738786910586185
+
+Pending Earthquake No 47503 with paramater 2025-09-11 02:17:37.918375
+Longitude : 106.237+-0.783
+Latitude : -4.561+-0.439
+Depth : 10.0
+OT : 1757557033.98
+Mag : 3.69
+First Trigger : MLSN ['ILSN', 'BLSI', 'LATA', 'KLI']
+First Trigger prior : 0.10460877418518066 0.0030235296932481504
+
+Pending Earthquake No 47506 with paramater 2025-09-11 02:17:49.408651
+Longitude : 103.988+-0.288
+Latitude : -4.808+-0.288
+Depth : 10.0
+OT : 1757557060.23
+Mag : 1.35
+First Trigger : BOSM ['LWLI', 'SUSM', 'LESM', 'KPSR']
+First Trigger prior : 0.040892839431762695 0.0034911454815338416
+
+Pending Earthquake No 47507 with paramater 2025-09-11 02:17:49.949229
+Longitude : 110.548+-0.288
+Latitude : -7.347+-0.288
+Depth : 10.0
+OT : 1757557064.26
+Mag : 1.62
+First Trigger : SCJN ['TNSJI', 'JWJM', 'SMRI', 'MBJN']
+First Trigger prior : 0.04033207893371582 0.004430026968221146
+
+Pending Earthquake No 47508 with paramater 2025-09-11 02:17:51.632088
+Longitude : 109.212+-0.288
+Latitude : -7.119+-0.288
+Depth : 10.0
+OT : 1757557055.96
+Mag : 1.89
+First Trigger : CTJI ['TJTI', 'BTJI', 'PCJN', 'KSPJI']
+First Trigger prior : 0.04144906997680664 0.0031738321580876416
+
+Pending Earthquake No 47511 with paramater 2025-09-11 02:17:56.322970
+Longitude : 103.914+-0.615
+Latitude : -7.047+-0.748
+Depth : 10.0
+OT : 1757557045.07
+Mag : 4.86
+First Trigger : PSSM ['KTSR', 'KASI', 'PPLI', 'UTSI']
+First Trigger prior : 0.04268479347229004 0.0030414671858451925
+
+Pending Earthquake No 47516 with paramater 2025-09-11 02:18:09.828487
+Longitude : 95.69+-0.288
+Latitude : 3.948+-0.298
+Depth : 10.0
+OT : 1757557071.12
+Mag : 3.93
+First Trigger : BASN ['BESM', 'MLSI', 'GESM', 'GPSM']
+First Trigger prior : 0.04887723922729492 0.004598163370083341
+
+Pending Earthquake No 47517 with paramater 2025-09-11 02:18:14.995705
+Longitude : 107.774+-0.288
+Latitude : -6.802+-0.288
+Depth : 10.0
+OT : 1757557083.17
+Mag : 1.76
+First Trigger : TSJM ['KJJR', 'CSJM', 'GBJO', 'SPSJM']
+First Trigger prior : 0.050034523010253906 0.0034656580530940673
+
+Pending Earthquake No 47518 with paramater 2025-09-11 02:18:20.909382
+Longitude : 101.86+-0.288
+Latitude : -3.23+-0.288
+Depth : 10.0
+OT : 1757557094.56
+Mag : 1.73
+First Trigger : NBSR ['MBSM', 'KBSR', 'MASI', 'ABSM']
+First Trigger prior : 0.042993783950805664 0.004872878762621102
+
+Pending Earthquake No 47519 with paramater 2025-09-11 02:18:21.013586
+Longitude : 124.383+-0.288
+Latitude : -11.0+-0.68
+Depth : 10.0
+OT : 1757557074.79
+Mag : 3.59
+First Trigger : ASTTI ['KTTI', 'TNTN', 'KULA', 'KUEL']
+First Trigger prior : 0.04184842109680176 0.003520854485543623
+
+Pending Earthquake No 47521 with paramater 2025-09-11 02:18:24.844148
+Longitude : 115.109+-0.288
+Latitude : -8.692+-0.288
+Depth : 10.0
+OT : 1757557089.22
+Mag : 4.8
+First Trigger : BDBI ['TTBR', 'DEBI', 'BBBR', 'DEMO']
+First Trigger prior : 0.049904823303222656 0.0033733928498023147
+
+Pending Earthquake No 47523 with paramater 2025-09-11 02:18:33.978783
+Longitude : 112.744+-0.288
+Latitude : -8.068+-0.288
+Depth : 10.0
+OT : 1757557100.21
+Mag : 1.79
+First Trigger : POKJI ['MAKO', 'LUJI', 'PRLJI', 'MLJI']
+First Trigger prior : 0.04166460037231445 0.0017923580179850518
+
+Pending Earthquake No 47527 with paramater 2025-09-11 02:18:44.436163
+Longitude : 109.212+-0.288
+Latitude : -7.119+-0.288
+Depth : 10.0
+OT : 1757557110.56
+Mag : 1.61
+First Trigger : CTJI ['TJTI', 'BTJI', 'PCJN', 'KSPJI']
+First Trigger prior : 0.04123187065124512 0.0038261373243342334
+
+Pending Earthquake No 47528 with paramater 2025-09-11 02:18:45.513755
+Longitude : 108.542+-0.288
+Latitude : -7.341+-0.288
+Depth : 10.0
+OT : 1757557114.46
+Mag : 1.4
+First Trigger : BKJI ['CMJN', 'LPJR', 'SICJI', 'CIJI']
+First Trigger prior : 0.054329872131347656 0.002688015933049126
+
+Pending Earthquake No 47531 with paramater 2025-09-11 02:18:59.349266
+Longitude : 124.077+-1.031
+Latitude : -5.468+-0.86
+Depth : 10.0
+OT : 1757557119.6
+Mag : 2.93
+First Trigger : WWCI ['KUBSI', 'LOMSI', 'MTSN', 'PKCI']
+First Trigger prior : 0.04497718811035156 0.0016827541907957766
+
+Pending Earthquake No 47532 with paramater 2025-09-11 02:19:02.327990
+Longitude : 120.087+-0.288
+Latitude : -5.283+-0.288
+Depth : 10.0
+OT : 1757557135.89
+Mag : 0.9
+First Trigger : BKSI ['BBCM', 'KJCM', 'BBBCM', 'TBCM']
+First Trigger prior : 0.041124582290649414 0.0037974619109384378
+
+Pending Earthquake No 47533 with paramater 2025-09-11 02:19:03.193639
+Longitude : 121.888+-0.288
+Latitude : -5.549+-0.533
+Depth : 10.0
+OT : 1757557115.24
+Mag : 3.41
+First Trigger : BTSN ['POBSI', 'PKCI', 'MTSN', 'LOMSI']
+First Trigger prior : 0.060890913009643555 0.004226376257994602
+
+Pending Earthquake No 47534 with paramater 2025-09-11 02:19:04.485084
+Longitude : 112.423+-0.417
+Latitude : -10.286+-1.121
+Depth : 10.0
+OT : 1757557097.35
+Mag : 4.08
+First Trigger : GEJI ['MLJI', 'NBJR', 'POKJI', 'PRLJI']
+First Trigger prior : 0.05174827575683594 0.0016339099333464446
+
+Pending Earthquake No 47535 with paramater 2025-09-11 02:19:06.188794
+Longitude : 133.658+-0.296
+Latitude : -1.527+-0.288
+Depth : 10.0
+OT : 1757557130.17
+Mag : 2.4
+First Trigger : ANAPI ['RKPI', 'MAPI', 'SWPM', 'BATPI']
+First Trigger prior : 0.05868721008300781 0.0028237559747195107
+
+Pending Earthquake No 47536 with paramater 2025-09-11 02:19:08.223490
+Longitude : 99.195+-0.35
+Latitude : 0.913+-0.288
+Depth : 10.0
+OT : 1757557134.75
+Mag : 2.18
+First Trigger : TTSM ['SBSI', 'MNSI', 'SUSN', 'PLSM']
+First Trigger prior : 0.05746793746948242 0.0018920291574842096
+
+Pending Earthquake No 47537 with paramater 2025-09-11 02:19:13.521522
+Longitude : 109.212+-0.288
+Latitude : -7.119+-0.288
+Depth : 10.0
+OT : 1757557139.21
+Mag : 2.25
+First Trigger : CTJI ['TJTI', 'BTJI', 'PCJN', 'KSPJI']
+First Trigger prior : 0.09712767601013184 0.0018260438642512256
+
+Pending Earthquake No 47539 with paramater 2025-09-11 02:19:18.690632
+Longitude : 119.496+-0.288
+Latitude : -3.425+-0.288
+Depth : 10.0
+OT : 1757557152.16
+Mag : 1.17
+First Trigger : LPCM ['PBSN', 'PPCM', 'TAPSI', 'TTSI']
+First Trigger prior : 0.1105794906616211 0.0025540721485546314
+
+Pending Earthquake No 47542 with paramater 2025-09-11 02:19:30.745347
+Longitude : 115.314+-0.664
+Latitude : 0.587+-0.818
+Depth : 10.0
+OT : 1757557145.7
+Mag : 3.57
+First Trigger : KUKI ['KABKI', 'MTKI', 'SMKI', 'BKB']
+First Trigger prior : 0.08817076683044434 0.0011367148166012697
+
+Pending Earthquake No 47545 with paramater 2025-09-11 02:19:42.914521
+Longitude : 121.537+-0.288
+Latitude : -3.105+-0.288
+Depth : 10.0
+OT : 1757557168.5
+Mag : 1.68
+First Trigger : RKCM ['TOCM', 'BTCM', 'LSSN', 'MTCM']
+First Trigger prior : 0.13511395454406738 0.0030693084031256923
+
+Pending Earthquake No 47546 with paramater 2025-09-11 02:19:45.623614
+Longitude : 96.79+-0.288
+Latitude : 3.487+-0.288
+Depth : 10.0
+OT : 1757557167.4
+Mag : 2.39
+First Trigger : BLSN ['JAASI', 'BGASI', 'BESM', 'MLSI']
+First Trigger prior : 0.18230032920837402 0.004793716123935532
+
+Pending Earthquake No 47547 with paramater 2025-09-11 02:19:53.794275
+Longitude : 110.355+-0.288
+Latitude : -7.862+-0.288
+Depth : 10.0
+OT : 1757557186.52
+Mag : 2.29
+First Trigger : KYJR ['UGMN', 'YOGI', 'SYJI', 'BYJR']
+First Trigger prior : 0.16411852836608887 0.0020434692221797945
+
+Pending Earthquake No 47550 with paramater 2025-09-11 02:20:04.396636
+Longitude : 120.179+-0.288
+Latitude : -3.152+-0.288
+Depth : 10.0
+OT : 1757557197.7
+Mag : 1.34
+First Trigger : OSSN ['WUPCM', 'TTSI', 'MSBA', 'MSCM']
+First Trigger prior : 0.19129061698913574 0.003700331035622284
+
+Pending Earthquake No 47551 with paramater 2025-09-11 02:20:08.666942
+Longitude : 117.597+-0.288
+Latitude : -9.746+-0.579
+Depth : 10.0
+OT : 1757557180.61
+Mag : 3.59
+First Trigger : RSNI ['PLAI', 'LSNI', 'ESNI', 'SUBE']
+First Trigger prior : 0.16689133644104004 0.0017656744185998718
+
+Pending Earthquake No 47552 with paramater 2025-09-11 02:20:16.507970
+Longitude : 121.888+-0.288
+Latitude : -5.549+-0.533
+Depth : 10.0
+OT : 1757557198.87
+Mag : 2.69
+First Trigger : BTSN ['POBSI', 'PKCI', 'MTSN', 'LOMSI']
+First Trigger prior : 0.11642026901245117 0.002773593224427273
+
+Pending Earthquake No 47557 with paramater 2025-09-11 02:20:28.070909
+Longitude : 99.925+-0.605
+Latitude : 3.257+-0.359
+Depth : 10.0
+OT : 1757557207.8
+Mag : 4.14
+First Trigger : PUSN ['RSMSI', 'RSSM', 'PMTSI', 'KUSN']
+First Trigger prior : 0.12153029441833496 0.004608821944017905
+
+Pending Earthquake No 47558 with paramater 2025-09-11 02:20:29.626306
+Longitude : 103.22+-0.288
+Latitude : -4.893+-0.288
+Depth : 10.0
+OT : 1757557216.0
+Mag : 3.4
+First Trigger : MKSM ['MKSR', 'MTSM', 'LHSM', 'MNAI']
+First Trigger prior : 0.09046339988708496 0.0027151604590471834
+
+Pending Earthquake No 47560 with paramater 2025-09-11 02:20:32.722188
+Longitude : 116.005+-0.753
+Latitude : 1.472+-0.739
+Depth : 10.0
+OT : 1757557209.42
+Mag : 3.15
+First Trigger : KKTKI ['KAKKI', 'SGKI', 'TBKI', 'BUKI']
+First Trigger prior : 0.10292935371398926 0.004361143306876869
+
+Pending Earthquake No 47561 with paramater 2025-09-11 02:20:35.919957
+Longitude : 131.968+-0.315
+Latitude : -0.632+-0.513
+Depth : 10.0
+OT : 1757557219.92
+Mag : 4.36
+First Trigger : FKSPI ['TSPI', 'AMPM', 'SWI', 'RAPI']
+First Trigger prior : 0.10450100898742676 0.004919425336293415
+
+Pending Earthquake No 47562 with paramater 2025-09-11 02:20:36.991480
+Longitude : 101.243+-0.288
+Latitude : -2.946+-0.293
+Depth : 10.0
+OT : 1757557223.65
+Mag : 3.22
+First Trigger : TMSM ['MKBI', 'JMSI', 'STSI', 'LMJSI']
+First Trigger prior : 0.07578229904174805 0.002315218841038913
+
+Pending Earthquake No 47563 with paramater 2025-09-11 02:20:37.435312
+Longitude : 100.088+-0.288
+Latitude : -0.102+-0.288
+Depth : 10.0
+OT : 1757557229.31
+Mag : 2.02
+First Trigger : SMSM ['BPSR', 'BKASI', 'PAGA', 'PABI']
+First Trigger prior : 0.05334758758544922 0.003135160980917817
+
+Pending Earthquake No 47564 with paramater 2025-09-11 02:20:41.882294
+Longitude : 102.693+-0.288
+Latitude : -3.145+-0.288
+Depth : 10.0
+OT : 1757557235.69
+Mag : 1.99
+First Trigger : BLSM ['LLSI', 'RLBSI', 'RMSM', 'UMKSI']
+First Trigger prior : 0.04168510437011719 0.004265639039461533
+
+Pending Earthquake No 47565 with paramater 2025-09-11 02:20:46.886745
+Longitude : 96.759+-0.288
+Latitude : 4.834+-0.288
+Depth : 10.0
+OT : 1757557234.47
+Mag : 1.66
+First Trigger : BMASI ['BESI', 'PSASI', 'SISM', 'TKSN']
+First Trigger prior : 0.04317426681518555 0.002600262143225951
+
+Pending Earthquake No 47566 with paramater 2025-09-11 02:20:49.582872
+Longitude : 98.316+-0.288
+Latitude : 3.69+-0.288
+Depth : 10.0
+OT : 1757557242.64
+Mag : 2.8
+First Trigger : BUSN ['TSI', 'MEBW', 'MESA', 'MEBA']
+First Trigger prior : 0.05957603454589844 0.003019400299366204
+
+Pending Earthquake No 47567 with paramater 2025-09-11 02:20:50.548743
+Longitude : 100.245+-0.288
+Latitude : -0.266+-0.288
+Depth : 10.0
+OT : 1757557240.39
+Mag : 1.7
+First Trigger : BKASI ['PAGA', 'BPSR', 'SMSM', 'PPI']
+First Trigger prior : 0.04195976257324219 0.004591254166593117
+
+Pending Earthquake No 47568 with paramater 2025-09-11 02:20:55.916178
+Longitude : 116.039+-0.309
+Latitude : -10.683+-0.988
+Depth : 10.0
+OT : 1757557222.23
+Mag : 4.53
+First Trigger : CNLN ['PBLI', 'ZALN', 'LTNI', 'TNLN']
+First Trigger prior : 0.04960918426513672 0.004213872588724854
+
+Pending Earthquake No 47569 with paramater 2025-09-11 02:20:57.964783
+Longitude : 121.451+-0.288
+Latitude : -0.932+-0.308
+Depth : 10.0
+OT : 1757557244.06
+Mag : 2.5
+First Trigger : APSI ['TOTSI', 'UTUSI', 'BUBSI', 'TOBSI']
+First Trigger prior : 0.040598392486572266 0.0017790535889243841
+
+Pending Earthquake No 47570 with paramater 2025-09-11 02:21:02.021599
+Longitude : 101.243+-0.288
+Latitude : -2.946+-0.293
+Depth : 10.0
+OT : 1757557248.85
+Mag : 2.93
+First Trigger : TMSM ['MKBI', 'JMSI', 'STSI', 'LMJSI']
+First Trigger prior : 0.041207075119018555 0.0023149804224598114
+
+Pending Earthquake No 47571 with paramater 2025-09-11 02:21:03.178501
+Longitude : 111.313+-0.288
+Latitude : -7.964+-0.288
+Depth : 10.0
+OT : 1757557254.24
+Mag : 1.09
+First Trigger : BAPJI ['POJN', 'TTJN', 'PCJI', 'DTJN']
+First Trigger prior : 0.040933847427368164 0.0025583220286509167
+
+Pending Earthquake No 47572 with paramater 2025-09-11 02:21:03.932811
+Longitude : 102.693+-0.288
+Latitude : -3.145+-0.288
+Depth : 10.0
+OT : 1757557257.83
+Mag : 1.94
+First Trigger : BLSM ['LLSI', 'RLBSI', 'RMSM', 'UMKSI']
+First Trigger prior : 0.04549884796142578 0.004265639039461533
+
+Pending Earthquake No 47573 with paramater 2025-09-11 02:21:07.173389
+Longitude : 97.818+-0.971
+Latitude : -1.332+-0.503
+Depth : 10.0
+OT : 1757557232.79
+Mag : 4.28
+First Trigger : SIUMI ['SISI', 'SMSR', 'SISMI', 'TRIYO']
+First Trigger prior : 0.043897390365600586 0.0020459701325989954
+
+Pending Earthquake No 47574 with paramater 2025-09-11 02:21:08.010814
+Longitude : 110.447+-0.288
+Latitude : -7.761+-0.288
+Depth : 10.0
+OT : 1757556876.62
+Mag : 2.11
+First Trigger : MKJM ['JUII', 'SYJI', 'KCJN', 'UGMN']
+First Trigger prior : 0.045589447021484375 0.0027237046827255362
+
+Pending Earthquake No 47575 with paramater 2025-09-11 02:21:09.188240
+Longitude : 130.323+-0.558
+Latitude : -1.829+-0.404
+Depth : 10.0
+OT : 1757557258.92
+Mag : 1.41
+First Trigger : MBRPI ['KORPI', 'SWI', 'BSMI', 'RAPI']
+First Trigger prior : 0.04149913787841797 0.0036874538102740217
+
+Pending Earthquake No 47579 with paramater 2025-09-11 02:21:16.706939
+Longitude : 111.656+-0.288
+Latitude : -7.225+-0.288
+Depth : 10.0
+OT : 1757557271.4
+Mag : 1.8
+First Trigger : JTJN ['NGJI', 'BBJM', 'SEJI', 'KPJM']
+First Trigger prior : 0.050431013107299805 0.002582435681627082
+
+Pending Earthquake No 47581 with paramater 2025-09-11 02:21:18.416214
+Longitude : 110.447+-0.288
+Latitude : -7.761+-0.288
+Depth : 10.0
+OT : 1757557023.24
+Mag : 2.28
+First Trigger : MKJM ['JUII', 'SYJI', 'KCJN', 'UGMN']
+First Trigger prior : 0.03829145431518555 0.002723943101304638
+
+Pending Earthquake No 47582 with paramater 2025-09-11 02:21:24.226225
+Longitude : 116.485+-0.565
+Latitude : -4.107+-0.823
+Depth : 10.0
+OT : 1757557257.26
+Mag : 3.49
+First Trigger : KBKI ['PABKI', 'BBKI', 'BJMI', 'PAKI']
+First Trigger prior : 0.043213844299316406 0.0010512830481701485
+
+Pending Earthquake No 47583 with paramater 2025-09-11 02:21:28.850176
+Longitude : 105.947+-0.288
+Latitude : -5.636+-0.288
+Depth : 10.0
+OT : 1757557275.91
+Mag : 2.89
+First Trigger : RLSR ['SLSN', 'PSLI', 'CCSR', 'ASJR']
+First Trigger prior : 0.03996109962463379 0.002624354639483073
+
+Pending Earthquake No 47584 with paramater 2025-09-11 02:21:31.835031
+Longitude : 109.212+-0.288
+Latitude : -7.119+-0.288
+Depth : 10.0
+OT : 1757557283.1
+Mag : 1.89
+First Trigger : CTJI ['TJTI', 'BTJI', 'PCJN', 'KSPJI']
+First Trigger prior : 0.03865766525268555 0.004173759678839595
+
+Pending Earthquake No 47587 with paramater 2025-09-11 02:21:41.319975
+Longitude : 121.888+-0.288
+Latitude : -5.549+-0.533
+Depth : 10.0
+OT : 1757557281.09
+Mag : 2.69
+First Trigger : BTSN ['POBSI', 'PKCI', 'MTSN', 'LOMSI']
+First Trigger prior : 0.04360222816467285 0.0012263552771596409
+
+Pending Earthquake No 47588 with paramater 2025-09-11 02:21:41.987313
+Longitude : 101.243+-0.288
+Latitude : -2.946+-0.293
+Depth : 10.0
+OT : 1757557288.53
+Mag : 3.0
+First Trigger : TMSM ['MKBI', 'JMSI', 'STSI', 'LMJSI']
+First Trigger prior : 0.04180264472961426 0.0023149804224598114
+
+Pending Earthquake No 47589 with paramater 2025-09-11 02:21:43.056271
+Longitude : 110.145+-0.288
+Latitude : -6.725+-0.288
+Depth : 10.0
+OT : 1757557295.56
+Mag : 3.26
+First Trigger : ECJN ['SEME', 'SEMA', 'GBJI', 'GTJI']
+First Trigger prior : 0.04515576362609863 0.001196386454866527
+
+Pending Earthquake No 47590 with paramater 2025-09-11 02:21:44.453798
+Longitude : 114.486+-0.288
+Latitude : -8.291+-0.288
+Depth : 10.0
+OT : 1757557294.25
+Mag : 1.71
+First Trigger : NJBM ['NEKI', 'GEBBI', 'BYJI', 'BMJR']
+First Trigger prior : 0.04281806945800781 0.004542906134112457
+
+Pending Earthquake No 47591 with paramater 2025-09-11 02:21:45.748913
+Longitude : 96.543+-0.288
+Latitude : 4.572+-0.288
+Depth : 10.0
+OT : 1757557295.83
+Mag : 2.37
+First Trigger : SISM ['TKSN', 'LISM', 'BESI', 'BMASI']
+First Trigger prior : 0.042426347732543945 0.0014426499945789928
+
+Pending Earthquake No 47592 with paramater 2025-09-11 02:21:47.766131
+Longitude : 124.608+-1.158
+Latitude : 3.109+-0.388
+Depth : 10.0
+OT : 1757557282.05
+Mag : 2.94
+First Trigger : PSSI ['TASSI', 'SAMI', 'BTSI', 'KWSI']
+First Trigger prior : 0.045213937759399414 0.0047128576519810395
+
+Pending Earthquake No 47598 with paramater 2025-09-11 02:22:14.539959
+Longitude : 109.212+-0.288
+Latitude : -7.119+-0.288
+Depth : 10.0
+OT : 1757557325.47
+Mag : 1.77
+First Trigger : CTJI ['TJTI', 'BTJI', 'PCJN', 'KSPJI']
+First Trigger prior : 0.038248538970947266 0.0028262098035822802
+
+Pending Earthquake No 47599 with paramater 2025-09-11 02:22:17.865820
+Longitude : 106.237+-0.783
+Latitude : -4.561+-0.439
+Depth : 10.0
+OT : 1757557314.04
+Mag : 4.68
+First Trigger : MLSN ['ILSN', 'BLSI', 'LATA', 'KLI']
+First Trigger prior : 0.042395591735839844 0.0030235296932481504
+
+Pending Earthquake No 47603 with paramater 2025-09-11 02:22:30.932710
+Longitude : 100.088+-0.288
+Latitude : -0.102+-0.288
+Depth : 10.0
+OT : 1757557342.4
+Mag : 2.11
+First Trigger : SMSM ['BPSR', 'BKASI', 'PAGA', 'PABI']
+First Trigger prior : 0.042220115661621094 0.0048649744408351125
+
+Pending Earthquake No 47604 with paramater 2025-09-11 02:22:53.235554
+Longitude : 120.019+-0.288
+Latitude : -4.13+-0.288
+Depth : 10.0
+OT : 1757557364.97
+Mag : 1.6
+First Trigger : SWCM ['LSCM', 'BNSI', 'BASO', 'PPCM']
+First Trigger prior : 0.04396462440490723 0.004434636905129796
+
+Pending Earthquake No 47606 with paramater 2025-09-11 02:23:05.866452
+Longitude : 103.22+-0.288
+Latitude : -4.893+-0.288
+Depth : 10.0
+OT : 1757557371.06
+Mag : 3.01
+First Trigger : MKSM ['MKSR', 'MTSM', 'LHSM', 'MNAI']
+First Trigger prior : 0.0603330135345459 0.0012847880425397307
+
+Pending Earthquake No 47607 with paramater 2025-09-11 02:23:06.879843
+Longitude : 101.243+-0.288
+Latitude : -2.946+-0.293
+Depth : 10.0
+OT : 1757557370.63
+Mag : 2.93
+First Trigger : TMSM ['MKBI', 'JMSI', 'STSI', 'LMJSI']
+First Trigger prior : 0.04794573783874512 0.002315218841038913
+
+Pending Earthquake No 47608 with paramater 2025-09-11 02:23:12.961587
+Longitude : 119.97+-0.318
+Latitude : -1.971+-0.288
+Depth : 10.0
+OT : 1757557373.24
+Mag : 2.91
+First Trigger : LAPSI ['LUCM', 'PUPSI', 'NKLSI', 'POCI']
+First Trigger prior : 0.0434262752532959 0.0043476714402421734
+
+Pending Earthquake No 47609 with paramater 2025-09-11 02:23:16.248857
+Longitude : 103.914+-0.615
+Latitude : -7.047+-0.748
+Depth : 10.0
+OT : 1757557351.29
+Mag : 3.81
+First Trigger : PSSM ['KTSR', 'KASI', 'PPLI', 'UTSI']
+First Trigger prior : 0.04691505432128906 0.004041394706597146
+
+Pending Earthquake No 47611 with paramater 2025-09-11 02:23:26.608703
+Longitude : 125.107+-0.428
+Latitude : 0.114+-0.513
+Depth : 10.0
+OT : 1757557352.68
+Mag : 3.51
+First Trigger : TBMCM ['OUSN', 'PBMSI', 'MUSN', 'KMSI']
+First Trigger prior : 0.0567777156829834 0.002112713890843665
+
+Pending Earthquake No 47618 with paramater 2025-09-11 02:24:09.236667
+Longitude : 116.039+-0.309
+Latitude : -10.683+-0.988
+Depth : 10.0
+OT : 1757557414.0
+Mag : 4.71
+First Trigger : CNLN ['PBLI', 'ZALN', 'LTNI', 'TNLN']
+First Trigger prior : 0.04020428657531738 0.002786096893697021
+
+Pending Earthquake No 47619 with paramater 2025-09-11 02:24:12.777111
+Longitude : 120.546+-0.288
+Latitude : -8.295+-0.288
+Depth : 10.0
+OT : 1757557437.46
+Mag : 2.52
+First Trigger : RMNN ['LMTI', 'KMBFM', 'LEMFI', 'BNTI']
+First Trigger prior : 0.04080915451049805 0.0026187340771253176
+
+Pending Earthquake No 47621 with paramater 2025-09-11 02:24:22.443251
+Longitude : 121.045+-0.314
+Latitude : -8.108+-0.323
+Depth : 10.0
+OT : 1757557450.78
+Mag : 2.17
+First Trigger : RNFM ['BNTI', 'NANFI', 'RMNN', 'LMTI']
+First Trigger prior : 0.0415186882019043 0.0030871308086126703
+
+Pending Earthquake No 47622 with paramater 2025-09-11 02:24:24.418846
+Longitude : 119.293+-0.288
+Latitude : -3.018+-0.288
+Depth : 10.0
+OT : 1757557459.62
+Mag : 1.31
+First Trigger : MBSN ['MMCI', 'PBSN', 'TAPSI', 'TTSI']
+First Trigger prior : 0.04457831382751465 0.0021396614748012688
+
+Pending Earthquake No 47627 with paramater 2025-09-11 02:24:40.217182
+Longitude : 102.783+-0.288
+Latitude : -4.097+-0.288
+Depth : 10.0
+OT : 1757557470.83
+Mag : 1.86
+First Trigger : UTSM ['SSSR', 'ISSR', 'APSSI', 'ULSM']
+First Trigger prior : 0.03800511360168457 0.001115366425735953
+
+Pending Earthquake No 47632 with paramater 2025-09-11 02:24:48.907513
+Longitude : 100.088+-0.288
+Latitude : -0.102+-0.288
+Depth : 10.0
+OT : 1757557472.11
+Mag : 1.96
+First Trigger : SMSM ['BPSR', 'BKASI', 'PAGA', 'PABI']
+First Trigger prior : 0.043898582458496094 0.002864642562173003
+
+Pending Earthquake No 47634 with paramater 2025-09-11 02:24:50.705947
+Longitude : 110.45+-0.288
+Latitude : -6.519+-0.288
+Depth : 10.0
+OT : 1757557481.67
+Mag : 2.62
+First Trigger : JCJN ['BMBNG', 'UCJN', 'DCJN', 'UWJI']
+First Trigger prior : 0.037309885025024414 0.0036679248120412566
+
+Pending Earthquake No 47635 with paramater 2025-09-11 02:24:55.704250
+Longitude : 121.888+-0.288
+Latitude : -5.549+-0.533
+Depth : 10.0
+OT : 1757557471.0
+Mag : 3.75
+First Trigger : BTSN ['POBSI', 'PKCI', 'MTSN', 'LOMSI']
+First Trigger prior : 0.040959835052490234 0.00177366570367532
+
+Pending Earthquake No 47642 with paramater 2025-09-11 02:25:10.963237
+Longitude : 120.31+-0.288
+Latitude : 0.418+-0.413
+Depth : 10.0
+OT : 1757557502.4
+Mag : 2.73
+First Trigger : TIPSI ['MPSI', 'TPCI', 'TCSN', 'TOLI2']
+First Trigger prior : 0.03986096382141113 0.0011620949807027436
+
+Pending Earthquake No 47644 with paramater 2025-09-11 02:25:15.555406
+Longitude : 120.777+-0.288
+Latitude : 0.923+-0.288
+Depth : 10.0
+OT : 1757557508.68
+Mag : 1.72
+First Trigger : TCSN ['TOLI2', 'BBCI', 'TPCI', 'TIPSI']
+First Trigger prior : 0.04119396209716797 0.003976860580950259
+
+Pending Earthquake No 47645 with paramater 2025-09-11 02:25:19.688365
+Longitude : 141.412+-0.841
+Latitude : -7.355+-0.414
+Depth : 10.0
+OT : 1757557496.55
+Mag : 3.29
+First Trigger : ELMPI ['SOMPI', 'MMPI', 'EDMPI', 'MIBPI']
+First Trigger prior : 0.05711698532104492 0.0037421429792665606
+
+Pending Earthquake No 47646 with paramater 2025-09-11 02:25:32.136264
+Longitude : 101.243+-0.288
+Latitude : -2.946+-0.293
+Depth : 10.0
+OT : 1757557520.51
+Mag : 2.55
+First Trigger : TMSM ['MKBI', 'JMSI', 'STSI', 'LMJSI']
+First Trigger prior : 0.04135727882385254 0.0013150529017078583
+
+Pending Earthquake No 47648 with paramater 2025-09-11 02:25:37.408402
+Longitude : 107.481+-0.288
+Latitude : -7.169+-0.288
+Depth : 10.0
+OT : 1757557530.29
+Mag : 1.51
+First Trigger : PBJI ['CBJM', 'ACBM', 'BACE', 'CSTN']
+First Trigger prior : 0.05929279327392578 0.0011673536659957406
+
+Pending Earthquake No 47649 with paramater 2025-09-11 02:25:40.457263
+Longitude : 114.486+-0.288
+Latitude : -8.291+-0.288
+Depth : 10.0
+OT : 1757557532.92
+Mag : 1.6
+First Trigger : NJBM ['NEKI', 'GEBBI', 'BYJI', 'BMJR']
+First Trigger prior : 0.051465511322021484 0.004457156808392426
+
+Pending Earthquake No 47650 with paramater 2025-09-11 02:25:42.079876
+Longitude : 119.293+-0.288
+Latitude : -3.018+-0.288
+Depth : 10.0
+OT : 1757557535.56
+Mag : 1.31
+First Trigger : MBSN ['MMCI', 'PBSN', 'TAPSI', 'TTSI']
+First Trigger prior : 0.04275798797607422 0.0021396614748012688
+
+Pending Earthquake No 47651 with paramater 2025-09-11 02:25:47.576215
+Longitude : 120.829+-0.288
+Latitude : -2.608+-0.288
+Depth : 10.0
+OT : 1757557540.3
+Mag : 1.48
+First Trigger : SRSI ['TLCM', 'MTCM', 'LSSN', 'MSBA']
+First Trigger prior : 0.059363603591918945 0.0014602131320207157
+
+Pending Earthquake No 47653 with paramater 2025-09-11 02:25:55.519740
+Longitude : 121.888+-0.288
+Latitude : -5.549+-0.533
+Depth : 10.0
+OT : 1757557536.95
+Mag : 3.08
+First Trigger : BTSN ['POBSI', 'PKCI', 'MTSN', 'LOMSI']
+First Trigger prior : 0.041081905364990234 0.003773759163758328
+
+Pending Earthquake No 47656 with paramater 2025-09-11 02:26:08.984490
+Longitude : 116.039+-0.309
+Latitude : -10.683+-0.988
+Depth : 10.0
+OT : 1757557534.27
+Mag : 4.55
+First Trigger : CNLN ['PBLI', 'ZALN', 'LTNI', 'TNLN']
+First Trigger prior : 0.037894248962402344 0.004213872588724854
+
+Pending Earthquake No 47657 with paramater 2025-09-11 02:26:27.832976
+Longitude : 119.224+-0.288
+Latitude : -10.604+-0.819
+Depth : 10.0
+OT : 1757557558.64
+Mag : 3.58
+First Trigger : WBSI ['USTI', 'KBSSI', 'KHSSI', 'WSI']
+First Trigger prior : 0.03957819938659668 0.001315449694644144
+
+Pending Earthquake No 47658 with paramater 2025-09-11 02:26:28.161458
+Longitude : 110.548+-0.288
+Latitude : -7.347+-0.288
+Depth : 10.0
+OT : 1757557576.46
+Mag : 1.87
+First Trigger : SCJN ['TNSJI', 'JWJM', 'SMRI', 'MBJN']
+First Trigger prior : 0.03878664970397949 0.003570108453531784
+
+Pending Earthquake No 47659 with paramater 2025-09-11 02:26:28.267512
+Longitude : 100.088+-0.288
+Latitude : -0.102+-0.288
+Depth : 10.0
+OT : 1757557578.63
+Mag : 1.9
+First Trigger : SMSM ['BPSR', 'BKASI', 'PAGA', 'PABI']
+First Trigger prior : 0.038992881774902344 0.0011350675208348093
+
+Pending Earthquake No 47661 with paramater 2025-09-11 02:26:30.371715
+Longitude : 124.301+-0.288
+Latitude : -8.229+-0.292
+Depth : 10.0
+OT : 1757557582.49
+Mag : 1.86
+First Trigger : ANAN ['ALKI', 'AAFM', 'PAFM', 'ALTI']
+First Trigger prior : 0.03869819641113281 0.0043116387378780985
+
+Pending Earthquake No 47662 with paramater 2025-09-11 02:26:30.536347
+Longitude : 124.678+-0.288
+Latitude : -8.362+-0.288
+Depth : 10.0
+OT : 1757557572.47
+Mag : 1.78
+First Trigger : AAFM ['ALKI', 'ANAN', 'ALTI', 'PAFM']
+First Trigger prior : 0.06060528755187988 0.002106158299534311
+
+Pending Earthquake No 47665 with paramater 2025-09-11 02:26:35.638760
+Longitude : 113.241+-0.288
+Latitude : -8.069+-0.288
+Depth : 10.0
+OT : 1757557588.48
+Mag : 1.96
+First Trigger : YLJR ['KLJI', 'PRLJI', 'GMJI', 'RTJN']
+First Trigger prior : 0.039185285568237305 0.0013605000801444334
+
+Pending Earthquake No 47666 with paramater 2025-09-11 02:26:41.193674
+Longitude : 103.634+-0.298
+Latitude : -5.854+-0.362
+Depth : 10.0
+OT : 1757557573.02
+Mag : 3.96
+First Trigger : PPSM ['KPSR', 'NJLSI', 'BBSR', 'LWLI']
+First Trigger prior : 0.03883838653564453 0.004367884273559497
+
+Pending Earthquake No 47667 with paramater 2025-09-11 02:26:45.215923
+Longitude : 133.313+-0.404
+Latitude : -2.545+-0.428
+Depth : 10.0
+OT : 1757557593.23
+Mag : 1.79
+First Trigger : BATPI ['IWPI', 'KMPI', 'FAKI', 'RKPI']
+First Trigger prior : 0.0423283576965332 0.004409431507540695
+
+Pending Earthquake No 47668 with paramater 2025-09-11 02:26:49.787099
+Longitude : 119.988+-0.288
+Latitude : -2.516+-0.288
+Depth : 10.0
+OT : 1757557597.11
+Mag : 2.48
+First Trigger : MSCM ['MSBA', 'WUPCM', 'OSSN', 'TLCM']
+First Trigger prior : 0.038727521896362305 0.0025739125589678835
+
+Pending Earthquake No 47669 with paramater 2025-09-11 02:26:50.319857
+Longitude : 129.572+-0.525
+Latitude : -1.466+-0.398
+Depth : 10.0
+OT : 1757557589.5
+Mag : 6.15
+First Trigger : KORPI ['GARPI', 'MBRPI', 'RAPI', 'SWI']
+First Trigger prior : 0.03816366195678711 0.0010502639518286117
+
+Pending Earthquake No 47671 with paramater 2025-09-11 02:26:52.032224
+Longitude : 105.88+-0.324
+Latitude : -5.438+-0.288
+Depth : 10.0
+OT : 1757557601.32
+Mag : 2.34
+First Trigger : SLSN ['RLSR', 'PSLI', 'LATA', 'PPLI']
+First Trigger prior : 0.0404810905456543 0.0011826601950017945
+
+Pending Earthquake No 47672 with paramater 2025-09-11 02:26:52.712734
+Longitude : 121.271+-0.288
+Latitude : -4.449+-0.293
+Depth : 10.0
+OT : 1757557597.84
+Mag : 3.41
+First Trigger : KLKI ['KKSI', 'TIKSI', 'WKCM', 'UKCM']
+First Trigger prior : 0.042630672454833984 0.002614107246987629
+
+Pending Earthquake No 47674 with paramater 2025-09-11 02:26:56.939626
+Longitude : 101.243+-0.288
+Latitude : -2.946+-0.293
+Depth : 10.0
+OT : 1757557600.05
+Mag : 2.86
+First Trigger : TMSM ['MKBI', 'JMSI', 'STSI', 'LMJSI']
+First Trigger prior : 0.039261817932128906 0.0023149804224598114
+
+Pending Earthquake No 47677 with paramater 2025-09-11 02:27:00.862081
+Longitude : 115.57+-0.288
+Latitude : -7.931+-0.288
+Depth : 10.0
+OT : 1757557603.52
+Mag : 2.83
+First Trigger : TEBBI ['SRBI', 'KBBI', 'KHBO', 'MAKBI']
+First Trigger prior : 0.04125642776489258 0.003039118695449261
+
+Pending Earthquake No 47678 with paramater 2025-09-11 02:27:11.851335
+Longitude : 101.243+-0.288
+Latitude : -2.946+-0.293
+Depth : 10.0
+OT : 1757557613.14
+Mag : 2.67
+First Trigger : TMSM ['MKBI', 'JMSI', 'STSI', 'LMJSI']
+First Trigger prior : 0.044271230697631836 0.004315073882542819
+
+Pending Earthquake No 47679 with paramater 2025-09-11 02:27:21.383651
+Longitude : 119.224+-0.288
+Latitude : -10.604+-0.819
+Depth : 10.0
+OT : 1757557612.45
+Mag : 3.82
+First Trigger : WBSI ['USTI', 'KBSSI', 'KHSSI', 'WSI']
+First Trigger prior : 0.04663419723510742 0.0013152112760650425
+
+Pending Earthquake No 47685 with paramater 2025-09-11 02:27:36.171256
+Longitude : 94.157+-0.854
+Latitude : 4.396+-0.403
+Depth : 10.0
+OT : 1757557625.72
+Mag : 3.86
+First Trigger : SASM ['JASN', 'CASI', 'CERI', 'TPSI']
+First Trigger prior : 0.042626380920410156 0.0011197958748780934
+
+Pending Earthquake No 47686 with paramater 2025-09-11 02:27:39.499031
+Longitude : 114.486+-0.288
+Latitude : -8.291+-0.288
+Depth : 10.0
+OT : 1757557652.11
+Mag : 1.32
+First Trigger : NJBM ['NEKI', 'GEBBI', 'BYJI', 'BMJR']
+First Trigger prior : 0.0563969612121582 0.004456918389813325
+
+Pending Earthquake No 47687 with paramater 2025-09-11 02:27:43.133209
+Longitude : 97.257+-0.288
+Latitude : 3.777+-0.288
+Depth : 10.0
+OT : 1757557649.53
+Mag : 2.31
+First Trigger : BGASI ['PGASI', 'BLSN', 'JAASI', 'KCSI']
+First Trigger prior : 0.046891212463378906 0.002440304408910521
+
+Pending Earthquake No 47688 with paramater 2025-09-11 02:27:44.456946
+Longitude : 112.423+-0.417
+Latitude : -10.286+-1.121
+Depth : 10.0
+OT : 1757557623.31
+Mag : 4.96
+First Trigger : GEJI ['MLJI', 'NBJR', 'POKJI', 'PRLJI']
+First Trigger prior : 0.05765891075134277 0.003633764974850351
+
+Pending Earthquake No 47689 with paramater 2025-09-11 02:27:46.426379
+Longitude : 103.914+-0.615
+Latitude : -7.047+-0.748
+Depth : 10.0
+OT : 1757557628.63
+Mag : 6.9
+First Trigger : PSSM ['KTSR', 'KASI', 'PPLI', 'UTSI']
+First Trigger prior : 0.040494680404663086 0.0030414671858451925
+
+Pending Earthquake No 47690 with paramater 2025-09-11 02:27:52.267574
+Longitude : 107.901+-0.288
+Latitude : -7.248+-0.288
+Depth : 10.0
+OT : 1757557661.15
+Mag : 1.49
+First Trigger : GTJN ['SGRJI', 'ACBM', 'MGJR', 'CIJI']
+First Trigger prior : 0.03831744194030762 0.004359226401236427
+
+Pending Earthquake No 47691 with paramater 2025-09-11 02:27:55.182196
+Longitude : 134.598+-0.432
+Latitude : -2.835+-0.48
+Depth : 10.0
+OT : 1757557666.5
+Mag : 1.49
+First Trigger : IWPI ['WANPI', 'BATPI', 'KMPI', 'UWNPI']
+First Trigger prior : 0.0451507568359375 0.0029057752770045298
+
+Pending Earthquake No 47692 with paramater 2025-09-11 02:27:55.402594
+Longitude : 121.888+-0.288
+Latitude : -5.549+-0.533
+Depth : 10.0
+OT : 1757557656.71
+Mag : 2.97
+First Trigger : BTSN ['POBSI', 'PKCI', 'MTSN', 'LOMSI']
+First Trigger prior : 0.04620718955993652 0.00177366570367532
+
+Pending Earthquake No 47693 with paramater 2025-09-11 02:27:56.416103
+Longitude : 110.548+-0.288
+Latitude : -7.347+-0.288
+Depth : 10.0
+OT : 1757557666.61
+Mag : 1.92
+First Trigger : SCJN ['TNSJI', 'JWJM', 'SMRI', 'MBJN']
+First Trigger prior : 0.04583144187927246 0.0034300994474691926
+
+Pending Earthquake No 47694 with paramater 2025-09-11 02:28:00.473999
+Longitude : 114.486+-0.288
+Latitude : -8.291+-0.288
+Depth : 10.0
+OT : 1757557669.95
+Mag : 1.32
+First Trigger : NJBM ['NEKI', 'GEBBI', 'BYJI', 'BMJR']
+First Trigger prior : 0.04569697380065918 0.004542906134112457
+
+Pending Earthquake No 47695 with paramater 2025-09-11 02:28:02.872399
+Longitude : 119.293+-0.288
+Latitude : -3.018+-0.288
+Depth : 10.0
+OT : 1757557676.74
+Mag : 1.03
+First Trigger : MBSN ['MMCI', 'PBSN', 'TAPSI', 'TTSI']
+First Trigger prior : 0.04951810836791992 0.001139495535470214
+
+Pending Earthquake No 47698 with paramater 2025-09-11 02:28:14.904744
+Longitude : 118.254+-0.47
+Latitude : -3.169+-0.288
+Depth : 10.0
+OT : 1757557677.18
+Mag : 3.38
+First Trigger : ULMSI ['MMSI', 'MMSN', 'PMSI', 'TAPSI']
+First Trigger prior : 0.03982377052307129 0.0015755986396790433
+
+Pending Earthquake No 47700 with paramater 2025-09-11 02:28:19.622613
+Longitude : 106.237+-0.783
+Latitude : -4.561+-0.439
+Depth : 10.0
+OT : 1757557676.24
+Mag : 3.82
+First Trigger : MLSN ['ILSN', 'BLSI', 'LATA', 'KLI']
+First Trigger prior : 0.04041576385498047 0.0030235296932481504
+
+Pending Earthquake No 47706 with paramater 2025-09-11 02:28:30.558168
+Longitude : 114.486+-0.288
+Latitude : -8.291+-0.288
+Depth : 10.0
+OT : 1757557698.87
+Mag : 1.48
+First Trigger : NJBM ['NEKI', 'GEBBI', 'BYJI', 'BMJR']
+First Trigger prior : 0.04046511650085449 0.0035429786133605035
+
+Pending Earthquake No 47707 with paramater 2025-09-11 02:28:35.579487
+Longitude : 102.693+-0.288
+Latitude : -3.145+-0.288
+Depth : 10.0
+OT : 1757557709.18
+Mag : 1.83
+First Trigger : BLSM ['LLSI', 'RLBSI', 'RMSM', 'UMKSI']
+First Trigger prior : 0.038537025451660156 0.004734185484464248
+
+Pending Earthquake No 47709 with paramater 2025-09-11 02:28:49.428404
+Longitude : 124.698+-0.719
+Latitude : -2.381+-0.927
+Depth : 10.0
+OT : 1757557711.19
+Mag : 3.2
+First Trigger : TBMUI ['BBLSI', 'BGCI', 'LUWI', 'BCSN']
+First Trigger prior : 0.038774967193603516 0.0039677571717859905
+
+Pending Earthquake No 47710 with paramater 2025-09-11 02:28:51.035460
+Longitude : 96.982+-0.288
+Latitude : 4.536+-0.288
+Depth : 10.0
+OT : 1757557714.74
+Mag : 3.59
+First Trigger : TKSN ['SISM', 'BESI', 'LISM', 'BMASI']
+First Trigger prior : 0.040487051010131836 0.0014450949341813235
+
+Pending Earthquake No 47711 with paramater 2025-09-11 02:29:01.888389
+Longitude : 111.428+-0.288
+Latitude : -7.111+-0.288
+Depth : 10.0
+OT : 1757557735.27
+Mag : 3.61
+First Trigger : BCJN ['JBJM', 'KBJM', 'GGJM', 'SEJI']
+First Trigger prior : 0.03983664512634277 0.0028238121689598827
+
+Pending Earthquake No 47712 with paramater 2025-09-11 02:29:09.470770
+Longitude : 102.375+-0.288
+Latitude : -3.49+-0.288
+Depth : 10.0
+OT : 1757557742.72
+Mag : 2.74
+First Trigger : ABSM ['MASI', 'RLBSI', 'UMKSI', 'UBSI']
+First Trigger prior : 0.03803849220275879 0.0022764947052040796
+
+Pending Earthquake No 47713 with paramater 2025-09-11 02:29:09.745717
+Longitude : 118.443+-0.288
+Latitude : -8.2+-0.288
+Depth : 10.0
+OT : 1757557736.51
+Mag : 3.22
+First Trigger : DBNFM ['BMNI', 'WBNI', 'PBNI', 'TSNI']
+First Trigger prior : 0.03986501693725586 0.004288454903626615
+
+Pending Earthquake No 47714 with paramater 2025-09-11 02:29:10.082186
+Longitude : 101.858+-0.527
+Latitude : 1.012+-0.305
+Depth : 10.0
+OT : 1757557733.34
+Mag : 3.44
+First Trigger : SIRSI ['BRSN', 'PESI', 'PRSI', 'BKNI']
+First Trigger prior : 0.04399514198303223 0.0038894611668904844
+
+Pending Earthquake No 47715 with paramater 2025-09-11 02:29:11.462318
+Longitude : 129.545+-0.924
+Latitude : -5.495+-0.907
+Depth : 10.0
+OT : 1757557725.08
+Mag : 3.83
+First Trigger : BDMI ['SSMI', 'TMTMM', 'MSAI', 'BSMI']
+First Trigger prior : 0.04454445838928223 0.0041231817920426295
+
+Pending Earthquake No 47716 with paramater 2025-09-11 02:29:12.112848
+Longitude : 121.888+-0.288
+Latitude : -5.549+-0.533
+Depth : 10.0
+OT : 1757557733.45
+Mag : 3.36
+First Trigger : BTSN ['POBSI', 'PKCI', 'MTSN', 'LOMSI']
+First Trigger prior : 0.041586875915527344 0.003773759163758328
+
+Pending Earthquake No 47719 with paramater 2025-09-11 02:29:15.085589
+Longitude : 96.982+-0.288
+Latitude : 4.536+-0.288
+Depth : 10.0
+OT : 1757557743.84
+Mag : 2.68
+First Trigger : TKSN ['SISM', 'BESI', 'LISM', 'BMASI']
+First Trigger prior : 0.045645713806152344 0.004445354333595386
+
+Pending Earthquake No 47728 with paramater 2025-09-11 02:29:37.270221
+Longitude : 124.301+-0.288
+Latitude : -8.229+-0.292
+Depth : 10.0
+OT : 1757557768.81
+Mag : 2.37
+First Trigger : ANAN ['ALKI', 'AAFM', 'PAFM', 'ATNI']
+First Trigger prior : 0.04693198204040527 0.0043116387378780985
+
+Pending Earthquake No 47729 with paramater 2025-09-11 02:29:37.737319
+Longitude : 107.774+-0.288
+Latitude : -6.802+-0.288
+Depth : 10.0
+OT : 1757557769.03
+Mag : 2.47
+First Trigger : TSJM ['KJJR', 'CSJM', 'GBJO', 'SPSJM']
+First Trigger prior : 0.04036355018615723 0.001465803011590161
+
