@@ -15,7 +15,7 @@ from EQdetect.core.sourcecal import Phase, EQsrc, pending_eq
 
 #65258_20240814091543_2
 kk=0
-outf = glob.glob("eew_report/34753_20250910*.pkl")
+outf = glob.glob("eew_report/38346_20250910*.pkl")
 outf = sorted(outf, key=os.path.getmtime)
 #11647_20241012011228_2.pkl
 
@@ -23,7 +23,7 @@ if len(outf) == 0:
     print(outf)
     raise ValueError("No Report File")
 
-with open("vorcel/250910131728_vorcel.pkl","rb") as file:
+with open("vorcel/250910165511_vorcel.pkl","rb") as file:
     vorcel = pickle.load(file)
 with open(outf[-1], "rb") as file:
     data = pickle.load(file)
