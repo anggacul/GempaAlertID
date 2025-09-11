@@ -3,12 +3,15 @@ import sys
 import time
 import os
 import mmap
+import threading
+from collections import deque
 
 # Definisikan nama shared memory, semafor, dan ukuran yang sama dengan program C
 SHM_NAME = "/my_shm"
 SEM_NAME = "/my_sem"
 SHM_SIZE = 4096
-
+global received_data
+received_data = deque(maxlen=100)
 def reader_task():
     """
     Fungsi ini membaca data dari shared memory menggunakan semafor sebagai sinyal.
@@ -35,12 +38,14 @@ def reader_task():
 
                 # Setelah semaphore diberikan oleh C -> baca data
                 current_counter = int.from_bytes(shm_map[:4], byteorder='little')
+                print(current_counter)
 
-                if current_counter > last_counter:
+                if current_counter != last_counter:
                     message_bytes = shm_map[4:]
                     data = message_bytes.decode('utf-8').split('\x00', 1)[0]
 
                     print(f"Reader Task: Found new data (Counter: {current_counter}). Data: '{data}'")
+                    received_data.append(data)
                     last_counter = current_counter
 
                 # ⚠️ Jangan sem.release() di reader!
@@ -67,4 +72,5 @@ def reader_task():
         print("Reader Task: Exiting.")
 
 if __name__ == "__main__":
-    reader_task()
+    getpick_thread = threading.Thread(target=reader_task)
+    getpick_thread.start()

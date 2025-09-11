@@ -9,10 +9,6 @@
 #define M_PI 3.14159265358979323846
 #endif
 
-#define SM_MAX_CHANNELS 3
-#define SM_MAX_STATION_ID_LEN 6
-#define SM_MAX_CHANNEL_NAME_LEN 4
-
 /**
  * @brief Station metadata and state
  * @struct Station
@@ -25,21 +21,21 @@
  */
 
 typedef struct BiquadHPF {
-    double x1, x2;   // x[n-1], x[n-2]
-    double y1, y2;   // y[n-1], y[n-2]
-    double b0, b1, b2, a1, a2;
+    double b0, b1, b2;
+    double a1, a2;
+    double z1, z2;
 } BiquadHPF;
 
 typedef struct Station {
-    char stationId[SM_MAX_STATION_ID_LEN];
-    char channels[SM_MAX_CHANNELS][SM_MAX_CHANNEL_NAME_LEN];
-    double conversionFactor[SM_MAX_CHANNELS];
+    char stationId[MAX_STATION_ID_LEN];
+    char channels[MAX_CHANNELS][MAX_CHANNEL_NAME_LEN];
+    double conversionFactor[MAX_CHANNELS];
     double sampleRate; // sample rate (Hz)
     double lastPickTime;
     int index; // indeks station di array
-    BiquadHPF hpf_acc[SM_MAX_CHANNELS];
-    BiquadHPF hpf_vel[SM_MAX_CHANNELS];
-    BiquadHPF hpf_disp[SM_MAX_CHANNELS];
+    BiquadHPF hpf_acc[MAX_CHANNELS];
+    BiquadHPF hpf_vel[MAX_CHANNELS];
+    BiquadHPF hpf_disp[MAX_CHANNELS];
     // Tambahkan metadata lain jika perlu
 } Station;
 

@@ -2276,8 +2276,8 @@ typedef struct {
   PyObject *__pyx_codeobj_tab[1];
   PyObject *__pyx_string_tab[36];
   PyObject *__pyx_float_1_0;
-  PyObject *__pyx_float_6_7;
-  PyObject *__pyx_float_8_0;
+  PyObject *__pyx_float_4_0;
+  PyObject *__pyx_float_6_0;
   PyObject *__pyx_float_10_0;
   PyObject *__pyx_float_24_0;
   PyObject *__pyx_float_0_00610;
@@ -2382,8 +2382,8 @@ static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
   for (int i=0; i<1; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
   for (int i=0; i<36; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
   Py_CLEAR(clear_module_state->__pyx_float_1_0);
-  Py_CLEAR(clear_module_state->__pyx_float_6_7);
-  Py_CLEAR(clear_module_state->__pyx_float_8_0);
+  Py_CLEAR(clear_module_state->__pyx_float_4_0);
+  Py_CLEAR(clear_module_state->__pyx_float_6_0);
   Py_CLEAR(clear_module_state->__pyx_float_10_0);
   Py_CLEAR(clear_module_state->__pyx_float_24_0);
   Py_CLEAR(clear_module_state->__pyx_float_0_00610);
@@ -2415,8 +2415,8 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
   for (int i=0; i<1; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
   for (int i=0; i<36; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_float_1_0);
-  __Pyx_VISIT_CONST(traverse_module_state->__pyx_float_6_7);
-  __Pyx_VISIT_CONST(traverse_module_state->__pyx_float_8_0);
+  __Pyx_VISIT_CONST(traverse_module_state->__pyx_float_4_0);
+  __Pyx_VISIT_CONST(traverse_module_state->__pyx_float_6_0);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_float_10_0);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_float_24_0);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_float_0_00610);
@@ -2545,7 +2545,7 @@ static PyObject *__pyx_pf_8EQdetect_5utils_6config_6Config___init__(CYTHON_UNUSE
  *         self.MagMin = 1.0
  *         self.MagMax = 10.0             # <<<<<<<<<<<<<<
  *         self.ignoreP = 4
- *         self.est_trig_err = 6.7
+ *         self.est_trig_err = 4.0
 */
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_mstate_global->__pyx_n_u_MagMax, __pyx_mstate_global->__pyx_float_10_0) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
 
@@ -2553,32 +2553,32 @@ static PyObject *__pyx_pf_8EQdetect_5utils_6config_6Config___init__(CYTHON_UNUSE
  *         self.MagMin = 1.0
  *         self.MagMax = 10.0
  *         self.ignoreP = 4             # <<<<<<<<<<<<<<
- *         self.est_trig_err = 6.7
- *         self.trig_err = 8.0
+ *         self.est_trig_err = 4.0
+ *         self.trig_err = 6.0
 */
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_mstate_global->__pyx_n_u_ignoreP, __pyx_mstate_global->__pyx_int_4) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
 
   /* "EQdetect/utils/config.pyx":7
  *         self.MagMax = 10.0
  *         self.ignoreP = 4
- *         self.est_trig_err = 6.7             # <<<<<<<<<<<<<<
- *         self.trig_err = 8.0
+ *         self.est_trig_err = 4.0             # <<<<<<<<<<<<<<
+ *         self.trig_err = 6.0
  *         self.active_pick = 300
 */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_mstate_global->__pyx_n_u_est_trig_err, __pyx_mstate_global->__pyx_float_6_7) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_mstate_global->__pyx_n_u_est_trig_err, __pyx_mstate_global->__pyx_float_4_0) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
 
   /* "EQdetect/utils/config.pyx":8
  *         self.ignoreP = 4
- *         self.est_trig_err = 6.7
- *         self.trig_err = 8.0             # <<<<<<<<<<<<<<
+ *         self.est_trig_err = 4.0
+ *         self.trig_err = 6.0             # <<<<<<<<<<<<<<
  *         self.active_pick = 300
  *         self.Boundary_P = 24.0
 */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_mstate_global->__pyx_n_u_trig_err, __pyx_mstate_global->__pyx_float_8_0) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_mstate_global->__pyx_n_u_trig_err, __pyx_mstate_global->__pyx_float_6_0) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
 
   /* "EQdetect/utils/config.pyx":9
- *         self.est_trig_err = 6.7
- *         self.trig_err = 8.0
+ *         self.est_trig_err = 4.0
+ *         self.trig_err = 6.0
  *         self.active_pick = 300             # <<<<<<<<<<<<<<
  *         self.Boundary_P = 24.0
  *         self.SwP_V = 4.55220
@@ -2586,7 +2586,7 @@ static PyObject *__pyx_pf_8EQdetect_5utils_6config_6Config___init__(CYTHON_UNUSE
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_mstate_global->__pyx_n_u_active_pick, __pyx_mstate_global->__pyx_int_300) < 0) __PYX_ERR(0, 9, __pyx_L1_error)
 
   /* "EQdetect/utils/config.pyx":10
- *         self.trig_err = 8.0
+ *         self.trig_err = 6.0
  *         self.active_pick = 300
  *         self.Boundary_P = 24.0             # <<<<<<<<<<<<<<
  *         self.SwP_V = 4.55220
@@ -3200,8 +3200,8 @@ static int __Pyx_InitConstants(__pyx_mstatetype *__pyx_mstate) {
   __pyx_mstate->__pyx_umethod_PyDict_Type_pop.method_name = &__pyx_mstate->__pyx_n_u_pop;
   if (__Pyx_InitStrings(__pyx_string_tab, __pyx_mstate->__pyx_string_tab, __pyx_string_tab_encodings) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
   __pyx_mstate->__pyx_float_1_0 = PyFloat_FromDouble(1.0); if (unlikely(!__pyx_mstate->__pyx_float_1_0)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __pyx_mstate->__pyx_float_6_7 = PyFloat_FromDouble(6.7); if (unlikely(!__pyx_mstate->__pyx_float_6_7)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __pyx_mstate->__pyx_float_8_0 = PyFloat_FromDouble(8.0); if (unlikely(!__pyx_mstate->__pyx_float_8_0)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_mstate->__pyx_float_4_0 = PyFloat_FromDouble(4.0); if (unlikely(!__pyx_mstate->__pyx_float_4_0)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_mstate->__pyx_float_6_0 = PyFloat_FromDouble(6.0); if (unlikely(!__pyx_mstate->__pyx_float_6_0)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_mstate->__pyx_float_10_0 = PyFloat_FromDouble(10.0); if (unlikely(!__pyx_mstate->__pyx_float_10_0)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_mstate->__pyx_float_24_0 = PyFloat_FromDouble(24.0); if (unlikely(!__pyx_mstate->__pyx_float_24_0)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_mstate->__pyx_float_0_00610 = PyFloat_FromDouble(0.00610); if (unlikely(!__pyx_mstate->__pyx_float_0_00610)) __PYX_ERR(0, 1, __pyx_L1_error)

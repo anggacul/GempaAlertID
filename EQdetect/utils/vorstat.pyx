@@ -106,7 +106,7 @@ class voronoi_sta:
         if config is None:
             self.config = {
                 'host': 'localhost',
-                'user':'root',
+                'user':'wijaya',
                 'database': 'ipfeew'
             }
         else:

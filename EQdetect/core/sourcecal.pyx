@@ -333,12 +333,11 @@ cdef np.ndarray[double, ndim=2] gridhypo(np.ndarray[double, ndim=1] point, doubl
     
 def pending_eq(eqdata, vorcel):
     eqdata.cal_hypo(vorcel)
-    if eqdata.optsrc[3] > 10.0 or eqdata.optsrc[3] <= 0.0 or abs(eqdata.rmse)<0.001:
+    if eqdata.optsrc[3] >= 9.5 or eqdata.optsrc[3] <= 0.0 or abs(eqdata.rmse)<0.001:
         return False, eqdata
     eqdata.endtime = datetime.utcnow()
     eqdata.update = eqdata.update + 1
-    print(
-        f"Pending Earthquake {eqdata.first.sta} No {eqdata.noeq} with paramater {eqdata.starttime}\n")
+    #print(f"Pending Earthquake {eqdata.first.sta} No {eqdata.noeq} with paramater {eqdata.starttime}\n")
     file = open("output.txt", "a")
     file.write(
         f"Pending Earthquake No {eqdata.noeq} with paramater {eqdata.starttime}\n")
@@ -354,8 +353,8 @@ def pending_eq(eqdata, vorcel):
 class Phase:
     def __init__(self, pick):
         #pick = pick.split(" ")
-        if len(pick) < 13:
-            raise ValueError("Length of pick message is not appropiate")
+        #if len(pick) < 13:
+        #    raise ValueError("Length of pick message is not appropiate")
         #self.sta = pick[0]
         #self.comp = pick[1]
         #self.pa = float(pick[6])
@@ -366,21 +365,21 @@ class Phase:
         #self.telflag = float(pick[12])
         #self.upd_sec = float(pick[13])
 
-        self.sta = pick[0]
-        self.comp = pick[1]
-        self.pa = float(pick[2])
-        self.pv = float(pick[3])
-        self.pd = float(pick[4])
-        self.picktime = float(pick[5])
-        self.weight = float(pick[6])
-        self.telflag = float(pick[7])
-        self.upd_sec = float(pick[8])
+        self.sta = pick[1]
+        self.comp = pick[2]
+        self.pa = float(pick[3])
+        self.pv = float(pick[4])
+        self.pd = float(pick[5])
+        self.picktime = float(pick[6])
+        self.weight = float(pick[8])
+        self.telflag = float(pick[9])
+        self.upd_sec = float(pick[10])
 
         self.reserr = 999
         self.status = 0
     def check_pick(self, vorcel):
         df = vorcel.list_station[vorcel.list_station["Kode"] == self.sta]
-        if df.empty():
+        if df.empty:
             return False
         self.longitude = float(df["Long"].values[0])
         self.latitude = float(df["Lat"].values[0])
@@ -402,7 +401,7 @@ class Phase:
             self.triggroup, self.estgroup, self.init_eq = voronoi.get_vor(self.sta)
             return True
         except:
-            print(f"{self.sta} is not in list station database")
+            #print(f"{self.sta} is not in list station database")
             return False
     
     def calerror(self, hypo):
@@ -470,32 +469,36 @@ cdef class EQsrc:
         cdef object picking
 
         pick.calerror(self.optsrc)
-        if abs(pick.reserr) <= self.cfg.trig_err and pick.sta in self.triggroup:
+        if abs(pick.reserr) <= self.cfg.trig_err and (pick.sta in self.triggroup or pick.sta in self.code):
             if pick.sta in self.code:
                 idx = self.code.index(pick.sta)
                 picking = self.phase[idx]
-                if picking.picktime == pick.picktime:
+                if (picking.picktime == pick.picktime) < 3.0:
                     self.phase[idx] = pick
+                    return 2
                 else:
-                    return False
+                    print(pick.sta, pick.picktime, picking.picktime, "Sama tapi beda picktime")
+                    return 0
             else:
                 self.phase.append(pick)
                 self.code.append(pick.sta)
                 self.numtrg += 1
-        elif abs(pick.reserr) <= self.cfg.est_trig_err and pick.sta in self.estgroup:
+        elif abs(pick.reserr) <= self.cfg.est_trig_err/1.5 and (pick.sta in self.estgroup or pick.sta in self.code):
             if pick.sta in self.code:
                 idx = self.code.index(pick.sta)
                 picking = self.phase[idx]
                 if picking.picktime == pick.picktime:
                     self.phase[idx] = pick
+                    return 2
                 else:
-                    return False
+                    print(pick.sta, pick.picktime, picking.picktime, "Sama tapi beda picktime")
+                    return 0
             else:
                 self.phase.append(pick)
                 self.code.append(pick.sta)
         else:
-            return False
-        return True
+            return 0
+        return 1
 
     cpdef bint check_estg(self, pick):
         cdef Py_ssize_t idx
@@ -505,9 +508,10 @@ cdef class EQsrc:
             if pick.sta in self.code:
                 idx = self.code.index(pick.sta)
                 picking = self.phase[idx]
-                if picking.picktime == pick.picktime:
+                if (picking.picktime - pick.picktime) < 3.0:
                     self.phase[idx] = pick
                 else:
+                    print(pick.sta, pick.picktime, picking.picktime, "Sama tapi beda picktime")
                     return False
             else:
                 pick.calerror(self.optsrc)
@@ -523,7 +527,7 @@ cdef class EQsrc:
             pick.calerror(self.optsrc)
             if abs(pick.reserr) <= self.cfg.est_trig_err:
                 return True
-            if abs(pick.reserr) <= self.cfg.est_trig_err + 1.5 and self.update > 6:
+            if abs(pick.reserr) <= self.cfg.est_trig_err and self.update > 6:
                 return True
             return False
         return True
@@ -532,9 +536,9 @@ cdef class EQsrc:
         cdef Py_ssize_t i, nsta, fp_rm
         cdef double dttime
 
-        if self.numtrg >= 2 and self.status == 0:
+        if self.numtrg >= 3 and self.status == 0:
             self.status = 1
-        if self.numtrg >= 1 and self.status == 0 and len(self.phase) >= 4:
+        if self.numtrg >= 2 and self.status == 0 and len(self.phase) >= 4:
             self.status = 1
         dttime = (datetime.utcnow() - self.starttime).total_seconds()
         if self.status == 0:
@@ -650,7 +654,7 @@ cdef class EQsrc:
         dmax = np.max(particle_tmp[:, 2])
 
         # Resampling
-        if self.update > 0 and neff < len(allwi) / 2:
+        if self.update > 1 and neff < len(allwi) / 3:
             #if (neff <= self.optneff and len(self.phase)==self.old_nsta) or len(self.phase)!=self.old_nsta:
             if neff >= 1:
                 try:
@@ -676,17 +680,17 @@ cdef class EQsrc:
         
         allwi = particle_tmp[:, 5]
         id_max = np.argmax(particle_tmp[:, 5])
-        if self.update <= 1:
-            x0 = np.nansum(allwi * particle_tmp[:, 0])
-            y0 = np.nansum(allwi * particle_tmp[:, 1])
-            z0 = np.nansum(allwi * particle_tmp[:, 2])
-        else:
-            [x0, y0, z0, mag0, ot0] = particle_tmp[id_max, :5]
-            if self.need_resample:
-                allwi = np.full(nsample, 1./ nsample)
-                x0 = np.nansum(allwi * particle_tmp[:, 0])
-                y0 = np.nansum(allwi * particle_tmp[:, 1])
-                z0 = np.nansum(allwi * particle_tmp[:, 2])
+        #if self.update <= 1:
+        #   x0 = np.nansum(allwi * particle_tmp[:, 0])
+        #    y0 = np.nansum(allwi * particle_tmp[:, 1])
+        #    z0 = np.nansum(allwi * particle_tmp[:, 2])
+        #else:
+        #[x0, y0, z0, mag0, ot0] = particle_tmp[id_max, :5]
+        #if self.need_resample:
+        allwi = np.full(nsample, 1./ nsample)
+        x0 = np.nansum(allwi * particle_tmp[:, 0])
+        y0 = np.nansum(allwi * particle_tmp[:, 1])
+        z0 = np.nansum(allwi * particle_tmp[:, 2])
 
         if self.update == 0:
             z0 = 10.0

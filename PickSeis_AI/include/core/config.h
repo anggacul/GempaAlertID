@@ -4,7 +4,7 @@
 #define MAX_CHANNELS 3
 #define MAX_STATION_ID_LEN 6
 #define MAX_CHANNEL_NAME_LEN 4
-#define MAX_STATIONS 500
+#define MAX_STATIONS 1000
 #define SHM_NAME "/my_shm"
 #define SEM_NAME "/my_sem"
 #define SHM_SIZE 4096

@@ -1,17 +1,7 @@
 from datetime import datetime
-import telegram, json, pickle
+import json, pickle
 import asyncio, requests
 from cython cimport boundscheck, wraparound
-asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
-
-async def send_msg(pesan):
-    bot = telegram.Bot(token='5298253276:AAEThCM6SPGQvNS4uM4NjCDNh44oh_07QBU')
-    try:
-        pesan = pesan.decode('utf-8')
-        await bot.send_message(chat_id=-1001775156336, text=pesan)
-        print("Message sent successfully")
-    except Exception as e:
-        print(f"An error occurred: {e}")
 
 async def pushsimap(data):
     payload = {
@@ -88,9 +78,7 @@ cpdef report_1(eqsrc, path, status):
         file.write("\nOriginTime    Long    Lat    Depth    Mag   Weight\n")
         file.write(particles)
 
-    if status is False:
-        print("Send TELE")
-        asyncio.run(send_msg(pesan))
+    #if status is False:
         #data = [otp.strftime('%Y-%m-%d %H:%M:%S'), trp, round(eqsrc.optsrc[0],3), round(eqsrc.optsrc[1],3), round(eqsrc.optsrc[2],5), round(eqsrc.optsrc[3],2), eqsrc.noeq]
         #asyncio.run(pushsimap(data))
 
@@ -116,7 +104,5 @@ cpdef report(eqsrc, path, status):
             f"Hasil merupakan update ke {eqsrc.update}"
         ).encode("utf-8")
 
-        print("Send TELE")
-        asyncio.run(send_msg(pesan))
         #data = [otp.strftime('%Y-%m-%d %H:%M:%S'), trp, round(eqsrc.optsrc[0],3), round(eqsrc.optsrc[1],3), round(eqsrc.optsrc[2],5), round(eqsrc.optsrc[3],2), eqsrc.noeq]
         #asyncio.run(pushsimap(data))

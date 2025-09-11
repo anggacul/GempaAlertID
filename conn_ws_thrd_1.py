@@ -15,6 +15,8 @@ import mmap
 SHM_NAME = "/my_shm"
 SEM_NAME = "/my_sem"
 SHM_SIZE = 4096
+received_data = deque(maxlen=100)
+lock = threading.Lock()
 
 def reader_task():
     """
@@ -22,7 +24,6 @@ def reader_task():
     """
     sem = None
     shm_block = None
-    global received_data
     try:
         # Buka semafor dan shared memory yang sudah dibuat oleh program C
         # Buka dengan O_CREAT dan nilai awal 1
@@ -44,12 +45,13 @@ def reader_task():
                 # Setelah semaphore diberikan oleh C -> baca data
                 current_counter = int.from_bytes(shm_map[:4], byteorder='little')
 
-                if current_counter > last_counter:
+                if current_counter != last_counter:
                     message_bytes = shm_map[4:]
                     data = message_bytes.decode('utf-8').split('\x00', 1)[0]
 
-                    print(f"Reader Task: Found new data (Counter: {current_counter}). Data: '{data}'")
-                    received_data.append(data)
+                    # print(f"Reader Task: Found new data (Counter: {current_counter}). Data: '{data}'")
+                    with lock:
+                        received_data.append(data)
                     last_counter = current_counter
 
                 # ⚠️ Jangan sem.release() di reader!
@@ -90,8 +92,6 @@ def check_eq(eq1, eq2):
 def main():
     print(os.getcwd())
     # global variable of receiving data from webscoket
-    global received_data
-    received_data = deque(maxlen=100)
 
     getpick_thread = threading.Thread(target=reader_task)
     getpick_thread.start()
@@ -218,27 +218,36 @@ def main():
         if len(list(received_data)) == 0:
             # time.sleep(0.1)
             continue
-        data_pick = list(received_data.copy())
+        with lock:
+            data_pick = list(received_data)
 
         #Picking Checking
         for pick in data_pick:
-            if pick in last_pick or float(pick[13]) > 4:
+            if pick in last_pick:
                 continue
+            pick = pick.split()
             # print(pick)
-            new_pick = Phase(pick)
-            if new_pick.check_pick(vorcel):
+            try:
+                new_pick = Phase(pick)
+            except:
+                print(pick, "Error generate phase class")
+                continue
+            pick_ok = new_pick.check_pick(vorcel)
+            # print(pick, pick_ok)
+            if pick_ok:
                 picking.append(new_pick)
         last_pick = data_pick
 
         #Picking Processing
         for pick in picking:
-            if not eqp and not eqonl:
-                if pick.set_first(vorcel):
-                    noeq += 1
-                    allow_eq, eqpl = pending_eq(EQsrc(pick, cfg, noeq),vorcel)
-                    if allow_eq:
-                        eqp.append(eqpl)
-                continue
+            
+            # if not eqp and not eqonl:
+            #     if pick.set_first(vorcel):
+            #         noeq += 1
+            #         allow_eq, eqpl = pending_eq(EQsrc(pick, cfg, noeq),vorcel)
+            #         if allow_eq:
+            #             eqp.append(eqpl)
+            #     continue
             
             statpick = False
             for eqon in eqonl:
@@ -261,12 +270,15 @@ def main():
             for eqp_l in eqp:
                 if eqp_l.status == 0 and not statpick:
                     # pick.calerror(eqp_l.optsrc)
-                    if eqp_l.check_trgg(pick):
-                        statpick = True
-                        print(pick.sta, "triggroup with", eqp_l.first.sta, pick.reserr, eqp_l.starttime, datetime.utcnow())
+                    no_pick_stats = eqp_l.check_trgg(pick)
+                    if no_pick_stats >= 1:
+                        statpick = True 
+                        # if no_pick_stats == 1:
+                        #     print(pick.sta, "triggroup with", eqp_l.first.sta, pick.reserr, eqp_l.starttime, datetime.utcnow())
                         break
-                    # elif pick.sta in eqp_l.triggroup: 
-                    #     print(pick.sta, "Not triggroup with", eqp_l.first.sta, pick.reserr, eqp_l.endtime, eqp_l.starttime)
+                    # if pick.sta == eqp_l.first.sta:
+                    # # elif pick.sta in eqp_l.triggroup: 
+                    #     print(pick.sta, "Not triggroup with", eqp_l.first.sta, pick.picktime,  eqp_l.first.picktime, pick.upd_sec, eqp_l.first.upd_sec, eqp_l.first.pa, pick.pa)
 
             if statpick:
                 continue
@@ -275,6 +287,7 @@ def main():
                 noeq += 1
                 allow_eq, eqpl = pending_eq(EQsrc(pick, cfg, noeq),vorcel)
                 if allow_eq:
+                    # print(pick.sta, pick.picktime, pick.upd_sec, len(eqp))
                     if len(eqp) >= 30:
                         eqp.pop(0)  
                     eqp.append(eqpl)

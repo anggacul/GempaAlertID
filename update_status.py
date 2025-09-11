@@ -6,7 +6,8 @@ import pandas as pd
 import glob
 config = {
     'host': 'localhost',
-    'user': 'root',
+    'user': 'wijaya',
+    'password':'manop123',
     'database': 'ipfeew'
 }
 config1 = {
@@ -15,19 +16,19 @@ config1 = {
     'password':'bmkgaccelero',
     'database': 'db_simora'
 }
-mydb = mysql.connector.connect(**config)
-mycursor = mydb.cursor()
-mycursor.execute(f"SELECT Kode, Latitude, Longitude, status FROM meta_playback WHERE `Kode` NOT LIKE '%Virtual%'")
-station = mycursor.fetchall()
+# mydb = mysql.connector.connect(**config)
+# mycursor = mydb.cursor()
+# mycursor.execute(f"SELECT Kode, Latitude, Longitude, status FROM meta_playback WHERE `Kode` NOT LIKE '%Virtual%'")
+# station = mycursor.fetchall()
 # df = pd.DataFrame(station, columns=["Kode", "Lat", "Long"])
 
-for i, sta in enumerate(station):
-    station[i] = list(station[i])
-    files = glob.glob(f"20240225T130705_105.87_-7.49_6.0/{sta[0]}_Z.mseed")
-    if files:
-        station[i][-1] = 1
-    else:
-        station[i][-1] = 0
+# for i, sta in enumerate(station):
+#     station[i] = list(station[i])
+#     files = glob.glob(f"20240225T130705_105.87_-7.49_6.0/{sta[0]}_Z.mseed")
+#     if files:
+#         station[i][-1] = 1
+#     else:
+#         station[i][-1] = 0
     # if sta[6] == "ON":
     #     station[i][6] = 1
     # else:
@@ -41,10 +42,10 @@ for i, sta in enumerate(station):
 #     data[i] = data[i].split()
 # print(len(data))
 #get station status from 
-# mydb = mysql.connector.connect(**config1)
-# mycursor = mydb.cursor()
-# mycursor.execute(f"SELECT Kode, Lat, `Long`, Status_tele FROM tb_avaccelro where Tipe LIKE '%Accelerograph%'")
-# station = mycursor.fetchall()
+mydb = mysql.connector.connect(**config1)
+mycursor = mydb.cursor()
+mycursor.execute(f"SELECT Kode, Tipe, Lat, `Long`, Status_tele FROM tb_avaccelro where Tipe LIKE '%Accelerograph%'")
+station = mycursor.fetchall()
 vorcel = voronoi_sta()
 # latvir = range(-14,11,2)
 # longvir = range(90,143,2)
@@ -63,15 +64,15 @@ vorcel = voronoi_sta()
 #     code = "Virtual"+str(k)
 #     k += 1
 #     station.append((code, i, longvir[-1], 1))
-# for i, sta in enumerate(station):
-#     sta = list(sta)
-#     print(sta)
-#     if sta[-1] == "ON":
-#     sta[-1] = 1
-#     else:
-#     sta[-1] = 0
-#     station[i] = sta
-vorcel.insert_sta(station)
+for i, sta in enumerate(station):
+    sta = list(sta)
+    print(sta[0], sta[1])
+    if sta[-1] == "ON":
+        sta[-1] = 1
+    else:
+        sta[-1] = 0
+    station[i] = sta
+# vorcel.insert_sta(station)
 vorcel.update_trig()
 # idx = vorcel.code.index("WAMI")
 # print(len(vorcel.triggroup), len(vorcel.code), len(vorcel.estgroup), len(vorcel.init))

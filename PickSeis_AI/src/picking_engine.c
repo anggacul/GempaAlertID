@@ -58,119 +58,150 @@ PickResult runPhaseNetPicking(const Station* station, const DataWindow* window) 
         PickResult result = {0};
         return result;
     }
+
     PickResult result = {0};
-    int phasenet_samples = (int)(50.0 * WW) + 1; // untuk input model (misal 3001)
-    float downsampled[3][phasenet_samples];
+    int phasenet_samples = (int)(50.0 * WW) + 1; // ex: 3001
+    size_t per_ch = (size_t)phasenet_samples;
+    size_t nvals = 3 * per_ch;
+
+    /* Alloc buffers on heap (calloc so remaining entries = 0) */
+    float *downsampled = (float*)calloc(nvals, sizeof(float));
+    float *normed = (float*)malloc(nvals * sizeof(float));
+    float *input_tensor = (float*)malloc(nvals * sizeof(float));
+    if (!downsampled || !normed || !input_tensor) {
+        LOG_ERROR("Malloc failure in runPhaseNetPicking");
+        free(downsampled); free(normed); free(input_tensor);
+        return result;
+    }
+
     double minLastTime = window->minLastTime;
-    for (int ch = 0; ch < 3; ++ch) {
+
+    /* Per-channel: build temp buffer, downsample (or copy) into downsampled */
+    for (int ch = 0; ch < MAX_CHANNELS; ++ch) {
         int windowSamples = window->windowSamples[ch];
         double sampleRate = station->sampleRate;
         int pickWindowSamples = (int)(sampleRate * WW) + (int)(sampleRate / 50.0);
-        int endIdx = (int)((minLastTime - window->startTime[ch]) * sampleRate);
-        int startIdx = endIdx - pickWindowSamples + 1;
+        if (windowSamples < pickWindowSamples){
+            // LOG_INFO("Station %s channel %s data belum cukup untuk picking", station->stationId, station->channels[ch]);
+            return result;
+        }
+        int endIdx = (int)((minLastTime - window->startTime[ch]) * sampleRate -1);
+        int startIdx = endIdx - pickWindowSamples;
         if (startIdx < 0) {
-            startIdx = 0;
-            endIdx = pickWindowSamples - 1;
+            // LOG_INFO("Station %s channel %s samples %d data belum cukup untuk picking", station->stationId, station->channels[ch], windowSamples);
+            return result;
+            // startIdx = 0;
+            // endIdx = pickWindowSamples - 1;
         }
-        // Tidak perlu memaksa endIdx ke windowSamples-1, rolling window tetap berjalan mundur
-        if (endIdx >= windowSamples) {
-            // Jika endIdx melebihi jumlah sample, rolling window tetap berjalan mundur
-            endIdx = windowSamples - 1;
-            startIdx = endIdx - pickWindowSamples + 1;
-            if (startIdx < 0) startIdx = 0;
+        if (endIdx > windowSamples) {
+            LOG_INFO("Station %s channel %s lastdata tidak sama startidx %d endidx %d samples %d pws %d", station->stationId, station->channels[ch], startIdx, endIdx, windowSamples, pickWindowSamples);
+            return result;
+            // endIdx = windowSamples - 1;
+            // startIdx = endIdx - pickWindowSamples + 1;
+            // if (startIdx < 0) startIdx = 0;
         }
-        float temp[pickWindowSamples];
+
+        /* allocate temp on heap (pickWindowSamples can be large) */
+        float *temp = (float*)malloc(sizeof(float) * (size_t)pickWindowSamples);
+        if (!temp) {
+            LOG_ERROR("Malloc failure for temp buffer");
+            free(downsampled); free(normed); free(input_tensor);
+            return result;
+        }
+
         int n = 0;
         for (int i = startIdx; i <= endIdx && n < pickWindowSamples; ++i, ++n) {
             temp[n] = window->data[ch][i];
         }
+
+        /* place result into downsampled[ch * per_ch + ...] */
+        float *dst = downsampled + (size_t)ch * per_ch;
         if (station->sampleRate == 50.0) {
-            memcpy(downsampled[ch], temp, sizeof(float) * n);
+            /* copy n samples; rest already zero because of calloc */
+            memcpy(dst, temp, sizeof(float) * (size_t)n);
         } else {
-            downsample_to_20hz(temp, n, downsampled[ch], phasenet_samples, sampleRate, 50.0);
+            downsample_to_20hz(temp, n, dst, phasenet_samples, sampleRate, 50.0);
         }
-        // LOG_INFO("Station %s, ch=%d, timestamp=%.3f, minLastTime=%.3f, startTime=%.3f (idx=%d), endTime=%.3f (idx=%d)", station->stationId, ch, window->timestamp, minLastTime, window->startTime[ch], startIdx, (minLastTime - window->startTime[ch]), endIdx);
+
+        free(temp);
     }
 
-    // Normalisasi data 3 komponen terhadap max
+    /* Normalisasi terhadap max */
     float maxval = 0.0f;
-    for (int ch = 0; ch < 3; ++ch) {
-        for (int i = 0; i < phasenet_samples; ++i) {
-            float v = fabsf(downsampled[ch][i]);
-            if (v > maxval) maxval = v;
-        }
+    for (size_t k = 0; k < nvals; ++k) {
+        float v = fabsf(downsampled[k]);
+        if (v > maxval) maxval = v;
     }
     if (maxval < 1e-6f) maxval = 1.0f;
-    float normed[3][phasenet_samples];
-    for (int ch = 0; ch < 3; ++ch) {
-        for (int i = 0; i < phasenet_samples; ++i) {
-            normed[ch][i] = downsampled[ch][i] / maxval;
-        }
-    }
-    // Siapkan input tensor [1, 3, phasenet_samples]
-    float input_tensor[1][3][phasenet_samples];
-    for (int ch = 0; ch < 3; ++ch)
-        for (int i = 0; i < phasenet_samples; ++i)
-            input_tensor[0][ch][i] = normed[ch][i];
-    // ONNX inferensi
+
+    for (size_t k = 0; k < nvals; ++k) normed[k] = downsampled[k] / maxval;
+
+    /* Siapkan input tensor (heap) */
+    for (size_t k = 0; k < nvals; ++k) input_tensor[k] = normed[k];
+
+    /* ONNX inference (dengan cek error dan cleanup) */
     const OrtApi* api = OrtGetApiBase()->GetApi(ORT_API_VERSION);
-    OrtMemoryInfo* mem_info;
-    api->CreateCpuMemoryInfo(OrtArenaAllocator, OrtMemTypeDefault, &mem_info);
+    OrtStatus* status = NULL;
+    OrtMemoryInfo* mem_info = NULL;
+
+    status = api->CreateCpuMemoryInfo(OrtArenaAllocator, OrtMemTypeDefault, &mem_info);
+    if (status != NULL) {
+        LOG_ERROR("CreateCpuMemoryInfo failed: %s", api->GetErrorMessage(status));
+        api->ReleaseStatus(status);
+        goto cleanup_heap;
+    }
+
     int64_t input_shape[3] = {1, 3, phasenet_samples};
     OrtValue* input_tensor_ort = NULL;
-    api->CreateTensorWithDataAsOrtValue(mem_info, input_tensor, sizeof(input_tensor), input_shape, 3, ONNX_TENSOR_ELEMENT_DATA_TYPE_FLOAT, &input_tensor_ort);
-    api->ReleaseMemoryInfo(mem_info);
-    // Nama input/output sesuai model PhaseNet
+    size_t input_bytes = nvals * sizeof(float);
+
+    status = api->CreateTensorWithDataAsOrtValue(mem_info, input_tensor, input_bytes,
+                                                 input_shape, 3, ONNX_TENSOR_ELEMENT_DATA_TYPE_FLOAT,
+                                                 &input_tensor_ort);
+    if (status != NULL) {
+        LOG_ERROR("CreateTensorWithDataAsOrtValue failed: %s", api->GetErrorMessage(status));
+        api->ReleaseStatus(status);
+        api->ReleaseMemoryInfo(mem_info);
+        goto cleanup_heap;
+    }
+    api->ReleaseMemoryInfo(mem_info);  /* safe to release after CreateTensorWithDataAsOrtValue */
+
     const char* input_names[] = {"wave"};
     const char* output_names[] = {"prob"};
     OrtValue* output_tensor = NULL;
-    OrtStatus* status = api->Run(ort_session, NULL, input_names, (const OrtValue* const*)&input_tensor_ort, 1, output_names, 1, &output_tensor);
-    // Mendapatkan informasi tipe dan bentuk tensor output
-    // OrtTensorTypeAndShapeInfo* info;
-    // api->GetTensorTypeAndShape(output_tensor, &info);
 
-    // // Mengambil jumlah dimensi tensor
-    // size_t dim_count;
-    // api->GetDimensionsCount(info, &dim_count);
+    status = api->Run(ort_session, NULL, input_names, (const OrtValue* const*)&input_tensor_ort, 1,
+                      output_names, 1, &output_tensor);
+    if (status != NULL) {
+        LOG_ERROR("ONNX Run failed: %s", api->GetErrorMessage(status));
+        api->ReleaseStatus(status);
+        api->ReleaseValue(input_tensor_ort);
+        goto cleanup_heap;
+    }
 
-    // // Mengambil dimensi tensor
-    // int64_t dims[dim_count];
-    // api->GetDimensions(info, dims, dim_count);
-
-    // // Cetak ukuran tensor output
-    // printf("Output Tensor Dimensi: [");
-    // for (size_t i = 0; i < dim_count; ++i) {
-    //     printf("%lld", dims[i]);
-    //     if (i < dim_count - 1) {
-    //         printf(", ");
-    //     }
-    // }
-    // printf("]\n");
-
-    // // Melepaskan info tipe dan bentuk
-    // api->ReleaseTensorTypeAndShapeInfo(info);
-    // Output: [1, 600, 3] (P, S, N)
     float* output = NULL;
-    api->GetTensorMutableData(output_tensor, (void**)&output);
-    // Cari waktu pick (max output class P)
+    status = api->GetTensorMutableData(output_tensor, (void**)&output);
+    if (status != NULL) {
+        LOG_ERROR("GetTensorMutableData failed: %s", api->GetErrorMessage(status));
+        api->ReleaseStatus(status);
+        api->ReleaseValue(input_tensor_ort);
+        api->ReleaseValue(output_tensor);
+        goto cleanup_heap;
+    }
+
+    /* Cari pick index (sama logika seperti sebelumnya) */
     int pickIdx = -1;
     float maxP = 0.0f;
-    float minN = 0.0f;
     for (int i = 0; i < phasenet_samples; ++i) {
-        float probP = output[0 * phasenet_samples + i];  // channel 0 = P
-        float probN = output[2 * phasenet_samples + i];  // channel 2 = N
-        // if (probN < PHASENET_TC) {
-        //     minN = probP;
-        //     LOG_INFO("maxP %f %s", minN, station->stationId);
-        // }
+        float probP = output[0 * phasenet_samples + i];
+        float probN = output[2 * phasenet_samples + i];
         if (probN < PHASENET_TC && probP > maxP) {
             maxP = probP;
             pickIdx = i;
         }
     }
-    
+
     if (pickIdx >= 0) {
-        // Waktu pick relatif terhadap start window sinkron
         double pickTime = minLastTime - WW + (pickIdx * (WW / phasenet_samples));
         result.pickTime = pickTime;
         result.confidence = maxP;
@@ -178,7 +209,16 @@ PickResult runPhaseNetPicking(const Station* station, const DataWindow* window) 
         result.pickTime = 0.0;
         result.confidence = 0.0f;
     }
+
+    /* Release ONNX values */
     api->ReleaseValue(input_tensor_ort);
     api->ReleaseValue(output_tensor);
+
+cleanup_heap:
+    /* free heap buffers */
+    free(downsampled);
+    free(normed);
+    free(input_tensor);
+
     return result;
-} 
+}

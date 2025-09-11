@@ -32,26 +32,21 @@ void biquad_hpf_design(BiquadHPF *f, double fs, double fc) {
     f->b1 = -2.0 * norm;
     f->b2 = 1.0 * norm;
     f->a1 = 2.0 * (K*K - 1.0) * norm;
-    f->a2 = (1.0 - sqrt(2.0)*K + K*K) * norm;
+    f->a2 = (1.0 - sqrt(2.0) * K + K*K) * norm;
 
-    f->x1 = f->x2 = 0.0;
-    f->y1 = f->y2 = 0.0;
+    f->z1 = 0.0;
+    f->z2 = 0.0;
 }
 
 // proses satu sampel
 double biquad_hpf_step(BiquadHPF *f, double x) {
     // direct form I
-    double y = f->b0 * x + f->b1 * f->x1 + f->b2 * f->x2
-               - f->a1 * f->y1 - f->a2 * f->y2;
-
-    // shift buffers
-    f->x2 = f->x1;
-    f->x1 = x;
-    f->y2 = f->y1;
-    f->y1 = y;
-
+    double y = f->b0 * x + f->z1;
+    f->z1 = f->b1 * x - f->a1 * y + f->z2;
+    f->z2 = f->b2 * x - f->a2 * y;
     return y;
 }
+
 static bool status_window = false;
 int loadStationListFromFile(const char* filename, Station* stationList, int maxStation) {
     FILE* f = fopen(filename, "r");
@@ -76,12 +71,13 @@ int loadStationListFromFile(const char* filename, Station* stationList, int maxS
             biquad_hpf_design(&stationList[count].hpf_acc[0], sr, 0.075);
             biquad_hpf_design(&stationList[count].hpf_acc[1], sr, 0.075);
             biquad_hpf_design(&stationList[count].hpf_acc[2], sr, 0.075);
-            biquad_hpf_design(&stationList[count].hpf_vel[0], sr, 0.075);
-            biquad_hpf_design(&stationList[count].hpf_vel[1], sr, 0.075);
-            biquad_hpf_design(&stationList[count].hpf_vel[2], sr, 0.075);
-            biquad_hpf_design(&stationList[count].hpf_disp[0], sr, 0.075);
-            biquad_hpf_design(&stationList[count].hpf_disp[1], sr, 0.075);
-            biquad_hpf_design(&stationList[count].hpf_disp[2], sr, 0.075);
+            biquad_hpf_design(&stationList[count].hpf_vel[0], sr, 0.1);
+            biquad_hpf_design(&stationList[count].hpf_vel[1], sr, 0.1);
+            biquad_hpf_design(&stationList[count].hpf_vel[2], sr, 0.1);
+            biquad_hpf_design(&stationList[count].hpf_disp[0], sr, 0.1);
+            biquad_hpf_design(&stationList[count].hpf_disp[1], sr, 0.1);
+            biquad_hpf_design(&stationList[count].hpf_disp[2], sr, 0.1);
+            LOG_INFO("%15s %7s %7s %7s %lf %lf %lf %lf",stationList[count].stationId, stationList[count].channels[0], stationList[count].channels[1], stationList[count].channels[2], stationList[count].sampleRate, stationList[count].conversionFactor[0], stationList[count].conversionFactor[2], stationList[count].conversionFactor[2]);
 
             // LOG_INFO("station %s %d %zu %zu", stationList[count].stationId, MAX_STATION_ID_LEN, strlen(stationList[count].stationId), strlen(stid));
             count++;
@@ -113,7 +109,7 @@ void write_to_shared_memory(Station* station, PickState* pickState, DataWindow* 
     //     self.weight = float(pick[11])
     //     self.telflag = float(pick[12])
     //     self.upd_sec = float(pick[13])
-    // ptr->counter = current_counter;
+    ptr->counter = current_counter;
     struct timeval tv;
     gettimeofday(&tv, NULL);
     double time_now = tv.tv_sec + tv.tv_usec / 1e6;
@@ -149,27 +145,10 @@ void processStation(Station* station, PickState* pickState, double *lastProcesse
     for (int ch = 0; ch < MAX_CHANNELS; ++ch) {
         windowSamples = window.windowSamples[ch];
     }
-
-    // 3. Cek apakah ada pick yang harus diinfokan (Tt detik setelah pick)
-    if (pickState->isWaitingAfterPick && !pickState->pickInfoSent) {
-        if (window.minLastTime >= pickState->pickTime + PICK_TT) {
-            float amp[3];
-            float upd_sec;
-            upd_sec = extractMaxAmplitudeAt(station, &window, pickState->pickTime, amp, 9.0);
-            pickState->upd_sec = upd_sec;
-            // LOG_INFO("[PICK] station %s pada %.2f (RMS=%.3f, amp@Tt=%.3f, timestamp=%.3f, minLastTime=%.3f)", station->stationId, pickState->pickTime, pickState->pickRms, amp, window.timestamp, window.minLastTime);
-            write_to_shared_memory(station, pickState, &window, amp, pickState->upd_sec);
-            if (!pickState->pickSendSQL && !pickState->pickSendLOG) {
-                LOG_INFO("%s %s %.5f %.5f %.5f %.3f 1 0 %.1f", station->stationId, station->channels[0], amp[0], amp[1], amp[2], pickState->pickTime,upd_sec);
-                sqlite_insert_pick(station->stationId, pickState->pickTime, amp[0], pickState->lastConfidence);
-                pickState->pickSendSQL = 1;
-                pickState->pickSendLOG = 1;
-            }
-            if (pickState->upd_sec >= 9.0) {
-                pickState->pickInfoSent = 1;
-            }
-        }
-    }
+    // float amp[3];
+    // float upd_sec;
+    // upd_sec = extractMaxAmplitudeAt(station, &window, window.startTime[0], amp, window.minLastTime - 10.0);
+    // LOG_INFO("[PICK] station %s acc=%.3f, vel=%.3f, disp=%.3f, avvel=%.3f avdisp=%.3f", station->stationId,  amp[0],amp[1],amp[2],window.lastMeanvel[0],window.lastMeandisp[0]);
     // 4. Jika sedang menunggu setelah pick
     if (pickState->isWaitingAfterPick) {
         float rms = calculateRmsAmplitudeAt(station, &window);
@@ -185,7 +164,7 @@ void processStation(Station* station, PickState* pickState, double *lastProcesse
                 }
             }
             if ( rms < 0.2f * pickState->pickRms) {
-                pickState->windowCountSincePick++;pickState->isWaitingAfterPick = 0; // aktifkan picking lagi
+                pickState->windowCountSincePick = (int)(window.minLastTime - pickState->pickTime) ;
                 // LOG_INFO("Station %s reset picking", station->stationId);
             }
         }
@@ -193,7 +172,7 @@ void processStation(Station* station, PickState* pickState, double *lastProcesse
             pickState->isWaitingAfterPick = 0;
             // LOG_INFO("Station %s reset picking", station->stationId);
         }
-        if (window.minLastTime > pickState->pickTime + 360){
+        if (window.minLastTime > pickState->pickTime + 30){
             pickState->isWaitingAfterPick = 0;
             // LOG_INFO("Station %s reset picking", station->stationId);            
         }
@@ -201,7 +180,7 @@ void processStation(Station* station, PickState* pickState, double *lastProcesse
     // 5. Picking baru
     if (status_window && !pickState->isWaitingAfterPick && window.full[0] && window.full[1] && window.full[2]) {
         PickResult pick = runPhaseNetPicking(station, &window);
-        if (pick.confidence > 0.5) {
+        if (pick.confidence > 0.7) {
             pickState->pickTime = pick.pickTime;
             pickState->pickRms = calculateRmsAmplitudeAt(station, &window);
             pickState->windowCountSincePick = 0;
@@ -213,6 +192,32 @@ void processStation(Station* station, PickState* pickState, double *lastProcesse
             pickState->Trms = 0.0;
             pickState->upd_sec = 0.0;
             // (jangan langsung kirim, tunggu Tt detik)
+        }
+    }
+    // 3. Cek apakah ada pick yang harus diinfokan (Tt detik setelah pick)
+    if (pickState->isWaitingAfterPick && !pickState->pickInfoSent) {
+        if (window.minLastTime >= pickState->pickTime + PICK_TT) {
+            float amp[3];
+            float upd_sec;
+            upd_sec = extractMaxAmplitudeAt(station, &window, pickState->pickTime, amp, 5.0);
+            pickState->upd_sec = upd_sec;
+            if (upd_sec==0.0){
+                pickState->pickSendSQL = 1;
+                pickState->pickSendLOG = 1;
+            }
+            else{
+                write_to_shared_memory(station, pickState, &window, amp, pickState->upd_sec);
+                if (!pickState->pickSendSQL && !pickState->pickSendLOG) {
+                    LOG_INFO("%s %s %.5f %.5f %.5f %.3f 1 0 %.1f", station->stationId, station->channels[0], amp[0], amp[1], amp[2], pickState->pickTime,upd_sec);
+                    sqlite_insert_pick(station->stationId, pickState->pickTime, amp[0], pickState->lastConfidence);
+                    pickState->pickSendSQL = 1;
+                    pickState->pickSendLOG = 1;
+                }
+                if (pickState->upd_sec >= 5.0) {
+                    pickState->pickInfoSent = 1;
+                }
+            }
+            // LOG_INFO("[PICK] station %s pada %.2f (RMS=%.3f, amp@Tt=%.3f, timestamp=%.3f, minLastTime=%.3f)", station->stationId, pickState->pickTime, pickState->pickRms, amp, window.timestamp, window.minLastTime);
         }
     }
     *lastProcessedTimestamp = window.minLastTime;

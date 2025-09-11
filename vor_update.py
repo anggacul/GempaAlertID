@@ -8,10 +8,10 @@ def upd_db():
 
     config = {
         'host': 'localhost',
-        'user':'root',
+        'user': 'wijaya',
+        'password':'manop123',
         'database': 'ipfeew'
     }
-
     config1 = {
         'host': '202.90.199.206',
         'user':'server',
@@ -30,9 +30,22 @@ def upd_db():
     mydb = mysql.connector.connect(**config)
     mycursor = mydb.cursor()
     for sta in station:
-        t1 = datetime.strptime(sta[1],"%Y-%m-%dT%H:%M:%S")
-        diff = (t0-t1).total_seconds()
-        if diff > 30*60:
+        if sta[1] != "":  
+            try:
+                t1 = datetime.strptime(sta[1],"%Y-%m-%dT%H:%M:%S")
+            except:
+                try:
+                    t1 = datetime.strptime(sta[1],"%Y/%m/%d %H:%M:%S.%f")
+                except:
+                    try:
+                        t1 = datetime.strptime(sta[1],"%Y-%m-%d %H:%M:%S.%f")
+                    except:
+                        t1 = datetime.strptime(sta[1],"%Y-%m-%d %H:%M:%S")
+            diff = (t0-t1).total_seconds()
+        else:
+            diff = 30*60
+        
+        if diff > 15*60:
             # print(sta[0], "OFF")
             sql = f"UPDATE meta_playback SET status=0 WHERE Kode='{sta[0]}'"
         else:
@@ -71,7 +84,7 @@ while True:
                     features_point.append(feature1)
                     
                 feature_collection = geojson.FeatureCollection(features)
-                output_file_path = '../ShowPick/public/json/polygons.geojson'
+                output_file_path = 'polygons.geojson'
                 # Write the GeoJSON feature collection to a file
                 with open(output_file_path, 'w') as f:
                     geojson.dump(feature_collection, f, indent=2)
@@ -79,7 +92,7 @@ while True:
                 feature_collection = geojson.FeatureCollection(features_point)
 
                 # Save the GeoJSON feature collection to a file
-                with open('../ShowPick/public/json/station.geojson', 'w') as f:
+                with open('station.geojson', 'w') as f:
                     geojson.dump(feature_collection, f)
             print(t0,"Update Database",time.time()-a)
         except Exception as e:

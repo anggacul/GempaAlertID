@@ -6,6 +6,7 @@ import geopandas
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
 from PIL import Image
 import imageio
+from obspy import UTCDateTime
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 from EQdetect.utils.vorstat import voronoi_sta
 from EQdetect.utils.config import Config
@@ -14,14 +15,15 @@ from EQdetect.core.sourcecal import Phase, EQsrc, pending_eq
 
 #65258_20240814091543_2
 kk=0
-outf = glob.glob("eew_report/4071_20250108*.pkl")
+outf = glob.glob("eew_report/34753_20250910*.pkl")
+outf = sorted(outf, key=os.path.getmtime)
 #11647_20241012011228_2.pkl
 
 if len(outf) == 0:
     print(outf)
     raise ValueError("No Report File")
 
-with open("vorcel/250108155947_vorcel.pkl","rb") as file:
+with open("vorcel/250910131728_vorcel.pkl","rb") as file:
     vorcel = pickle.load(file)
 with open(outf[-1], "rb") as file:
     data = pickle.load(file)
@@ -68,15 +70,19 @@ maxlon += 0.5
 minlat -= 0.5
 maxlat += 0.5
 
-world = geopandas.read_file(r'C:\Users\wijay\Documents\EEWS_new\ne_10m_land.zip')
+world = geopandas.read_file('ne_10m_land.zip')
 world = world.cx[94:120, -10:14]
 cmap = sns.color_palette("viridis", as_cmap=True)
 
-dirimage = "eew_report/images/"+outf[0].split("\\")[-1].split("_")[0]
+# dirimage = "eew_report/images/"+outf[0].split("\\")[-1].split("_")[0]
+dirimage = "eew_report/images/"+outf[0].split("/")[-1].split("_")[0]
 if not os.path.isdir(dirimage):
 	os.mkdir(dirimage)
+for ss in station[-1]:
+    print(ss.sta, UTCDateTime(ss.picktime), ss.pa, ss.pv, ss.pd, ss.latitude, ss.longitude)
 for i in range(len(outf)):
-    outfile = outf[i].split("\\")[-1]
+    # outfile = outf[i].split("\\")[-1]
+    outfile = outf[i].split("/")[-1]
 
     sta = station[i]
     tmpsta = []
@@ -91,12 +97,16 @@ for i in range(len(outf)):
     eq = src_eq[i]
     particle = particles[i]
     nsample = len(particle[:, 5])
-    allwi = np.full(nsample, 1./ nsample)
+    idmax = np.argmax(particle[:, 5])
+    
+    # allwi = np.full(nsample, 1./ nsample)
+    allwi = particle[:, 5]
     # allwi[np.isnan(allwi)] = 0
     x0 = np.sum(allwi * particle[:, 0])
     y0 = np.sum(allwi * particle[:, 1])
     z0 = np.sum(allwi * particle[:, 2]) 
-    print(np.median(allwi))
+    x0, y0, z0 = particle[idmax, :3]
+    print(np.sum(allwi), max(particle[:, 5]), particle[idmax, 5])
     
     # id_max = np.argmax(particle[:, 5])
     # [x0, y0, z0, mag0, ot0] = particle[id_max, :5]
@@ -156,10 +166,13 @@ for i in range(len(outf)):
     vary = np.sqrt(abs(np.nansum((allwi * particle[:, 1]**2)) - y0**2))
     varz = np.sqrt(abs(np.nansum((allwi * particle[:, 2]**2)) - z0**2))
 
-    print(outfile, eq[:3], varx, vary, varz, alldata[i].need_resample, eq[-1], len(particle), len(tmpsta))
+    # print(outfile, eq[:3], varx, vary, varz, alldata[i].need_resample, eq[-1], len(particle), len(tmpsta))
     outfile = f"{dirimage}/{outfile[:-4]}.png"
     plt.savefig(outfile, dpi=300, bbox_inches='tight')
     plt.close()
+
+for ss in sta:
+    print(ss.sta, ss.pa, ss.pv, ss.pd)
 
 # Daftar file PNG
 image_files = glob.glob(f"{dirimage}/*.png")  # Tambahkan file PNG lainnya

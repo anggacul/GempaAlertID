@@ -4,8 +4,8 @@ class Config():
         self.MagMin = 1.0
         self.MagMax = 10.0
         self.ignoreP = 4
-        self.est_trig_err = 6.7
-        self.trig_err = 8.0
+        self.est_trig_err = 4.0
+        self.trig_err = 6.0
         self.active_pick = 300
         self.Boundary_P = 24.0
         self.SwP_V = 4.55220 
