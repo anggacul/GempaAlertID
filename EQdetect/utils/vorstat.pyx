@@ -168,15 +168,14 @@ class voronoi_sta:
             if i in idx_trig or i == id_sta:
                 continue
             else:
-                if len(idx_trig) > 29:
+                if len(idx_trig) > 30:
                     break
                 idx_trig = np.append(idx_trig, i)
         if isinstance(id_cls, (collections.abc.Sequence, np.ndarray)):
             distances = [np.linalg.norm(np.array(self.points[i]) - np.array(self.points[id_sta])) for i in id_cls]
             id_cls1 = [i for _, i in sorted(zip(distances, id_cls))]
             for i in id_cls1:
-                if len(idx_trig) > 29:
-
+                if len(idx_trig) > 30:
                     break
                 else:
                     if i in idx_trig:

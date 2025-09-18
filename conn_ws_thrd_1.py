@@ -95,13 +95,18 @@ def main():
 
     getpick_thread = threading.Thread(target=reader_task)
     getpick_thread.start()
-
+    config = {
+        'host': 'localhost',
+        'user': 'wijaya',
+        'password':'manop123',
+        'database': 'ipfeew'
+    }
     last_pick = []
     cfg = Config()
-    vorcel = voronoi_sta()
+    vorcel = voronoi_sta(config)
     vorcel.update_trig()
     picking = []
-    noeq = 0
+    noeq = 174917
     eqp = []
     eqonl = []
     last_report_time = time.time() - 120

@@ -280,7 +280,7 @@ cdef np.ndarray[double, ndim=2] cal_ipf_edt(np.ndarray[double, ndim=2] particle,
                 fp = -10.0
             fn_all += fp
 
-        weight = fp_all + fa_all + fn_all
+        weight = fp_all + fa_all
         hypo[5] = weight
         hypo[6] = fn_all
         hypo[7] = fa_all
@@ -536,9 +536,9 @@ cdef class EQsrc:
         cdef Py_ssize_t i, nsta, fp_rm
         cdef double dttime
 
-        if self.numtrg >= 3 and self.status == 0:
+        if self.numtrg >= 2 and self.status == 0:
             self.status = 1
-        if self.numtrg >= 2 and self.status == 0 and len(self.phase) >= 4:
+        if self.numtrg >= 1 and self.status == 0 and len(self.phase) >= 4:
             self.status = 1
         dttime = (datetime.utcnow() - self.starttime).total_seconds()
         if self.status == 0:
@@ -687,7 +687,7 @@ cdef class EQsrc:
         #else:
         #[x0, y0, z0, mag0, ot0] = particle_tmp[id_max, :5]
         #if self.need_resample:
-        allwi = np.full(nsample, 1./ nsample)
+        #allwi = np.full(nsample, 1./ nsample)
         x0 = np.nansum(allwi * particle_tmp[:, 0])
         y0 = np.nansum(allwi * particle_tmp[:, 1])
         z0 = np.nansum(allwi * particle_tmp[:, 2])
